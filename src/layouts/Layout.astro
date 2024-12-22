@@ -1,8 +1,10 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
 import Footer from "../components/Footer.astro";
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Astro Script: Llamamos a la función getUser() y renderizamos la imagen
+import { getUser } from "../services/getUser.astro";
+
+const user = await getUser();
 ---
 
 <!doctype html>
@@ -19,12 +21,18 @@ import Footer from "../components/Footer.astro";
     <title>Astro Basics</title>
   </head>
   <body class="bg-white dark:bg-slate-800 dark:text-white flex flex-row">
-    <div class="peer"><Sidebar /></div>
-    <div class="flex-1 flex flex-col relative ml-28 peer-hover:blur-md peer-hover:transition-all peer-hover:duration-300 peer-hover:ease-linear">
-      <div class="w-full flex justify-end absolute top-0 right-0 pr-3">
-        <div
-          class="w-[210px] h-[200px] rounded-full bg-gradient-to-b from-slate-950 to-slate-500 animate-moveDown"
-        >
+    <div class=""><Sidebar /></div>
+    <div
+      class="flex-1 flex flex-col ml-28"
+    >
+      <div class="w-full flex justify-end absolute top-5 right-0 pr-3">
+        <div>
+          <img
+            id="img-user"
+            class="w-[210px] h-[200px] rounded-full animate-moveDown"
+            src={user?.results[0].picture?.large}
+            alt={user?.results[0].name?.first || "Default User"}
+          />
         </div>
       </div>
 
@@ -33,69 +41,3 @@ import Footer from "../components/Footer.astro";
     </div>
   </body>
 </html>
-
-<script>
-  // Función para actualizar el tema
-  function updateTheme() {
-    const checkE = document.getElementById("switch_theme");
-    const htmlE = document.documentElement; // Seleccionamos el <html> directamente
-
-    // Verificamos si hay un tema guardado en el localStorage
-    if (localStorage.getItem("dark-theme") === "enabled") {
-      htmlE.classList.add("dark"); // Aplicamos el modo oscuro
-      checkE.checked = true; // Marcamos el checkbox
-    } else {
-      htmlE.classList.remove("dark"); // Modo claro
-      checkE.checked = false; // Desmarcamos el checkbox
-    }
-
-    // Agregamos el evento 'change' para cambiar el tema
-    checkE?.addEventListener("change", () => {
-      htmlE.classList.toggle("dark");
-      // Guardamos el estado del tema en localStorage
-      if (htmlE.classList.contains("dark")) {
-        localStorage.setItem("dark-theme", "enabled");
-      } else {
-        localStorage.setItem("dark-theme", "disabled");
-      }
-    });
-  }
-
-  function handleClick(e) {
-    // Fallback para navegadores que no soportan la API
-    if (!document.startViewTransition) {
-      updateTheDOMSomehow();
-      return;
-    }
-
-    // Inicia la transición de vista
-    document.startViewTransition(() => {
-      updateTheDOMSomehow();
-    });
-  }
-
-  // Función para actualizar el DOM de alguna manera
-  function updateTheDOMSomehow() {
-    console.log("El DOM se ha actualizado");
-  }
-
-  // Función para manejar el clic en los enlaces
-  function handleEventA() {
-    const anchors = document.querySelectorAll("a");
-    anchors.forEach((el) => {
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        handleClick(e); // Ejecutar la función de transición
-        const href = e.target.getAttribute("href");
-        // Aquí podrías usar un enrutador para cargar el contenido dinámicamente
-        console.log(`Navegando a ${href}`);
-        setTimeout(() => {
-          window.location.href = href; // Después de la transición, navegar al enlace
-        }, 100);
-      });
-    });
-  }
-
-  handleEventA(); // Llamar a la función que maneja los clics
-  updateTheme();
-</script>
