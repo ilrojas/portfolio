@@ -3,6 +3,9 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+			backgroundImage: {
+				'customBackground': "url('/assets/liquid-cheese-bg-svg-blue.svg')",
+			  },
 			keyframes: {
 				moveDown: {
 				  from: {
@@ -27,14 +30,22 @@ export default {
 						transform: 'translate3d(0, -80%, 0)',
 						opacity: '0',
 					  },
-				}
+				},
+				pulseSlow:{
+					'0%, 100%': {
+						opacity: '1'
+					  },
+					  '50%': {
+						opacity: '.5'
+					  },
+				},
 			  },
 			  animation: {
 				moveDown: 'moveDown .9s ease-in-out',
 				spinSlow: 'spinSlow 18s linear infinite',
-				fly: 'fly 2s linear infinite'
-			  }
+				fly: 'fly 2s linear infinite',				
+				pulseSlow: 'pulseSlow 4s linear infinite'
 		},
 	},
 	plugins: [],
-}
+}}

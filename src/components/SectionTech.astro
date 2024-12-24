@@ -1,0 +1,28 @@
+---
+import { icons } from "../data/icons";
+---
+<div class="relative h-200 flex flex-col">
+  <div
+  class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-10 opacity-20 pb-20 "
+>
+ 
+  {
+    icons.map((icon, index) => {
+      return (
+        <div
+          class={`flex flex-col items-center group col-start-${icon.colStart} row-start-${icon.rowStart}`}
+        >
+          <span class="icon" set:html={icon.svgcolor} />
+          {/* <span class="text-xs mt-2">{icon.icon}</span> */}
+        </div>
+      );
+    })
+  }  
+  
+</div>
+<div class="absolute pt-[20%] z-[999999] flex flex-col ">
+  <div><span class="text-yellow-400 text-6xl">&lbrace;</span><label class="uppercase font-bold text-white text-5xl">Ivan Rodriguez Rojas</label><span class="text-yellow-400 text-6xl">&rbrace;</span></div>
+  <label class="capitalize text-xl indent-5 tracking-wider">frontend developer</label>
+</div>
+</div>
+

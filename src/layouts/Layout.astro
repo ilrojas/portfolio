@@ -1,10 +1,11 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
 import Footer from "../components/Footer.astro";
+import SectionTech from "../components/SectionTech.astro";
 // Astro Script: Llamamos a la función getUser() y renderizamos la imagen
-import { getUser } from "../services/getUser.astro";
+import { getUser } from "../services/GetUser.astro";
 
-const user = await getUser();
+const {data} = await getUser();
 ---
 
 <!doctype html>
@@ -20,22 +21,22 @@ const user = await getUser();
     />
     <title>Astro Basics</title>
   </head>
-  <body class="bg-white dark:bg-slate-800 dark:text-white flex flex-row">
-    <div class=""><Sidebar /></div>
+  <body class="bg-cyan-100 text-gray-900 text-gray-900 dark:bg-gray-900 dark:text-white flex flex-row ">
+    <!-- <div class=""><Sidebar /></div> -->
     <div
       class="flex-1 flex flex-col ml-28"
     >
-      <div class="w-full flex justify-end absolute top-5 right-0 pr-3">
-        <div>
+      <div class="w-full flex justify-end absolute top-5 right-0 pr-3 ">
+        <div class="max-sm:hidden">
           <img
             id="img-user"
             class="w-[210px] h-[200px] rounded-full animate-moveDown"
-            src={user?.results[0].picture?.large}
-            alt={user?.results[0].name?.first || "Default User"}
+            src={data?.results[0].picture?.large}
+            alt={data?.results[0].name?.first || "Default User"}
           />
         </div>
       </div>
-
+      <SectionTech/>
       <slot />
       <Footer />
     </div>
