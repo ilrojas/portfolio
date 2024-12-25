@@ -1,28 +1,49 @@
 ---
 import { icons } from "../data/icons";
+import { getUser } from "../services/GetUser.astro";
+
+const { data } = await getUser();
 ---
-<div class="relative h-200 flex flex-col">
+
+<div class="relative h-200 flex flex-col pt-32">
   <div
-  class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-10 opacity-20 pb-20 "
->
- 
-  {
-    icons.map((icon, index) => {
-      return (
-        <div
-          class={`flex flex-col items-center group col-start-${icon.colStart} row-start-${icon.rowStart}`}
-        >
-          <span class="icon" set:html={icon.svgcolor} />
-          {/* <span class="text-xs mt-2">{icon.icon}</span> */}
-        </div>
-      );
-    })
-  }  
+    class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-10 opacity-20 pb-20"
+  >
+    {
+      icons.map((icon, index) => {
+        return (
+          <div
+            class={`flex flex-col items-center group col-start-${icon.colStart} row-start-${icon.rowStart}`}
+          >
+            <span class="icon" set:html={icon.svgcolor} />
+            {/* <span class="text-xs mt-2">{icon.icon}</span> */}
+          </div>
+        );
+      })
+    }
+  </div>
+  <div class="absolute pt-[20%] z-[1] flex lg:flex-row sm:flex-col">
+    <div class="w-auto flex justify-start  top-32">
+      <div class="">
+        <img
+          id="img-user"
+          class="w-[210px] h-[200px] rounded-full animate-moveFromLeft"
+          src={data?.results[0].picture?.large}
+          alt={data?.results[0].name?.first || "Default User"}
+        />
+      </div>
+    </div>
+    <div class="flex flex-col justify-end animate-moveFromRight">
+      <div class="">
+        <span class="text-yellow-400 text-responsive ">&lbrace;</span><label
+          class="uppercase font-bold text-white text-responsive"
+          >Ivan Rodriguez Rojas</label
+        ><span class="text-yellow-400 text-responsive">&rbrace;</span>
+      </div>
+      <label class="capitalize text-xl lg:indent-4 tracking-wider"
+        >frontend developer</label
+      >
+    </div>
+  </div>
   
 </div>
-<div class="absolute pt-[20%] z-[999999] flex flex-col ">
-  <div><span class="text-yellow-400 text-6xl">&lbrace;</span><label class="uppercase font-bold text-white text-5xl">Ivan Rodriguez Rojas</label><span class="text-yellow-400 text-6xl">&rbrace;</span></div>
-  <label class="capitalize text-xl indent-5 tracking-wider">frontend developer</label>
-</div>
-</div>
-

@@ -39,12 +39,37 @@ export default {
 						opacity: '.5'
 					  },
 				},
+				moveFromRight:{
+					from: {
+						transform: 'translateX(100%)',
+						opacity: '0',
+					  },
+					  to: {
+						transform: 'translateX(0)',
+						opacity: '1',
+					  },
+				},
+				moveFromLeft:{
+					from: {
+						transform: 'translateX(-100%)',
+						opacity: '0',
+					  },
+					  to: {
+						transform: 'translateX(0)',
+						opacity: '1',
+					  },
+				}
+			  },
+			  fontSize: {
+				responsive: 'clamp(0.75rem, 2.5vw, 2.75rem)',
 			  },
 			  animation: {
 				moveDown: 'moveDown .9s ease-in-out',
 				spinSlow: 'spinSlow 18s linear infinite',
 				fly: 'fly 2s linear infinite',				
-				pulseSlow: 'pulseSlow 4s linear infinite'
+				pulseSlow: 'pulseSlow 4s linear infinite',
+				moveFromRight: 'moveFromRight 1s ease-in-out',
+				moveFromLeft: 'moveFromLeft 1s ease-in-out',
 		},
 	},
 	plugins: [],

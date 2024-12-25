@@ -2,10 +2,8 @@
 import Sidebar from "../components/Sidebar.astro";
 import Footer from "../components/Footer.astro";
 import SectionTech from "../components/SectionTech.astro";
-// Astro Script: Llamamos a la función getUser() y renderizamos la imagen
-import { getUser } from "../services/GetUser.astro";
-
-const {data} = await getUser();
+import NavBar from "../components/NavBar.astro";
+import Welcome from "../components/Welcome.astro";
 ---
 
 <!doctype html>
@@ -26,17 +24,23 @@ const {data} = await getUser();
     <div
       class="flex-1 flex flex-col ml-28"
     >
-      <div class="w-full flex justify-end absolute top-5 right-0 pr-3 ">
-        <div class="max-sm:hidden">
-          <img
-            id="img-user"
-            class="w-[210px] h-[200px] rounded-full animate-moveDown"
-            src={data?.results[0].picture?.large}
-            alt={data?.results[0].name?.first || "Default User"}
-          />
-        </div>
-      </div>
-      <SectionTech/>
+    <NavBar/>
+    <SectionTech/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
+    <Welcome/>
       <slot />
       <Footer />
     </div>

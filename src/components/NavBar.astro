@@ -1,0 +1,39 @@
+---
+const logo = "/src/assets/logo1.png";
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About" },
+  { href: "/projects", text: "Projects" },
+  { href: "/contact", text: "Contact" },
+];
+---
+
+<nav
+  class="bg-gray-800 bg-opacity-70 backdrop-blur-md top-0 left-0 fixed w-full h-32 z-[9999] flex items-center justify-between px-6 border-b-[.1px] border-blue-400 animate-moveDown"
+>
+  {/* Contenedor del logo */}
+  <div class="flex items-center">
+    <img
+      class="h-24 rounded-lg"
+      src={logo}
+      alt="Logo del negocio"
+    />
+  </div>
+  
+  {/* Contenedor del menú */}
+  <div class="flex items-center">
+    <ul class="flex space-x-6">
+      {links.map((link) => (
+        <li class="group transition duration-200">
+          <span class="text-yellow-200 text-sm">&lbrace;</span>
+          <a class="text-white uppercase group-hover:p-4 transition-all duration-200" href={link.href}>
+            {link.text}
+          </a>
+          <span class="text-yellow-200 text-sm">&rbrace;</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
