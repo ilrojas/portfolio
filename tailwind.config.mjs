@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'customBackground': "url('/assets/liquid-cheese-bg-svg-blue.svg')",
+				'customBackground': "url('/src/assets/radiant-gradient-bg.svg')",
 			  },
 			keyframes: {
 				moveDown: {
@@ -67,7 +67,7 @@ export default {
 				moveDown: 'moveDown .9s ease-in-out',
 				spinSlow: 'spinSlow 18s linear infinite',
 				fly: 'fly 2s linear infinite',				
-				pulseSlow: 'pulseSlow 4s linear infinite',
+				pulseSlow: 'pulseSlow 4s ease-in-out infinite',
 				moveFromRight: 'moveFromRight 1s ease-in-out',
 				moveFromLeft: 'moveFromLeft 1s ease-in-out',
 		},

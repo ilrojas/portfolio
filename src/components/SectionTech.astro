@@ -5,10 +5,8 @@ import { getUser } from "../services/GetUser.astro";
 const { data } = await getUser();
 ---
 
-<div class="relative h-200 flex flex-col pt-32">
-  <div
-    class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-10 opacity-20 pb-20"
-  >
+<div class="relative h-200 flex flex-col pt-32 mb-20">
+  <!-- <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 pt-10 pb-20">
     {
       icons.map((icon, index) => {
         return (
@@ -16,34 +14,70 @@ const { data } = await getUser();
             class={`flex flex-col items-center group col-start-${icon.colStart} row-start-${icon.rowStart}`}
           >
             <span class="icon" set:html={icon.svgcolor} />
-            {/* <span class="text-xs mt-2">{icon.icon}</span> */}
           </div>
         );
       })
     }
-  </div>
-  <div class="absolute pt-[20%] z-[1] flex lg:flex-row sm:flex-col">
-    <div class="w-auto flex justify-start  top-32">
-      <div class="">
-        <img
+  </div> -->
+  <div
+    class="absolute pt-[5%] z-[1] flex lg:flex-row md:flex-col backdrop-blur-[5px]"
+  >
+    <div
+      class="hidden sm:hidden md:flex md:w-[500px] lg:w-[776px]
+    flex-1 justify-center items-start
+    top-32 -rotate-[30deg] hover:scale-105 transition duration-500"
+    >
+      <!-- <img
           id="img-user"
           class="w-[210px] h-[200px] rounded-full animate-moveFromLeft"
           src={data?.results[0].picture?.large}
           alt={data?.results[0].name?.first || "Default User"}
-        />
-      </div>
+        /> -->
+      <img
+        id="img-user"
+        class="animate-moveFromLeft"
+        src="/src/assets/logo1-transpsombr-sc.png"
+        alt="Tech"
+      />
     </div>
-    <div class="flex flex-col justify-end animate-moveFromRight">
-      <div class="">
-        <span class="text-yellow-400 text-responsive ">&lbrace;</span><label
+    <div
+      class="group flex-1 flex flex-col justify-end items-end space-x-4 animate-moveFromRight w-[65%] h-fit-content"
+    >
+      <div class="group-hover:scale-105 transition-all ease-in duration-200">
+        <span class="text-yellow-400 text-responsive">&lbrace;</span><label
           class="uppercase font-bold text-white text-responsive"
           >Ivan Rodriguez Rojas</label
         ><span class="text-yellow-400 text-responsive">&rbrace;</span>
       </div>
-      <label class="capitalize text-xl lg:indent-4 tracking-wider"
+      <label
+        class="capitalize text-xl lg:indent-4 tracking-wider group-hover:translate-x-[-70%] transition-all ease-in duration-200"
         >frontend developer</label
       >
+
+      <div
+        class="flex flex-row gap-1 group-hover:scale-90 transition-all ease-in duration-200 pt-6"
+      >
+        {
+          icons.map((icon, index) => {
+            return (
+              <div>
+                <span
+                  class="icon drop-shadow-[0_2px_10px_rgba(0,191,255,1)]"
+                  style={`animation-delay: ${icon.delay};`}
+                  set:html={icon.svgcolor}
+                > </span>
+                {/* <span class="text-xs mt-2">{icon.icon}</span> */}
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
   </div>
-  
+  <!-- <div class="h-32">
+    <img
+      class="w-[100vw] h-32 object-cover"
+      src="/src/assets/intersecting-waves-scattered-divider.svg"
+      alt="Tech"/>
+  </div> -->
 </div>
