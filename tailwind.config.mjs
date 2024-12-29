@@ -2,7 +2,14 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		
 		extend: {
+			fontFamily: {
+				jost: ['Jost', 'sans-serif'],
+		  },
+			transitionDelay: {
+				'1000': '1000ms', '3000ms': '3000ms', '5000ms': '5000ms'
+			  },
 			backgroundImage: {
 				'customBackground': "url('/src/assets/radiant-gradient-bg.svg')",
 			  },

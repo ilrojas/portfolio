@@ -1,11 +1,19 @@
 ---
 import { icons } from "../data/icons";
-import { getUser } from "../services/GetUser.astro";
+/* import { getUser } from "../services/GetUser.astro";
 
-const { data } = await getUser();
+const { data } = await getUser(); */
 ---
 
-<div class="relative h-200 flex flex-col pt-32 mb-20">
+<dialog
+  id="cvdialog"
+  class="w-[90%] h-[90%] bg-gray-800 bg-opacity-90 rounded-xl p-4"
+>
+  Este es el contenido del dialog
+</dialog>
+<div
+  class="h-200 mb-52 z-[1] items-start flex flex-auto lg:flex-row md:flex-col md:items-center lg:items-end space-x-96 pt-40 w-full"
+>
   <!-- <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 pt-10 pb-20">
     {
       icons.map((icon, index) => {
@@ -19,61 +27,74 @@ const { data } = await getUser();
       })
     }
   </div> -->
+  <!-- <div
+    class="absolute mb-52 z-[1] flex lg:flex-row md:flex-col backdrop-blur-[5px] w-full"
+  > -->
   <div
-    class="absolute pt-[5%] z-[1] flex lg:flex-row md:flex-col backdrop-blur-[5px]"
-  >
-    <div
-      class="hidden sm:hidden md:flex md:w-[500px] lg:w-[776px]
-    flex-1 justify-center items-start
+    class="hidden md:flex
+     justify-center items-start
     top-32 -rotate-[30deg] hover:scale-105 transition duration-500"
-    >
-      <!-- <img
+  >
+    <!-- <img
           id="img-user"
           class="w-[210px] h-[200px] rounded-full animate-moveFromLeft"
           src={data?.results[0].picture?.large}
           alt={data?.results[0].name?.first || "Default User"}
         /> -->
-      <img
-        id="img-user"
-        class="animate-moveFromLeft"
-        src="/src/assets/logo1-transpsombr-sc.png"
-        alt="Tech"
-      />
+    <img
+      id="img-user"
+      class="animate-moveFromLeft md:w-[500px] lg:w-[600px]"
+      src="/src/assets/logo1-transpsombr-sc.png"
+      alt="Tech"
+    />
+  </div>
+  <div
+    class=" flex flex-col justify-center items-start lg:pr-24 w-[75%] h-fit-content"
+  >
+    <div class="animate-moveFromRight delay-[5000ms]  ease-in">
+      <span class="text-yellow-400 text-responsive">&lbrace;</span><label
+        class="uppercase font-semibold text-white text-responsive"
+        >Ivan Rodriguez Rojas</label
+      ><span class="text-yellow-400 text-responsive">&rbrace;</span>
     </div>
-    <div
-      class="group flex-1 flex flex-col justify-end items-end space-x-4 animate-moveFromRight w-[65%] h-fit-content"
+    <label
+      class="capitalize text-2xl lg:indent-4 tracking-wider animate-moveFromRight"
+      >I'm frontend developer</label
     >
-      <div class="group-hover:scale-105 transition-all ease-in duration-200">
-        <span class="text-yellow-400 text-responsive">&lbrace;</span><label
-          class="uppercase font-bold text-white text-responsive"
-          >Ivan Rodriguez Rojas</label
-        ><span class="text-yellow-400 text-responsive">&rbrace;</span>
-      </div>
-      <label
-        class="capitalize text-xl lg:indent-4 tracking-wider group-hover:translate-x-[-70%] transition-all ease-in duration-200"
-        >frontend developer</label
-      >
+    <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromRight">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint aspernatur veniam aliquid voluptatibus repellendus unde autem natus quidem perspiciatis est sequi voluptates, eos vel aliquam, dignissimos corporis accusamus quasi.
+    </p>
 
-      <div
-        class="flex flex-row gap-1 group-hover:scale-90 transition-all ease-in duration-200 pt-6"
+    <div
+      class="flex flex-row gap-1 animate-moveFromRight ease-in duration-200 pt-6"
+    >
+      {
+        icons.map((icon, index) => {
+          return (
+            <div>
+              <span
+                class="icon drop-shadow-[0_2px_10px_rgba(0,191,255,1)]"
+                style={`animation-delay: ${icon.delay};`}
+                set:html={icon.svgcolor}
+              >
+                {" "}
+              </span>
+              {/* <span class="text-xs mt-2">{icon.icon}</span> */}
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="pt-10">
+      <button
+        id="butoncv"
+        class="hover:scale-105 transition duration-500 uppercase w-[180px] h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,255,200,1)] animate-moveFromRight"
       >
-        {
-          icons.map((icon, index) => {
-            return (
-              <div>
-                <span
-                  class="icon drop-shadow-[0_2px_10px_rgba(0,191,255,1)]"
-                  style={`animation-delay: ${icon.delay};`}
-                  set:html={icon.svgcolor}
-                > </span>
-                {/* <span class="text-xs mt-2">{icon.icon}</span> */}
-              </div>
-            );
-          })
-        }
-      </div>
+        Download CV
+      </button>
     </div>
   </div>
+  <!-- </div> -->
   <!-- <div class="h-32">
     <img
       class="w-[100vw] h-32 object-cover"

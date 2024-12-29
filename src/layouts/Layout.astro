@@ -4,6 +4,18 @@ import Footer from "../components/Footer.astro";
 import SectionTech from "../components/SectionTech.astro";
 import NavBar from "../components/NavBar.astro";
 import Welcome from "../components/Welcome.astro";
+import { dictionary } from "../data/dictionary";
+
+
+const defaultLanguage = 'es';
+let language = defaultLanguage || 'en'
+/* function changeLanguage(event: Event) {
+   const target = event.currentTarget;
+  if (target) {
+    language = (target as HTMLElement).getAttribute("data-language") || defaultLanguage;
+    alert(language)
+  } 
+} */
 ---
 
 <!doctype html>
@@ -17,32 +29,56 @@ import Welcome from "../components/Welcome.astro";
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+
+    <!-- Font Jost -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Astro Basics</title>
   </head>
-  <body class="bg-customBackground bg-repeat bg-cover text-gray-900 text-gray-900 dark:bg-gray-900 dark:text-white flex flex-row ">
+  <body
+    class="bg-customBackground bg-repeat bg-cover text-gray-900 text-gray-900 dark:bg-gray-900 dark:text-white flex flex-row font-jost"
+  >
+  <span class="hidden" id="lang" data-lang={language}></span>
     <!-- <div class=""><Sidebar /></div> -->
-    <div
-      class="flex w-full flex-col pl-10 pr-10 border-2 border-lime-300"
-    >
-    <NavBar/>
-    <SectionTech/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-    <Welcome/>
-      <slot />
+    <div class="flex w-full flex-col pl-10 pr-10 border-2 border-lime-300">
+      <NavBar defaultLanguage={language}/>
+      <SectionTech />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <main>
+        <slot />
+      </main>
+
       <Footer />
     </div>
   </body>
 </html>
+
+<script>
+  /* document.addEventListener("DOMContentLoaded", () => {
+    const languageIcons = document.querySelectorAll(".language-icon");
+    languageIcons.forEach((icon) => {
+      icon.addEventListener("click", () => {
+        alert(`You clicked on the ${icon.getAttribute("data-language")} icon!`);
+        
+      });
+    });
+  }); */
+</script>
