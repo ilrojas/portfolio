@@ -6,10 +6,10 @@ import { flags } from "../data/flags";
 import { iconsToggle } from "../data/iconsToggle";
 
 const links = [
-  { href: "/", text: "Home" },
-  { href: "/about", text: "About" },
-  { href: "/projects", text: "Projects" },
-  { href: "/contact", text: "Contact" },
+  { href: "/", text: "home" },
+  { href: "/about", text: "about" },
+  { href: "/projects", text: "projects" },
+  { href: "/contact", text: "contact" },
 ];
 
 const {defaultLanguage}=Astro.props
@@ -40,7 +40,7 @@ const {defaultLanguage}=Astro.props
               class="text-white text-xs uppercase transition-all duration-200"
               href={link.href}
             >
-              {link.text}
+              {dictionary[defaultLanguage]?.[link.text]}
             </a>
             <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-500 transition-all duration-300 group-hover:w-full group-hover:left-0" />
             {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">

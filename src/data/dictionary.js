@@ -1,5 +1,5 @@
 export const dictionary = {
-    en: {
+    'en': {
         welcome: "Welcome to my portfolio",
         home: "Home",
         about: "About Me",
@@ -11,7 +11,7 @@ export const dictionary = {
         slogan: "I'm a Frontend Developer",
         // Add more key-value pairs as needed
     },
-    es: {
+    'es': {
         welcome: "Bienvenido a mi portafolio",
         home: "Inicio",
         about: "Sobre mí",
@@ -20,7 +20,7 @@ export const dictionary = {
         download: "Descargar CV",
         change: "Cambiar Idioma",
         theme: "Cambiar Tema",
-        slogan: "Soy un Desarrollador Frontend",
+        slogan: "Soy Desarrollador Frontend",
         // Add more key-value pairs as needed
     }
 };

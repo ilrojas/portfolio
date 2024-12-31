@@ -5,10 +5,10 @@ import SectionTech from "../components/SectionTech.astro";
 import NavBar from "../components/NavBar.astro";
 import Welcome from "../components/Welcome.astro";
 import { dictionary } from "../data/dictionary";
+import Wave from "../components/Wave.astro";
 
-
-const defaultLanguage = 'es';
-let language = defaultLanguage || 'en'
+const defaultLanguage = "es";
+let language = defaultLanguage || "en";
 /* function changeLanguage(event: Event) {
    const target = event.currentTarget;
   if (target) {
@@ -39,33 +39,22 @@ let language = defaultLanguage || 'en'
     />
     <title>Astro Basics</title>
   </head>
+  <!-- bg-customBackground bg-repeat bg-cover -->
   <body
-    class="bg-customBackground bg-repeat bg-cover text-gray-900 text-gray-900 dark:bg-gray-900 dark:text-white flex flex-row font-jost"
+    class="h-full grid grid-cols-1 text-gray-900 dark:bg-gray-900 dark:text-white font-jost bg-customBackground bg-repeat bg-cover"
   >
-  <span class="hidden" id="lang" data-lang={language}></span>
+    <NavBar defaultLanguage={language} />
+    <SectionTech defaultLanguage={language}/>
+    <Wave />
+    <span class="hidden" id="lang" data-lang={language}></span>
     <!-- <div class=""><Sidebar /></div> -->
-    <div class="flex w-full flex-col pl-10 pr-10 border-2 border-lime-300">
-      <NavBar defaultLanguage={language}/>
-      <SectionTech />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <Welcome />
-      <main>
+
+    <div
+      class=" grid grid-cols-1 left-0 w-full bg-[#0b3c672a] min-h-screen"
+    >
+      <main class="pl-10 pr-10">
         <slot />
       </main>
-
       <Footer />
     </div>
   </body>

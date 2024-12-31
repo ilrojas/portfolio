@@ -3,6 +3,8 @@ import { icons } from "../data/icons";
 /* import { getUser } from "../services/GetUser.astro";
 
 const { data } = await getUser(); */
+import { dictionary } from "../data/dictionary";
+const {defaultLanguage}=Astro.props
 ---
 
 <dialog
@@ -12,7 +14,7 @@ const { data } = await getUser(); */
   Este es el contenido del dialog
 </dialog>
 <div
-  class="h-200 mb-52 z-[1] items-start flex flex-auto lg:flex-row md:flex-col md:items-center lg:items-end space-x-96 pt-40 w-full"
+  class="h-[520px] mb-14 z-[1] items-start flex flex-auto lg:flex-row md:flex-col md:items-center lg:items-end space-x-96 pt-40 w-full"
 >
   <!-- <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 pt-10 pb-20">
     {
@@ -49,9 +51,9 @@ const { data } = await getUser(); */
     />
   </div>
   <div
-    class=" flex flex-col justify-center items-start lg:pr-24 w-[75%] h-fit-content"
+    class="flex flex-col justify-center items-start lg:pr-24 w-[75%] h-fit-content"
   >
-    <div class="animate-moveFromRight delay-[5000ms]  ease-in">
+    <div class="animate-moveFromRight delay-[5000ms] ease-in">
       <span class="text-yellow-400 text-responsive">&lbrace;</span><label
         class="uppercase font-semibold text-white text-responsive"
         >Ivan Rodriguez Rojas</label
@@ -59,10 +61,13 @@ const { data } = await getUser(); */
     </div>
     <label
       class="capitalize text-2xl lg:indent-4 tracking-wider animate-moveFromRight"
-      >I'm frontend developer</label
+      >{dictionary[defaultLanguage]?.slogan}</label
     >
     <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromRight">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint aspernatur veniam aliquid voluptatibus repellendus unde autem natus quidem perspiciatis est sequi voluptates, eos vel aliquam, dignissimos corporis accusamus quasi.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint
+      aspernatur veniam aliquid voluptatibus repellendus unde autem natus quidem
+      perspiciatis est sequi voluptates, eos vel aliquam, dignissimos corporis
+      accusamus quasi.
     </p>
 
     <div
@@ -88,12 +93,14 @@ const { data } = await getUser(); */
     <div class="pt-10">
       <button
         id="butoncv"
-        class="hover:scale-105 transition duration-500 uppercase w-[180px] h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,255,200,1)] animate-moveFromRight"
+        class="flex group justify-around items-center hover:scale-105 transition duration-500 uppercase w-[180px] h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,255,200,1)] animate-moveFromRight"
       >
-        Download CV
+        <img class="group-hover:animate-bounce" src="/src/assets/download.svg" alt="Download" />
+        {dictionary[defaultLanguage]?.download}
       </button>
     </div>
   </div>
+  
   <!-- </div> -->
   <!-- <div class="h-32">
     <img
