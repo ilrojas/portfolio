@@ -1,0 +1,44 @@
+---
+import { icons } from "../data/icons";
+---
+
+<div
+      class="flex flex-row gap-1 ease-in duration-200 pt-2 justify-center items-center -space-x-1 text-gray-400 opacity-75"
+    >
+      {
+        icons.map((icon, index) => {
+          const classBorder = index % 2 === 0 ? 'border-b-2 ' : 'border-t-2 ';
+          
+                    return (
+            <div 
+            class={` ${classBorder} border-yellow-200 border-opacity-25 p-4  border-dotted rounded-full`} 
+            >
+              
+             <small class="text-xs flex justify-center drop-shadow-[2px_2px_4px_rgba(255,250,200,1)]"> {index % 2 === 0 ? icon.icon : ""}</small>
+              <div class="animate-technologyIcons"              
+              style={`animation-delay: ${index * 600}ms;`}
+              /* style={`animation-delay: ${icon.delay};`} */
+              >
+              <span
+                class="icon"
+                /* class="icon opacity-15 drop-shadow-[0_2px_10px_rgba(0,191,255,1)]" */
+                
+                set:html={icon.svgcolor}
+              >
+                
+                {" "}
+                
+              </span>
+            </div>
+              <small class="text-xs flex justify-center  drop-shadow-[2px_2px_4px_rgba(255,250,200,1)]"> {index % 2 != 0 ? icon.icon : ""}</small>
+              {/* <span class="text-xs mt-2">{icon.icon}</span> */}
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <script>
+        
+    </script>
+      

@@ -5,10 +5,11 @@ export const dictionary = {
         about: "About Me",
         projects: "Projects",
         contact: "Contact",
-        download: "Download CV",
+        download: "Read Now CV",
         change: "Change Language",
         theme: "Change Theme",
         slogan: "I'm a Frontend Developer",
+        created: "Created by",
         // Add more key-value pairs as needed
     },
     'es': {
@@ -17,10 +18,11 @@ export const dictionary = {
         about: "Sobre mí",
         projects: "Proyectos",
         contact: "Contacto",
-        download: "Descargar CV",
+        download: "Leer Ahora CV",
         change: "Cambiar Idioma",
         theme: "Cambiar Tema",
         slogan: "Soy Desarrollador Frontend",
+        created: "Creado por",
         // Add more key-value pairs as needed
     }
 };

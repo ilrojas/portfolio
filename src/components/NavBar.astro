@@ -1,5 +1,44 @@
 ---
 const logo = "/src/assets/logo1.png";
+const pacman = `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="112" viewBox="0 0 800 400">
+    <!-- Background -->
+    <rect width="128" height="112" fill="transparent" />
+
+    <defs>
+        <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(0,255,255,0.1)" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="500" height="250" fill="url(#grid)" />
+    
+    <!-- Pac-Man -->
+    <circle cx="150" cy="250" r="100" fill="yellow" />
+    <!--Boca de Pac-Man -->
+    <polygon points="150,250 250,200 250,300" fill="rgb(17 24 39 1)" />
+
+    <!-- Code symbols (Cone shape entering Pac-Man's mouth) -->
+    
+    <text x="320" y="200" font-family="Courier New" font-size="26" fill="cyan" font-weight="bold">&#123;&#125;</text>
+    <text x="360" y="220" font-family="Courier New" font-size="24" fill="orange" font-weight="bold">""</text>
+    <text x="400" y="180" font-family="Courier New" font-size="22" fill="lightblue" font-weight="bold">const</text>
+    <text x="280" y="240" font-family="Courier New" font-size="28" fill="lime" font-weight="bold">&lt;/&gt;</text>
+    <text x="400" y="260" font-family="Courier New" font-size="20" fill="lightgreen" font-weight="bold">function</text>
+    <text x="360" y="280" font-family="Courier New" font-size="18" fill="magenta" font-weight="bold">@property</text>
+    <text x="320" y="260" font-family="Courier New" font-size="16" fill="yellow" font-weight="bold">Params</text>
+
+    <!-- Gradient highlights on Pac-Man -->
+    <defs>
+        <radialGradient id="highlight" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgba(255,255,255,0.7);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(0,0,255,0);stop-opacity:0" />
+        </radialGradient>
+    </defs>
+    <circle cx="150" cy="200" r="100" fill="url(#highlight)" opacity="0.5" />
+    
+</svg>
+
+`;
+const iconCoder = "<CODER/>"
 
 import { dictionary } from "../data/dictionary";
 import { flags } from "../data/flags";
@@ -20,11 +59,12 @@ const {defaultLanguage}=Astro.props
 >
   {/* Contenedor del logo */}
   <div class="flex h-14 lg:h-16 items-center">
-    <img
-      class="w-full h-full z-10 rounded-lg object-cover hover:scale-105 transition-all duration-300"
-      src={logo}
-      alt="Logo del negocio"
-    />
+    <!-- <div
+      class=" z-10 rounded-lg object-cover hover:scale-105 transition-all duration-300"
+      
+      set:html= {pacman}   alt="Logo del negocio"
+    ></div> -->
+    <span class="text-3xl outline-dashed outline-1 rounded-xl py-1 px-4">{iconCoder}</span>
   </div>
 
   {/* Contenedor del menú */}
@@ -50,14 +90,15 @@ const {defaultLanguage}=Astro.props
         ))
       }
     </ul>
-    <div class="flex items-center">
+    <div class="flex items-center relative before:content-[''] before:absolute before:-left-3 before:-top-2 before:bottom-0 before:h-10 before:border-l-[1px] before:border-[#38dbf8]">
       <label
         for="toggleTheme"
         class="relative inline-flex items-center cursor-pointer"
       >
         <input id="toggleTheme" type="checkbox" class="sr-only peer" />
         <div
-          class="w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2 peer-focus:ring-cyan-100 transition-colors"
+          class="w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2   peer-focus:ring-cyan-100 transition-colors"
+        
         >
         </div>
         <div

@@ -1,20 +1,15 @@
 ---
 import { icons } from "../data/icons";
+import Technology from "./Technology.astro";
 /* import { getUser } from "../services/GetUser.astro";
 
 const { data } = await getUser(); */
 import { dictionary } from "../data/dictionary";
-const {defaultLanguage}=Astro.props
+const { defaultLanguage } = Astro.props;
 ---
 
-<dialog
-  id="cvdialog"
-  class="w-[90%] h-[90%] bg-gray-800 bg-opacity-90 rounded-xl p-4"
->
-  Este es el contenido del dialog
-</dialog>
 <div
-  class="h-[520px] mb-14 z-[1] items-start flex flex-auto lg:flex-row md:flex-col md:items-center lg:items-end space-x-96 pt-40 w-full"
+  class="h-[520px] mb-14 z-[1] items-start flex flex-auto lg:flex-row md:flex-col md:items-center pt-10 space-x-96  w-full"
 >
   <!-- <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 pt-10 pb-20">
     {
@@ -32,6 +27,72 @@ const {defaultLanguage}=Astro.props
   <!-- <div
     class="absolute mb-52 z-[1] flex lg:flex-row md:flex-col backdrop-blur-[5px] w-full"
   > -->
+  
+  <div
+    class="flex flex-col justify-center items-start lg:pl-24 w-[75%] h-fit-content"
+  >
+    <div class="animate-moveFromRight delay-[5000ms] ease-in">
+      <label class="uppercase font-semibold text-white text-responsive"
+        >Ivan Rodriguez Rojas</label
+      >
+    </div>
+    <label
+      class="capitalize text-2xl tracking-wider animate-moveFromRight"
+      ><span class="text-yellow-400 text-responsive">&lbrace;</span>{
+        dictionary[defaultLanguage]?.slogan
+      }<span class="text-yellow-400 text-responsive">&rbrace;</span></label
+    >
+    <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromRight">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint
+      aspernatur veniam aliquid voluptatibus repellendus unde autem natus quidem
+      perspiciatis est sequi voluptates, eos vel aliquam, dignissimos corporis
+      accusamus quasi.
+    </p>
+
+    <div class="pt-10 flex flex-auto justify-start items-center w-full">
+      <div class="mr-3">
+        <button
+          id="butoncv"
+          class="flex group justify-around items-center hover:scale-105 transition duration-500 uppercase w-[180px] h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 font-semibold drop-shadow-[0_2px_5px_rgba(255,255,200,1)] animate-moveFromRight hover:cursor-pointer"
+        >
+          {dictionary[defaultLanguage]?.download}
+        </button>
+      </div>
+      <div>
+        <a
+          class="hover:scale-105 transition duration-500"
+          href="/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas.pdf"
+          download="CV_FrontEnd_Dev_IvanRodriguezRojas.pdf"
+          ><button
+            id="butoncv"
+            class="flex group items-center justify-center hover:scale-105 transition duration-500 w-12 h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 drop-shadow-[0_2px_5px_rgba(255,255,200,1)] animate-moveFromRight hover:cursor-pointer"
+          >
+            <img
+              class="group-hover:animate-bounce"
+              src="/src/assets/download.svg"
+              alt="Download"
+            />
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <dialog
+      id="dialogcv"
+      class="overflow-hidden relative w-full h-full bg-gray-800 bg-opacity-70 backdrop-blur-md open:flex justify-center p-2"
+    >
+      <iframe
+        class="w-[80%] h-full justify-center items-center"
+        src="/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas.pdf"
+        frameborder="0"></iframe>
+      <span
+        class="absolute right-2 top-2 text-white items-center justify-center"
+        ><button class="border-2 rounded-full w-10 h-10 font-mono" id="closecv"
+          >X</button
+        ></span
+      >
+    </dialog>
+  </div>
   <div
     class="hidden md:flex
      justify-center items-start
@@ -50,57 +111,7 @@ const {defaultLanguage}=Astro.props
       alt="Tech"
     />
   </div>
-  <div
-    class="flex flex-col justify-center items-start lg:pr-24 w-[75%] h-fit-content"
-  >
-    <div class="animate-moveFromRight delay-[5000ms] ease-in">
-      <span class="text-yellow-400 text-responsive">&lbrace;</span><label
-        class="uppercase font-semibold text-white text-responsive"
-        >Ivan Rodriguez Rojas</label
-      ><span class="text-yellow-400 text-responsive">&rbrace;</span>
-    </div>
-    <label
-      class="capitalize text-2xl lg:indent-4 tracking-wider animate-moveFromRight"
-      >{dictionary[defaultLanguage]?.slogan}</label
-    >
-    <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromRight">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint
-      aspernatur veniam aliquid voluptatibus repellendus unde autem natus quidem
-      perspiciatis est sequi voluptates, eos vel aliquam, dignissimos corporis
-      accusamus quasi.
-    </p>
 
-    <div
-      class="flex flex-row gap-1 animate-moveFromRight ease-in duration-200 pt-6"
-    >
-      {
-        icons.map((icon, index) => {
-          return (
-            <div>
-              <span
-                class="icon drop-shadow-[0_2px_10px_rgba(0,191,255,1)]"
-                style={`animation-delay: ${icon.delay};`}
-                set:html={icon.svgcolor}
-              >
-                {" "}
-              </span>
-              {/* <span class="text-xs mt-2">{icon.icon}</span> */}
-            </div>
-          );
-        })
-      }
-    </div>
-    <div class="pt-10">
-      <button
-        id="butoncv"
-        class="flex group justify-around items-center hover:scale-105 transition duration-500 uppercase w-[180px] h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,255,200,1)] animate-moveFromRight"
-      >
-        <img class="group-hover:animate-bounce" src="/src/assets/download.svg" alt="Download" />
-        {dictionary[defaultLanguage]?.download}
-      </button>
-    </div>
-  </div>
-  
   <!-- </div> -->
   <!-- <div class="h-32">
     <img
@@ -109,3 +120,15 @@ const {defaultLanguage}=Astro.props
       alt="Tech"/>
   </div> -->
 </div>
+<script>
+  const $butoncv = document.querySelector("#butoncv");
+  const $dialogcv = document.querySelector("#dialogcv");
+  const $closecv = document.querySelector("#closecv");
+
+  $butoncv.addEventListener("click", () => {
+    $dialogcv.showModal();
+  });
+  $closecv.addEventListener("click", () => {
+    $dialogcv?.close();
+  });
+</script>
