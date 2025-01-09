@@ -1,11 +1,9 @@
 ---
-import Sidebar from "../components/Sidebar.astro";
 
-import { dictionary } from "../data/dictionary";
 import { ClientRouter } from "astro:transitions";
 
 
-import { onBeforeRender } from 'astro';
+/* import { onBeforeRender } from 'astro';
 
 export const prerender = true;
 
@@ -23,13 +21,6 @@ export async function get({ params }) {
       language: lang,
     },
   };
-}
-/* function changeLanguage(event: Event) {
-   const target = event.currentTarget;
-  if (target) {
-    language = (target as HTMLElement).getAttribute("data-language") || defaultLanguage;
-    alert(language)
-  } 
 } */
 
 const {title} = Astro.props
@@ -53,14 +44,20 @@ const {title} = Astro.props
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>{title}</title>
     
+
+    <!-- Font Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap" rel="stylesheet">
+    
+<title>{title}</title>
     
     <ClientRouter />
   </head>
   <!-- bg-customBackground bg-repeat bg-cover -->
   <body
-    class="h-full grid grid-cols-1 text-white bg-gray-300 dark:bg-gray-900 bg-customBackground bg-repeat bg-cover font-jost"
+    class="h-full grid grid-cols-1 text-black/70 dark:text-white bg-gray-300 dark:bg-gray-900 font-jost"
   >
     <slot />
   </body>
@@ -73,16 +70,59 @@ const {title} = Astro.props
     --var-light-text: #111827;
   }
 </style>
-
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const languageIcons = document.querySelectorAll(".language-icon");
-    languageIcons.forEach((icon) => {
-      icon.addEventListener("click", () => {
-        const lang = icon?.getAttribute("data-language") || 'es';
-        document.cookie = `language=${lang}; path=/`;
-        window.location.reload();
-      });
+  /* Para el modal del CV */
+  /* const dialog = document.getElementById("cvdialog");
+  const butoncv = document.getElementById("butoncv");
+  butoncv?.addEventListener("click", (e) => {
+    if (e.target === dialog) {
+      dialog.showModal();
+    }
+  }); */
+
+  /* Para el switcher de lenguajes */
+  const toggleMenu = (e) => {
+    console.log(e.target);
+    const iconSwitch = document.querySelector("#icon-switch-language");
+    const menu = document.querySelector("#language-menu");
+
+    // Asegúrate de que estás manejando el evento para el elemento correcto
+    if (iconSwitch?.contains(e.target)) {
+      menu?.classList.toggle("lg:hidden");
+    } // Si se hace clic fuera del menú o del botón, ocultar el menú
+    else if (!menu?.contains(e.target)) {
+      menu?.classList.add("lg:hidden");
+    }
+  };
+
+  // Registrar el evento después de definir la función
+  document.addEventListener("click", toggleMenu);
+
+  /* Para el switcher de tema */
+  import { iconsToggle } from "../data/iconsToggle";
+
+  const checkbox = document.getElementById("toggleTheme");
+  const icon = document.getElementById("iconToggle");
+  const doc = document.documentElement;
+
+  if (checkbox instanceof HTMLInputElement) {
+    checkbox.addEventListener("change", () => {
+      if (icon) {
+        /* icon?.innerHTML = checkbox.checked ? `<!-- Ícono del Sol -->${iconsToggle.sun}`: `<!-- Ícono de la Luna -->${iconsToggle.moon}`; */
+        if (checkbox.checked) {
+          icon!.innerHTML = `<!-- Ícono del Sol -->${iconsToggle.sun}`;
+        } else {
+          icon!.innerHTML = `<!-- Ícono de la Luna -->${iconsToggle.moon}`;
+        }
+      }
+
+      checkbox.checked
+        ? doc.classList.remove("dark")
+        : doc.classList.add("dark");
     });
-  });
+
+    
+  }
+
+  /* peer-hover:block focus-within:block */
 </script>

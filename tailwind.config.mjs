@@ -2,12 +2,13 @@ import Technology from "./src/components/Technology.astro";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'dark', // or 'media' for media-query based dark mode
+  darkMode: 'class', // or 'media' for media-query based dark mode
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
       fontFamily: {
         jost: ["Jost", "sans-serif"],
+        rubik:["Rubik Vinyl", "serif"],
       },
       transitionDelay: {
         1000: "1000ms",

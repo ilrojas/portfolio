@@ -1,5 +1,5 @@
 export const dictionary = {
-    'en': {
+    'English': {
         welcome: "Welcome to my portfolio",
         about: "About Me",
         projects: "Projects",
@@ -15,7 +15,7 @@ export const dictionary = {
         description: "I am a front-end developer with experience in creating modern and functional interfaces using technologies like React, Tailwind CSS, and Astro. I am passionate about turning ideas into intuitive and visually appealing web experiences."
         // Add more key-value pairs as needed
     },
-    'es': {
+    'Español': {
         welcome: "Bienvenido a mi portafolio",
         home: "Inicio",
         about: "Sobre mí",
@@ -27,7 +27,7 @@ export const dictionary = {
         download: "Leer Ahora CV",
         change: "Cambiar Idioma",
         theme: "Cambiar Tema",
-        slogan: "Soy Desarrollador Frontend",
+        slogan: "Desarrollador Frontend",
         created: "Creado por",
         description: "Soy un desarrollador front-end con experiencia en la creación de interfaces modernas y funcionales utilizando tecnologías como React, Tailwind CSS y Astro. Me apasiona convertir ideas en experiencias web intuitivas y visualmente atractivas."
         // Add more key-value pairs as needed

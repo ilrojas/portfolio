@@ -9,7 +9,7 @@ const { defaultLanguage } = Astro.props;
 ---
 
 <div
-  class="h-[520px] mb-14 z-[1] items-start flex flex-col-reverse space-x-20 lg:flex-row md:flex-col md:items-center pt-10 w-full"
+  class="h-[520px] mb-14 z-[1] items-start flex flex-col-reverse space-x-20 lg:flex-row md:flex-col md:items-center pt-0 lg:pt-10 w-full"
 >
   <!-- <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 pt-10 pb-20">
     {
@@ -32,17 +32,18 @@ const { defaultLanguage } = Astro.props;
     class="flex flex-col justify-center items-start pl-20 lg:pl-24 h-fit-content"
   >
     <div class="animate-moveFromLeft delay-[5000ms] ease-in">
-      <label class="uppercase font-semibold text-white dark:text-white text-responsive"
-        >Ivan Rodriguez Rojas</label
+      <h1 class="text-2xl lg:text-4xl text-black/75 dark:text-white uppercase font-extrabold text-balance"
+        >Ivan Rodriguez Rojas</h1
       >
     </div>
     <label
       class="capitalize text-2xl tracking-wider animate-moveFromLeft"
-      ><span class="text-yellow-400 text-responsive">&lbrace;</span>{
-        dictionary[defaultLanguage]?.slogan
-      }<span class="text-yellow-400 text-responsive">&rbrace;</span></label
+      ><span class="text-cyan-900 dark:text-cyan-300 font-extralight">&lbrace;</span>
+       {dictionary[defaultLanguage]?.slogan}
+      <span class="text-cyan-900 dark:text-cyan-300 font-extralight">&rbrace;</span></label
     >
-    <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromLeft">
+     
+    <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromLeft text-pretty lg:text-xl md:text-lg">
       {dictionary[defaultLanguage]?.description}
     </p>
 

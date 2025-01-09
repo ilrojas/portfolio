@@ -11,7 +11,11 @@ const links = [
   { href: "/about", text: "about", transitionName: "labelAboutx" },
   { href: "#skills", text: "skills", transitionName: "labelSkills" },
   { href: "#projects", text: "projects", transitionName: "labelProjects" },
-  { href: "#experience", text: "experience", transitionName: "labelExperience" },
+  {
+    href: "#experience",
+    text: "experience",
+    transitionName: "labelExperience",
+  },
   { href: "#education", text: "education", transitionName: "labelEducation" },
   { href: "/es", text: "contact", transitionName: "inicioJPX" },
 ];
@@ -20,7 +24,7 @@ const { defaultLanguage } = Astro.props;
 ---
 
 <nav
-  class= "bg-gray-800 bg-opacity-50 backdrop-blur-md fixed top-2 left-1/2 transform -translate-x-1/2 w-3/4 rounded-3xl h-20 z-[9999] hidden lg:flex md:flex items-center justify-between px-6 border-b-[.1px] border-blue-400"
+  class="bg-gray-800 bg-opacity-50 backdrop-blur-md fixed top-2 left-1/2 transform -translate-x-1/2 w-3/4 rounded-3xl h-20 z-[9999] hidden lg:flex md:flex items-center justify-between px-6 border-b-[.1px] border-blue-400"
 >
   {/* Contenedor del logo */}
   <div class="flex h-14 lg:h-16 items-center space-x-2">
@@ -35,14 +39,13 @@ const { defaultLanguage } = Astro.props;
     <ul class="flex space-x-6">
       {
         links.map((link) => (
-          <li class="relative group text-responsive" >
+          <li class="relative group text-responsive">
             {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
               &lt;
             </span> */}
             <a
               class="text-white text-xs uppercase transition-all duration-200"
               href={link.href}
-              
             >
               {dictionary[defaultLanguage]?.[link.text]}
             </a>
@@ -58,7 +61,6 @@ const { defaultLanguage } = Astro.props;
 
   {/* Contenedor del menú */}
   <div class="flex items-center space-x-6">
-    
     <div
       class="flex items-center relative before:content-[''] before:absolute before:-left-3 before:-top-2 before:bottom-0 before:h-10 before:border-l-[1px] before:border-[#38dbf8]"
     >
@@ -83,67 +85,51 @@ const { defaultLanguage } = Astro.props;
     </div>
 
     <div class="flex flex-col gap-1 relative right-0">
-      <div class="peer ">
-        <button class="">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="28px"
-            height="28px"
-            viewBox="0 0 16 16"
-            ><g fill="currentColor"
-              ><path
-                d="M4.545 6.714L4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"
-              ></path><path
-                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292c.178.217.451.635.555.867c1.125-.359 2.08-.844 2.886-1.494c.777.665 1.739 1.165 2.93 1.472c.133-.254.414-.673.629-.89c-1.125-.253-2.057-.694-2.82-1.284c.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492a2 2 0 0 1-.94.31"
-              ></path></g
-            ></svg
-          >
-        </button>
-      </div>
+      <button
+        id="icon-switch-language"
+        class="peer cursor-pointer p-2 w-12 h-12 flex items-center justify-center"
+        aria-controls="language-menu"
+        aria-expanded="false"
+        aria-label="Cambiar idioma"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28px"
+          height="28px"
+          viewBox="0 0 16 16"
+          ><g fill="currentColor"
+            ><path
+              d="M4.545 6.714L4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"
+            ></path><path
+              d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292c.178.217.451.635.555.867c1.125-.359 2.08-.844 2.886-1.494c.777.665 1.739 1.165 2.93 1.472c.133-.254.414-.673.629-.89c-1.125-.253-2.057-.694-2.82-1.284c.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492a2 2 0 0 1-.94.31"
+            ></path></g
+          ></svg
+        >
+      </button>
 
-      <div class="flex flex-col  absolute mt-8 px-1 py-2 lg:hidden peer-hover:block peer-hover:mr-24 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md">
-        <label class="inline-flex items-center gap-1">
+      <div
+        id="language-menu"
+        class="flex flex-col absolute mt-10 px-1 py-2 lg:hidden peer-hover:mr-24 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md"
+      >
+        <a href="/en" class="inline-flex items-center gap-1 hover:scale-110">
           <button
             class="icon language-icon"
             data-language="en"
             set:html={flags.en.icon}
           />
-          { <span class="text-xs mt-2">{flags.en.name}</span> }
-        </label>
-        <label class="inline-flex items-center gap-1">
+          {(<span class="text-xs mt-2">{flags.en.name}</span>)}
+        </a>
+        <a href="/es" class="inline-flex items-center gap-1 hover:scale-110">
           <button
             class="icon language-icon"
             data-language="es"
             set:html={flags.es.icon}
           />
-          { <span class="text-xs mt-2">{flags.es.name}</span> }
-        </label>
+          {(<span class="text-xs mt-2">{flags.es.name}</span>)}
+        </a>
       </div>
     </div>
   </div>
 </nav>
 
-<script>
-  import { iconsToggle } from "../data/iconsToggle";
 
-  const dialog = document.getElementById("cvdialog");
-  const butoncv = document.getElementById("butoncv");
-  butoncv?.addEventListener("click", (e) => {
-    if (e.target === dialog) {
-      dialog.showModal();
-    }
-  });
-
-  const checkbox = document.getElementById("toggleTheme");
-  const icon = document.getElementById("iconToggle");
-
-  if (checkbox instanceof HTMLInputElement) {
-    checkbox.addEventListener("change", () => {
-      icon.innerHTML = checkbox.checked
-        ? `<!-- Ícono del Sol -->${iconsToggle.sun}`
-        : `<!-- Ícono de la Luna -->${iconsToggle.moon}`;
-    });
-
-    icon.innerHTML = iconsToggle.moon;
-  }
-</script>
