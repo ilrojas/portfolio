@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+const education = await getCollection('education');
+
+const {Content} = await render(education)
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "es" },
+      props: { language: "Español" },
+    },
+    {
+      params: { lang: "en" },
+      props: { language: "English" },
+    },
+  ];
+}
+
+const { language } = Astro.props;
+---
+
+<Layout title="Education">
+  <h1>{language==="English"?"Current Languaje":"Idioma Actual"} {language}</h1>
+  <a href="/es">Español</a>
+  <a href="/en">English</a>
+  <a  href="/">{language==="English"?"Back":"Atras"}</a>
+  {
+    education.map(item => {
+      const {id, slug, data } = item
+      const {school, title, location, period } = data
+      return (
+        <div class="flex flex-row space-x-4">
+          <h2>{school}</h2>
+          <p>{title}</p>
+          <p>{id}</p>
+          <p>{slug}</p>
+          <p>{location}</p>
+          <p>{period}</p>
+          <Content/>
+        </div>
+      );
+    })
+  }
+  <div
+  class="hidden lg:inline-block
+   justify-center items-start
+  top-32 pr-52"
+>
+  <!-- <img
+        id="img-user"
+        class="w-[210px] h-[200px] rounded-full animate-moveFromLeft"
+        src={data?.results[0].picture?.large}
+        alt={data?.results[0].name?.first || "Default User"}
+      /> -->
+  <img
+  transition:name="img-user-ivan"
+  
+    transition:animate="fade"
+    id="img-user"
+    class="w-[200px] object-cover rounded-full w-auto"
+    src="/src/assets/profile.png"
+    alt="Tech"
+  />
+</div>
+</Layout>

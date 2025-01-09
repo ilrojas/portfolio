@@ -9,7 +9,7 @@ const { defaultLanguage } = Astro.props;
 ---
 
 <div
-  class="h-[520px] mb-14 z-[1] items-start flex flex-auto lg:flex-row md:flex-col md:items-center pt-10 space-x-96  w-full"
+  class="h-[520px] mb-14 z-[1] items-start flex flex-col-reverse space-x-20 lg:flex-row md:flex-col md:items-center pt-10 w-full"
 >
   <!-- <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 pt-10 pb-20">
     {
@@ -29,31 +29,28 @@ const { defaultLanguage } = Astro.props;
   > -->
   
   <div
-    class="flex flex-col justify-center items-start lg:pl-24 w-[75%] h-fit-content"
+    class="flex flex-col justify-center items-start pl-20 lg:pl-24 h-fit-content"
   >
-    <div class="animate-moveFromRight delay-[5000ms] ease-in">
-      <label class="uppercase font-semibold text-white text-responsive"
+    <div class="animate-moveFromLeft delay-[5000ms] ease-in">
+      <label class="uppercase font-semibold text-white dark:text-white text-responsive"
         >Ivan Rodriguez Rojas</label
       >
     </div>
     <label
-      class="capitalize text-2xl tracking-wider animate-moveFromRight"
+      class="capitalize text-2xl tracking-wider animate-moveFromLeft"
       ><span class="text-yellow-400 text-responsive">&lbrace;</span>{
         dictionary[defaultLanguage]?.slogan
       }<span class="text-yellow-400 text-responsive">&rbrace;</span></label
     >
-    <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromRight">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint
-      aspernatur veniam aliquid voluptatibus repellendus unde autem natus quidem
-      perspiciatis est sequi voluptates, eos vel aliquam, dignissimos corporis
-      accusamus quasi.
+    <p class="lg:indent-4 pt-6 w-fit flex-wrap animate-moveFromLeft">
+      {dictionary[defaultLanguage]?.description}
     </p>
 
     <div class="pt-10 flex flex-auto justify-start items-center w-full">
       <div class="mr-3">
         <button
           id="butoncv"
-          class="flex group justify-around items-center hover:scale-105 transition duration-500 uppercase w-[180px] h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 font-semibold drop-shadow-[0_2px_5px_rgba(255,255,200,1)] animate-moveFromRight hover:cursor-pointer"
+          class="flex group justify-around items-center hover:scale-105 transition duration-500 uppercase w-[180px] h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 font-semibold drop-shadow-[0_2px_5px_rgba(255,255,200,1)] animate-moveFromLeft hover:cursor-pointer"
         >
           {dictionary[defaultLanguage]?.download}
         </button>
@@ -65,7 +62,7 @@ const { defaultLanguage } = Astro.props;
           download="CV_FrontEnd_Dev_IvanRodriguezRojas.pdf"
           ><button
             id="butoncv"
-            class="flex group items-center justify-center hover:scale-105 transition duration-500 w-12 h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 drop-shadow-[0_2px_5px_rgba(255,255,200,1)] animate-moveFromRight hover:cursor-pointer"
+            class="flex group items-center justify-center hover:scale-105 transition duration-500 w-12 h-12 text-base rounded-xl text-center bg-yellow-200 text-gray-800 drop-shadow-[0_2px_5px_rgba(255,255,200,1)] animate-moveFromLeft hover:cursor-pointer"
           >
             <img
               class="group-hover:animate-bounce"
@@ -94,9 +91,9 @@ const { defaultLanguage } = Astro.props;
     </dialog>
   </div>
   <div
-    class="hidden md:flex
+    class="hidden lg:inline-block
      justify-center items-start
-    top-32 -rotate-[30deg] hover:scale-105 transition duration-500"
+    top-32 pr-52 hover:scale-105 transition duration-500 w-[700px]"
   >
     <!-- <img
           id="img-user"
@@ -105,9 +102,11 @@ const { defaultLanguage } = Astro.props;
           alt={data?.results[0].name?.first || "Default User"}
         /> -->
     <img
+    transition:name="img-user-ivan"
+    transition:animate="fade"
       id="img-user"
-      class="animate-moveFromLeft md:w-[500px] lg:w-[600px]"
-      src="/src/assets/logo1-transpsombr-sc.png"
+      class="animate-moveFromLeft object-cover rounded-full w-auto"
+      src="/src/assets/profile.png"
       alt="Tech"
     />
   </div>

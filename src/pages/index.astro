@@ -1,28 +1,50 @@
 ---
-import Sidebar from '../components/Sidebar.astro';
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import Technology from '../components/Technology.astro';
+import Sidebar from "../components/Sidebar.astro";
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Technology from "../components/Technology.astro";
+
+
+import Footer from "../components/Footer.astro";
+import SectionTech from "../components/SectionTech.astro";
+import NavBar from "../components/NavBar.astro";
+import Welcome from "../components/Welcome.astro";
+import { dictionary } from "../data/dictionary";
+import Wave from "../components/Wave.astro";
+
+const defaultLang = "en";
+let language = defaultLang;
+if (typeof document !== 'undefined') {
+  language = document.cookie.replace(/(?:(?:^|.*;\s*)language\s*\=\s*([^;]*).*$)|^.*$/, "$1") || defaultLang;
+}
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-
 ---
 
-<Layout>
-	<Technology />
-    <Welcome />
+<Layout title="Ivan Rodriguez Rojas FrontEnd Developer">
+  <NavBar defaultLanguage={language} />
+  <SectionTech defaultLanguage={language} />
+  <Wave />
+  <span class="hidden" id="lang" data-lang={defaultLang}></span>
 
-    <Welcome />
-    <Welcome />
-    <Welcome />
-    
-    
-    
-    
-	
-	
+  <!-- <div class=""><Sidebar /></div> -->
 
+  <div class="grid grid-cols-1 left-0 w-full bg-[#0b3c672a] min-h-screen">
+    <main class="pl-10 pr-10">
+      <Technology />
+      <Welcome />
 
-	
+      <Welcome />
+      <Welcome />
+      <Welcome />
+      <div id="about">
+        <label >About</label>
+      </div>
+      <div id="contact">
+        <label >Contact</label>
+      </div>
+    </main>
+    <Footer defaultLanguage={language} />
+  </div>
 </Layout>

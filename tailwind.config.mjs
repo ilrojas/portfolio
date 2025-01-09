@@ -2,6 +2,7 @@ import Technology from "./src/components/Technology.astro";
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'dark', // or 'media' for media-query based dark mode
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
