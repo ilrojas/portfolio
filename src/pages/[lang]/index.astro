@@ -8,19 +8,19 @@ import Technology from "../../components/Technology.astro";
 import Footer from "../../components/Footer.astro";
 import SectionTech from "../../components/SectionTech.astro";
 import NavBar from "../../components/NavBar.astro";
-import Welcome from "../../components/Welcome.astro";
 import { dictionary } from "../../data/dictionary";
 import Wave from "../../components/Wave.astro";
+import Skills from "../../components/Skills.astro";
 
 export async function getStaticPaths() {
   return [
     {
       params: { lang: "es" },
-      props: { language: "Español" },
+      props: { language: "es" },
     },
     {
       params: { lang: "en" },
-      props: { language: "English" },
+      props: { language: "en" },
     },
   ];
 }
@@ -49,13 +49,17 @@ if (typeof document !== 'undefined') {
   <div class="grid grid-cols-1 left-0 w-full bg-[#0b3c672a] min-h-screen">
     <main class="pl-10 pr-10">
       <Technology />
+      
+      <div class="flex items-center justify-center">
+        <Skills defaultLanguage={defaultLang} />
+      </div>
       <Welcome />
 
       <Welcome />
       <Welcome />
       <Welcome />
       <div id="about">
-        <label >About</label>
+        <label >About whats</label>
       </div>
       <div id="contact">
         <label >Contact</label>
