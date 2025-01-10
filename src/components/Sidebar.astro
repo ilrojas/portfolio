@@ -1,18 +1,51 @@
 ---
-import {icons} from "../data/icons"
+/* import {icons} from "../data/icons" */
+import { dictionary } from "../data/dictionary";
+const links = [
+  { href: "/about", text: "about", transitionName: "labelAboutx" },
+  { href: "#skills", text: "skills", transitionName: "labelSkills" },
+  { href: "#projects", text: "projects", transitionName: "labelProjects" },
+  {
+    href: "#experience",
+    text: "experience",
+    transitionName: "labelExperience",
+  },
+  { href: "#education", text: "education", transitionName: "labelEducation" },
+  { href: "/es", text: "contact", transitionName: "inicioJPX" },
+];
+const { defaultLanguage } = Astro.props;
 ---
 
 <div
   id="container-sidebar"
-  class="max-sm:hidden z-10 h-screen w-20 bg-gradient-to-b from-[#5c2774] to-[#2b1a3d] bg-opacity-15 pl-3 pr-5 flex flex-col justify-center fixed top-0 left-0"
+  class="group  z-10 h-14 hover:h-screen w-14 hover:w-60 transition-all ease-linear duration-300 bg-gradient-to-b from-[#5c2774] to-[#2b1a3d] bg-opacity-15 pl-3 pr-5 flex flex-col justify-center fixed top-0 left-0"
 >
   <ul class="flex flex-col h-[100%] justify-between pt-10 pb-10">
-    {icons.map((icon) => (
+    <!-- {icons.map((icon) => (
       <li class="inline-flex justify-center flex-wrap mb-4 group">
         <span class="icon" set:html={icon.svgcolor}></span>
         <span class="text-xs">{icon.icon}</span>
       </li>
-    ))}
+    ))} -->
+    {
+      links.map((link) => (
+        <li class="relative peer text-responsive opacity-0 group-hover:opacity-100 transition ease-linear duration-100">
+          {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
+            &lt;
+          </span> */}
+          <a
+            class="text-white text-xs uppercase"
+            href={link.href}
+          >
+            {dictionary[defaultLanguage]?.[link.text]}
+          </a>
+          <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-500 transition-all duration-300 peer-hover:w-full group-hover:left-0" />
+          {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
+            /&gt;
+          </span> */}
+        </li>
+      ))
+    }
   </ul>
   
 </div>
