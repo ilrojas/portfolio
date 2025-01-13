@@ -23,113 +23,240 @@ const links = [
 const { defaultLanguage } = Astro.props;
 ---
 
+<!-- clases para quedede fijo en la parte superior con bordes redondeados
+left-1/2 -translate-x-1/2 w-3/4 rounded-3xl border-b-[.1px] border-blue-400--><!-- clases para que cuando haga hover se muestre el menu lateral
+sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300 --><!-- <nav
+  class="border-4 lg:bg-gray-800 lg:bg-opacity-50 lg:backdrop-blur-md lg:fixed lg:w-full lg:h-20 lg:z-50 lg:flex lg:flex-row lg:items-center lg:justify-between lg:px-6 sm:fixed sm:top-0 sm:left-0 sm:flex sm:flex-col sm:pl-3 sm:pr-5 sm:z-50 sm:h-14 sm:w-14  sm:justify-center lg:not:hover:h-14 lg:not:hover:w-14"
+  
+> -->
 <nav
-  class="bg-gray-800 bg-opacity-50 backdrop-blur-md fixed top-2 left-1/2 transform -translate-x-1/2 w-3/4 rounded-3xl h-20 z-[9999] hidden lg:flex md:flex items-center justify-between px-6 border-b-[.1px] border-blue-400"
+  id="navbar"
+  class=" lg:fixed lg:w-full lg:h-20 lg:z-50 lg:flex lg:flex-row lg:items-center lg:justify-between lg:transition-none
+         fixed top-0 left-0 w-0 h-screen z-40 transition-all duration-500 ease-in flex-col"
 >
-  {/* Contenedor del logo */}
-  <div class="flex h-14 lg:h-16 items-center space-x-2">
-    <!-- <div
+<!-- lg:bg-transparent lg:bg-[#2d2e32] lg:bg-opacity-50 lg:backdrop-blur-md -->
+  <!-- Navbar Content -->
+  <div
+    id="menu-content"
+    class="dark:bg-[#2d2e32] bg-gray-300 dark:bg-opacity-0 bg-opacity-0 backdrop-blur-3xl flex flex-col justify-between gap-4 top-10 h-screen w-0 duration-500 ease-in
+    lg:flex lg:w-full lg:h-20 lg:flex-row lg:items-center lg:justify-between lg:py-2 lg:px-4"
+  >
+    <!-- sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 -->
+    {/* Contenedor del logo */}
+    <div
+      class=" flex flex-col space-y-5 items-end 
+      lg:flex lg:flex-row lg:h-16 lg:items-center lg:justify-end lg:space-x-2"
+    >
+      <!-- <div
       class=" z-10 rounded-lg object-cover hover:scale-105 transition-all duration-300"
       
       set:html= {pacman}   alt="Logo del negocio"
     ></div> -->
-    <span class="text-3xl outline-dashed outline-1 rounded-xl py-1 px-4"
-      >{iconCoder}</span
-    >
-    <ul class="flex space-x-6">
-      {
-        links.map((link) => (
-          <li class="relative group text-responsive">
-            {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
+      <div
+        class="lg:text-3xl lg:outline-dashed lg:outline-1 lg:rounded-xl lg:py-1 lg:px-4 
+        flex  flex-row justify-between"
+      >
+        {iconCoder}
+        <!-- Navbar Button Close -->
+        <button
+          id="navbar-close"
+          class="lg:hidden bg-gray-800 bg-opacity-50 backdrop-blur-md p-2 rounded-md text-white w-fit right-0"
+          aria-label="Close Navbar"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-6 h-6"
+            aria-hidden="true"
+            role="img"
+          >
+            <!-- Línea diagonal 1 -->
+            <line
+              x1="4"
+              y1="4"
+              x2="20"
+              y2="20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></line>
+            <!-- Línea diagonal 2 -->
+            <line
+              x1="4"
+              y1="20"
+              x2="20"
+              y2="4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></line>
+          </svg>
+        </button>
+      </div>
+      <ul class="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
+        {
+          links.map((link) => (
+            <li class="relative group text-responsive">
+              {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
               &lt;
             </span> */}
-            <a
-              class="text-white text-xs uppercase transition-all duration-200"
-              href={link.href}
-            >
-              {dictionary[defaultLanguage]?.[link.text]}
-            </a>
-            <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-500 transition-all duration-300 group-hover:w-full group-hover:left-0" />
-            {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
+              <a
+                class="lg:text-sm font-bold uppercase group-hover:scale-50 transition-all duration-200"
+                href={link.href}
+              >
+                {dictionary[defaultLanguage]?.[link.text]}
+              </a>
+              <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-500 transition-all duration-300 lg:group-hover:w-full lg:group-hover:left-0" />
+              {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
               /&gt;
             </span> */}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-
-  {/* Contenedor del menú */}
-  <div class="flex items-center space-x-6">
-    <div
-      class="flex items-center relative before:content-[''] before:absolute before:-left-3 before:-top-2 before:bottom-0 before:h-10 before:border-l-[1px] before:border-[#38dbf8]"
-    >
-      <label
-        for="toggleTheme"
-        class="relative inline-flex items-center cursor-pointer"
-      >
-        <input id="toggleTheme" type="checkbox" class="sr-only peer" />
-        <div
-          class="w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2 peer-focus:ring-cyan-100 transition-colors"
-        >
-        </div>
-        <div
-          class="absolute left-1 top-[3px] w-3 h-3 rounded-full transition-transform peer-checked:translate-x-3"
-          id="iconToggle"
-        >
-        </div>
-      </label>
-      <span class="ml-3 text-xs text-white"
-        >{dictionary[defaultLanguage]?.theme}</span
-      >
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
-    <div class="flex flex-col gap-1 relative right-0">
-      <button
-        id="icon-switch-language"
-        class="peer cursor-pointer p-2 w-12 h-12 flex items-center justify-center"
-        aria-controls="language-menu"
-        aria-expanded="false"
-        aria-label="Cambiar idioma"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28px"
-          height="28px"
-          viewBox="0 0 16 16"
-          ><g fill="currentColor"
-            ><path
-              d="M4.545 6.714L4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"
-            ></path><path
-              d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292c.178.217.451.635.555.867c1.125-.359 2.08-.844 2.886-1.494c.777.665 1.739 1.165 2.93 1.472c.133-.254.414-.673.629-.89c-1.125-.253-2.057-.694-2.82-1.284c.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492a2 2 0 0 1-.94.31"
-            ></path></g
-          ></svg
-        >
-      </button>
+    {/* Contenedor del switch de lenguaje y tema */}
+    <div class="flex flex-col items-end lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
 
+      <div class="flex flex-col  lg:flex lg:flex-col lg:gap-1 lg:relative lg:right-0 before:content-[''] before:absolute before:-left-3 before:-top-2 before:bottom-0 before:h-auto before:border-l-[1px] before:border-[#38dbf8]">
+        <button
+          id="icon-switch-language"
+          class="hidden lg:peer lg:cursor-pointer lg:p-2 lg:w-12 lg:h-12 lg:flex lg:items-center lg:justify-center"
+          aria-controls="language-menu"
+          aria-expanded="false"
+          aria-label="Cambiar idioma"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28px"
+            height="28px"
+            viewBox="0 0 16 16"
+            ><g fill="currentColor"
+              ><path
+                d="M4.545 6.714L4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"
+              ></path><path
+                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292c.178.217.451.635.555.867c1.125-.359 2.08-.844 2.886-1.494c.777.665 1.739 1.165 2.93 1.472c.133-.254.414-.673.629-.89c-1.125-.253-2.057-.694-2.82-1.284c.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492a2 2 0 0 1-.94.31"
+              ></path></g
+            ></svg
+          >
+        </button>
+
+        <div
+          id="language-menu"
+          class="flex-col absolute mt-10 px-1 py-2 lg:hidden peer-focus-within:block lg:peer-focus-within:mr-40 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md"
+        >
+          <a
+            href="/en"
+            class="inline-flex items-center gap-1 lg:hover:scale-110"
+          >
+            <button
+              class="icon language-icon"
+              data-language="en"
+              set:html={flags.en.icon}
+            />
+            {(<span class="text-xs mt-2">{flags.en.name}</span>)}
+          </a>
+          <a
+            href="/es"
+            class="inline-flex items-center gap-1 lg:hover:scale-110"
+          >
+            <button
+              class="icon language-icon"
+              data-language="es"
+              set:html={flags.es.icon}
+            />
+            {(<span class="text-xs mt-2">{flags.es.name}</span>)}
+          </a>
+        </div>
+      </div>
       <div
-        id="language-menu"
-        class="flex flex-col absolute mt-10 px-1 py-2 lg:hidden peer-hover:mr-24 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md"
+        class="flex items-center relative "
       >
-        <a href="/en" class="inline-flex items-center gap-1 hover:scale-110">
-          <button
-            class="icon language-icon"
-            data-language="en"
-            set:html={flags.en.icon}
-          />
-          {(<span class="text-xs mt-2">{flags.en.name}</span>)}
-        </a>
-        <a href="/es" class="inline-flex items-center gap-1 hover:scale-110">
-          <button
-            class="icon language-icon"
-            data-language="es"
-            set:html={flags.es.icon}
-          />
-          {(<span class="text-xs mt-2">{flags.es.name}</span>)}
-        </a>
+        <label
+          for="toggleTheme"
+          class="relative inline-flex items-center cursor-pointer"
+        >
+          <input id="toggleTheme" type="checkbox" class="sr-only peer" />
+          <div
+            class="w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2 peer-focus:ring-cyan-100 transition-colors"
+          >
+          </div>
+          <div
+            class="absolute left-1 top-[3px] w-3 h-3 rounded-full transition-transform peer-checked:translate-x-3"
+            id="iconToggle"
+          >
+          </div>
+        </label>
+        <span class="ml-3 text-xs "
+          >{dictionary[defaultLanguage]?.theme}</span
+        >
       </div>
     </div>
   </div>
 </nav>
 
+<button
+  id="navbar-toggle"
+  class="peer sm:block lg:hidden bg-gray-700 p-2 m-2 rounded-md text-white hover:bg-gray-600"
+  aria-label="Toggle Navbar"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    class="w-6 h-6"
+    aria-hidden="true"
+    role="img"
+  >
+    <!-- Primera línea -->
+    <rect x="3" y="5" width="18" height="2" rx="1"></rect>
+    <!-- Segunda línea -->
+    <rect x="3" y="11" width="18" height="2" rx="1"></rect>
+    <!-- Tercera línea -->
+    <rect x="3" y="17" width="18" height="2" rx="1"></rect>
+  </svg>
+</button>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.getElementById("navbar-toggle");
+    const navbarClose = document.getElementById("navbar-close");
+    const nav = document.getElementById("navbar");
+    const menuContent = document.getElementById("menu-content");
+
+    toggleButton?.addEventListener("click", () => {
+      const isHidden = nav?.classList.contains("w-0");
+      /* nav?.classList.toggle("hidden", !isHidden);
+      nav?.classList.toggle("flex", isHidden);
+      nav?.classList.toggle("h-screen", isHidden);
+      nav?.classList.toggle("w-60", isHidden); */
+      if(isHidden){
+        nav?.classList.remove("w-0")
+        nav?.classList.add("w-60");
+      }
+      else{
+        nav?.classList.remove("w-60");
+        nav?.classList.add("w-0")
+        
+      }
+
+      const isHidden2 = menuContent?.classList.contains("w-0");
+      
+      /* menuContent?.classList.toggle("hidden", !isHidden2);
+      menuContent?.classList.toggle("flex", isHidden2);
+      menuContent?.classList.toggle("h-screen", isHidden2);
+      menuContent?.classList.toggle("w-60", isHidden2); */
+      if(isHidden2){
+        menuContent?.classList.remove("w-0")
+        menuContent?.classList.add("w-60");
+        menuContent?.classList.toggle("p-2",isHidden2)
+        menuContent?.classList.toggle("p-4",isHidden2)
+      }
+      else{
+        menuContent?.classList.remove("w-60");
+        menuContent?.classList.add("w-0")
+      }
+    });
+  });
+</script>

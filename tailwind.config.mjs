@@ -5,6 +5,22 @@ export default {
   darkMode: 'class', // or 'media' for media-query based dark mode
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+    screens: {
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... } este disp es un smartphone
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... } este disp es una tablet
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... } este disp es una laptop
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... } este disp es una laptop grande
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... } este dispositivo es una laptop muy grande
+    },
     extend: {
       fontFamily: {
         jost: ["Jost", "sans-serif"],
