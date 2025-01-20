@@ -16,6 +16,9 @@ export const dictionary = {
         description: "I am a front-end developer with experience in creating modern and functional interfaces using technologies like React, Tailwind CSS, and Astro. I am passionate about turning ideas into intuitive and visually appealing web experiences.",
         technical: "Technical Skills",
         soft: "Others",
+        rhetoric: "Shall we do something big?",
+        sloganTech: "From the essential to the advanced, here is what drives my projects.",
+        buttonGitTech: "Explore my work on GitHub",
         // Add more key-value pairs as needed
     },
     es: {
@@ -36,6 +39,9 @@ export const dictionary = {
         description: "Soy un desarrollador front-end con experiencia en la creación de interfaces modernas y funcionales utilizando tecnologías como React, Tailwind CSS y Astro. Me apasiona convertir ideas en experiencias web intuitivas y visualmente atractivas.",
         technical: "Habilidades Técnicas",
         soft: "Otras",
+        rhetoric: "¿Hacemos algo grande?",
+        sloganTech: "De lo esencial a lo avanzado, he aquí lo que impulsa mis proyectos.",
+        buttonGitTech: " Explora mi trabajo en GitHub"
         // Add more key-value pairs as needed
     }
 };

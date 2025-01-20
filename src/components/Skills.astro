@@ -8,72 +8,79 @@ const { defaultLanguage } = Astro.props;
 ---
 
 <div
-  class="container grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-3xl bg-white/90 lg:w-2/4 dark:text-black/80 mt-5"
+  class="grid grid-cols-1 lg:grid-cols-2 space-x-0 my-5"
 >
-  <section
-    id="tech-skills"
-    class="rounded-3xl bg-cyan-900 dark:bg-slate-400 p-3 text-white/70 dark:text-black/80"
-  >
-    <h2 class="font-extrabold">{dictionary[defaultLanguage]?.technical}</h2>
-    <div class="skills flex flex-col gap-2">
-      {
-        technical.map((skill, index) => {
-          return (
-            <div
-              class={`group rounded-lg flex justify-between px-2 py-1 text-xs font-medium ring-1 ring-inset`}
-            >
-              <h3
-                class={`group-hover:translate-x-3.5 group-hover:scale-125 transition duration-300`}
+  <div class="container grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-3xl bg-white/90  dark:text-black/80 ">
+    <section
+      id="tech-skills"
+      class="rounded-3xl bg-cyan-900 dark:bg-slate-400 p-3 text-white/70 dark:text-black/80"
+    >
+      <h2 class="font-extrabold">{dictionary[defaultLanguage]?.technical}</h2>
+      <div class="skills flex flex-col gap-2">
+        {
+          technical.map((skill, index) => {
+            return (
+              <div
+                class={`group rounded-lg flex justify-between px-2 py-1 text-xs font-medium ring-1 ring-inset`}
               >
-                {skill.name}
-              </h3>
-              <div class="flex items-end gap-2 group-hover:-translate-x-3.5 transition duration-300">
-                <span class="font-bold group-hover:scale-125 transition duration-200">
-                  {skill.rating} %
-                </span>
-                <div class="ring-1 ring-slate-400 dark:ring-cyan-900 w-20 h-4  relative rounded-full">
-                  <div
-                    class="progress-bar h-3 bg-slate-400 dark:bg-cyan-900 absolute right-0 top-[2px] rounded-full"
-                    style={`width: ${skill.rating}%`}
-                  />
+                <h3
+                  class={`group-hover:translate-x-3.5 group-hover:scale-125 transition duration-300`}
+                >
+                  {skill.name}
+                </h3>
+                <div class="flex items-end gap-2 group-hover:-translate-x-3.5 transition duration-300">
+                  <span class="font-bold group-hover:scale-125 transition duration-200">
+                    {skill.rating} %
+                  </span>
+                  <div class="ring-1 ring-slate-400 dark:ring-cyan-900 w-20 h-4  relative rounded-full">
+                    <div
+                      class="progress-bar h-3 bg-slate-400 dark:bg-cyan-900 absolute right-0 top-[2px] rounded-full"
+                      style={`width: ${skill.rating}%`}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })
-      }
-    </div>
-  </section>
-  <section class="p-3" id="soft-skills">
-    <h2 class="font-extrabold">{dictionary[defaultLanguage]?.soft}</h2>
-    <div class="skills flex flex-col gap-2">
-      {
-        soft.map((skill, index) => {
-          return (
-            <div
-              class={`group rounded-lg flex justify-between px-2 py-1 text-xs font-medium ring-1 ring-inset`}
-              
-            >
-              <h3
-                class={`group-hover:translate-x-3.5 group-hover:scale-125 transition duration-300 `}
+            );
+          })
+        }
+      </div>
+    </section>
+    <section class="p-3" id="soft-skills">
+      <h2 class="font-extrabold">{dictionary[defaultLanguage]?.soft}</h2>
+      <div class="skills flex flex-col gap-2">
+        {
+          soft.map((skill, index) => {
+            return (
+              <div
+                class={`group rounded-lg flex justify-between px-2 py-1 text-xs font-medium ring-1 ring-inset`}
               >
-                {skill[defaultLanguage]}
-              </h3>
-              <div class="flex items-end gap-2 group-hover:-translate-x-3.5 transition duration-300">
-                <span class="font-bold group-hover:scale-125 transition duration-200">
-                  {skill.rating} %
-                </span>
-                <div class="ring-1 ring-amber-800 w-20 h-4  relative rounded-full">
-                  <div
-                    class="progress-bar h-3 bg-amber-800 absolute right-0 top-[2px] rounded-md"
-                    style={`width: ${skill.rating}%`}
-                  />
+                <h3
+                  class={`group-hover:translate-x-3.5 group-hover:scale-125 transition duration-300 `}
+                >
+                  {skill[defaultLanguage]}
+                </h3>
+                <div class="flex items-end gap-2 group-hover:-translate-x-3.5 transition duration-300">
+                  <span class="font-bold group-hover:scale-125 transition duration-200">
+                    {skill.rating} %
+                  </span>
+                  <div class="ring-1 ring-amber-800 w-20 h-4  relative rounded-full">
+                    <div
+                      class="progress-bar h-3 bg-amber-800 absolute right-0 top-[2px] rounded-md"
+                      style={`width: ${skill.rating}%`}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })
-      }
-    </div>
-  </section>
+            );
+          })
+        }
+      </div>
+    </section>
+  </div>
+  <div class="flex flex-col uppercase font-interTight text-lg dark:font-interTight lg:text-3xl line-clamp-3 text-center mx-auto tracking-normal align-middle justify-center">
+    <p class="leading-relaxed  py-8 px-4 ">El éxito no es solo código, sino las personas y las ideas detrás de cada proyecto. Aquí muestro las habilidades que me ayudan a colaborar, innovar y superar desafíos cada día.</p>
+  </div>
 </div>
+
+
+

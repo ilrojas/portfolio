@@ -25,6 +25,8 @@ export default {
       fontFamily: {
         jost: ["Jost", "sans-serif"],
         rubik:["Rubik Vinyl", "serif"],
+        inter: ["Inter", "serif"],
+        interTight: ["Inter Tight", "serif"]
       },
       transitionDelay: {
         1000: "1000ms",

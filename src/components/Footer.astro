@@ -1,16 +1,21 @@
 ---
 import { dictionary } from "../data/dictionary"
+
+import {iconCoder} from "../data/iconCoder";
 const {defaultLanguage} = Astro.props
+
+
+
 ---
 
-<div class="flex flex-col justify-center items-center bottom-0 align-bottom w-full pt-3 pb-1 bg-[#2d2e32]">
+<div class="flex flex-col justify-center items-center bottom-0 align-bottom w-full pt-3 pb-1 bg-[#262f3d]">
   <div class="">
     <ul class="flex flex-row justify-center gap-8">
       <a
         href="#"
         target="_blank"
         rel="noopener noreferrer"
-        class="group hover:text-white text-blue-400 inline-flex hover:scale-125 transition-scale duration-300 mb-5 group-hover:text-white border rounded-xl border-dashed pt-1 pb-1 pr-3 px-3"
+        class="group space-x-1 hover:text-white hover:bg-[#1e2939] text-blue-400 inline-flex hover:scale-125 transition-scale duration-300 mb-5 group-hover:text-white border rounded-xl border-dashed py-1 pr-3 px-3"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -32,7 +37,7 @@ const {defaultLanguage} = Astro.props
         href="#"
         target="_blank"
         rel="noopener noreferrer"
-        class="group hover:text-white text-blue-400 inline-flex hover:scale-125 transition-scale duration-300 mb-5 group-hover:text-white border rounded-xl border-dashed pt-1 pb-1 pr-3 px-3"
+        class="group space-x-1 hover:text-white hover:bg-[#1e2939] text-blue-400 inline-flex hover:scale-125 transition-scale duration-300 mb-5 group-hover:text-white border rounded-xl border-dashed py-1 pr-3 px-3"
         ><svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 496 512"
@@ -51,5 +56,7 @@ const {defaultLanguage} = Astro.props
       </a>
     </ul>
   </div>
-  <h6 class="text-xs text-white">{dictionary[defaultLanguage]?.created} <span class="font-bold">@iror 2025</span></h6>
+  <div class="text-white text-xs mb-3" set:html={iconCoder} ></div>
+  <h6 class="text-xs text-white" >{dictionary[defaultLanguage]?.created} <span class="font-bold" >@Iván Rodríguez Rojas 2025 </span></h6>
+  
 </div>

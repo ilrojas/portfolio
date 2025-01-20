@@ -35,21 +35,27 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
 
-    <!-- Font Jost -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Font Jost -->
     <link
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
 
     <!-- Font Rubik -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Inter -->    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Inter Tight -->  
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <title>{title}</title>
 
@@ -57,14 +63,14 @@ const { title } = Astro.props;
   </head>
   <!-- bg-customBackground bg-repeat bg-cover -->
   <body
-    class="h-full grid grid-cols-1 text-black/70 dark:text-white bg-white font-jost box-content"
+    class="h-full grid grid-cols-1 text-black/70 dark:text-white bg-white font-inter box-content"
   >
-    <div
+    <!-- <div
       class="bg-gradient-to-tl from-[#26195c] via-[#284b92] to-[#26195c] dark:hidden"
     >
       <slot />
-    </div>
-    <div class="hidden dark:block dark:bg-[#25262a]">
+    </div> -->
+    <div class="bg-white dark:bg-[#101828]">
       <slot />
     </div>
   </body>
@@ -75,8 +81,8 @@ const { title } = Astro.props;
     --var-light-bg: #f3f4f6;
     --var-dark-text: #f3f4f6;
     --var-light-text: #111827;
-    --var-progress-tech-skill-light:#94a3b8;
-    --var-progress-tech-skill-dark:#164e63;
+    --var-progress-tech-skill-light: #94a3b8;
+    --var-progress-tech-skill-dark: #164e63;
   }
 </style>
 <script>
@@ -91,7 +97,6 @@ const { title } = Astro.props;
 
   /* Para el switcher de lenguajes */
   const toggleMenu = (e) => {
-    console.log(e.target);
     const iconSwitch = document.querySelector("#icon-switch-language");
     const menu = document.querySelector("#language-menu");
 
@@ -105,7 +110,7 @@ const { title } = Astro.props;
   };
 
   // Registrar el evento después de definir la función
-  document.addEventListener("click", toggleMenu);
+ document.addEventListener("click", toggleMenu);
 
   /* Para el switcher de tema */
   import { iconsToggle } from "../data/iconsToggle";
@@ -118,16 +123,13 @@ const { title } = Astro.props;
     checkbox.addEventListener("change", () => {
       if (icon) {
         /* icon?.innerHTML = checkbox.checked ? `<!-- Ícono del Sol -->${iconsToggle.sun}`: `<!-- Ícono de la Luna -->${iconsToggle.moon}`; */
-        if (checkbox.checked) {
-          icon!.innerHTML = `<!-- Ícono del Sol -->${iconsToggle.sun}`;
-        } else {
-          icon!.innerHTML = `<!-- Ícono de la Luna -->${iconsToggle.moon}`;
-        }
+        icon!.innerHTML = checkbox.checked ? iconsToggle.sun : iconsToggle.moon;
       }
 
-      checkbox.checked
+       checkbox.checked
         ? doc.classList.remove("dark")
-        : doc.classList.add("dark");
+        : doc.classList.add("dark"); 
+        /* doc.classList.toggle("dark") */
     });
   }
 

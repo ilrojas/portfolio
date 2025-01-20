@@ -1,6 +1,8 @@
 ---
 import { icons } from "../data/icons";
 import Technology from "./Technology.astro";
+import Badge from "./Badge.astro";
+import BlockCodeImg from "./BlockCodeImg.astro"
 /* import { getUser } from "../services/GetUser.astro";
 
 const { data } = await getUser(); */
@@ -9,7 +11,7 @@ const { defaultLanguage } = Astro.props;
 ---
 
 <div
-  class="h-[520px] mb-14 z-[1] items-start flex flex-col-reverse space-x-20 lg:flex-row md:flex-col md:items-center pt-0 lg:pt-10 w-full"
+  class="h-[360px] lg:h-[520px] mb-14 z-[1] items-start flex flex-col space-x-20 lg:flex-row md:flex-col md:items-center pt-10 lg:pt-10 w-full relative lg:static"
 >
   <!-- <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 pt-10 pb-20">
     {
@@ -31,30 +33,64 @@ const { defaultLanguage } = Astro.props;
   <div
     class="flex flex-col justify-center items-start pl-20 lg:pl-24 h-fit-content"
   >
-    <div class="animate-moveFromLeft delay-[5000ms] ease-in">
+    <div class="inline-flex items-center text-xs font-medium mb-4">
+      <Badge 
+      badgeText={dictionary[defaultLanguage]?.rhetoric}
+      badgeIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse" width="12" height="12" viewBox="0 0 12 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.684 3.603c.521-.659.03-1.603-.836-1.603h-6.716a1.06 1.06 0 0 0-.909.502l-5.082 8.456c-.401.666.103 1.497.908 1.497h3.429l-3.23 8.065c-.467 1.02.795 1.953 1.643 1.215L20 9.331h-6.849z"/></svg>`/>
+      
+      <div class="space-x-3">
+        <button
+          id="butoncv"
+          class="capitalize animate-moveDown hover:scale-105 hover:cursor-pointer transition-all duration-300"
+        >
+          {dictionary[defaultLanguage]?.readcv + " >"}
+        </button>
+        <button
+        class="hover:scale-105 hover:cursor-pointer transition-all duration-300 animate-moveDown overflow-hidden"
+          ><a            
+            href={
+              defaultLanguage === 'es'
+                ? '/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf'
+                : '/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_English.pdf'
+            }
+            download={
+              defaultLanguage === 'es'
+                ? 'CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf'
+                : 'CV_FrontEnd_Dev_IvanRodriguezRojas_English.pdf'
+            }
+            title={
+              defaultLanguage === 'es'
+                ? 'Descargar el CV de Iván Rodríguez Rojas'
+                : 'Download Iván Rodríguez Rojas CV'
+            }
+          >
+            {dictionary[defaultLanguage]?.download + " >"}
+          
+          </button
+        >
+      </div>
+    </div>
+    <div class="animate-moveFromLeft  ease-in">
       <h1
-        class="text-2xl lg:text-4xl text-white uppercase font-extrabold text-balance"
+        class="text-2xl lg:text-4xl  uppercase font-extrabold text-balance"
       >
         Ivan Rodriguez Rojas
       </h1>
     </div>
-    <label class="capitalize text-2xl tracking-wider animate-moveFromLeft text-white"
-      ><span class="text-cyan-900 dark:text-cyan-300 font-light"
-        >&lbrace;</span
-      >
-      {dictionary[defaultLanguage]?.slogan}
-      <span class="text-cyan-900 dark:text-cyan-300 font-light"
-        >&rbrace;</span
+    <label
+      class="capitalize text-2xl tracking-wider animate-moveFromLeft "
+      ><span class="text-cyan-900 dark:text-cyan-300 font-light">&lbrace;</span>
+      <span class="italic">{dictionary[defaultLanguage]?.slogan}</span>
+      <span class="text-cyan-900 dark:text-cyan-300 font-light">&rbrace;</span
       ></label
     >
 
     <p
-      class="pt-4 w-fit flex-wrap animate-moveFromLeft text-pretty text-white lg:text-xl md:text-lg"
+      class="pt-4 w-fit flex-wrap animate-moveFromLeft text-pretty  lg:text-xl md:text-lg"
     >
       {dictionary[defaultLanguage]?.description}
     </p>
-
-    <div class="pt-10 flex flex-auto justify-start items-center w-full">
+    <!-- <div class="pt-10 flex flex-auto justify-start items-center w-full">
       <div class="mr-3">
         <button
           id="butoncv"
@@ -65,24 +101,22 @@ const { defaultLanguage } = Astro.props;
       </div>
       <div>
         <a
-        id="butoncv"
-          class="hover:scale-105 hover:cursor-pointer transition duration-500 flex lg:flex lg:flex-row w-[180px] h-12 items-center  group animate-moveFromLeft overflow-hidden"
+          id="butoncv1"
+          class="hover:scale-105 hover:cursor-pointer transition duration-500 flex lg:flex lg:flex-row w-[180px] h-12 items-center group animate-moveFromLeft overflow-hidden"
           href="/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas.pdf"
           download="CV_FrontEnd_Dev_IvanRodriguezRojas.pdf"
           title="Descargar el CV de Iván Rodríguez Rojas"
+        >
+          <img src="/src/assets/download.svg" alt="Download" />
+          <label
+            for="butoncv1"
+            class="text-yellow-200 lg:w-0 overflow-hidden whitespace-nowrap lg:group-hover:w-full transition-all duration-500 ease-in-out"
           >
-            <img
-              
-              src="/src/assets/download.svg"
-              alt="Download"
-            />
-            <label for="butoncv" class="text-yellow-200 lg:w-0 overflow-hidden whitespace-nowrap  lg:group-hover:w-full transition-all duration-500 ease-in-out">
-              {dictionary[defaultLanguage]?.download}
-            </label>         
+            {dictionary[defaultLanguage]?.download}
+          </label>
         </a>
-        
       </div>
-    </div>
+    </div> -->
 
     <dialog
       id="dialogcv"
@@ -90,7 +124,12 @@ const { defaultLanguage } = Astro.props;
     >
       <iframe
         class="w-[80%] h-full justify-center items-center"
-        src="/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas.pdf"
+        src={
+          defaultLanguage === 'es'
+            ? '/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf'
+            : '/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_English.pdf'
+        }
+        
         frameborder="0"></iframe>
       <span
         class="absolute right-2 top-2 text-white items-center justify-center"
@@ -100,26 +139,24 @@ const { defaultLanguage } = Astro.props;
       >
     </dialog>
   </div>
-  <div
+  <div class="right-8 h-[80%] lg:mt-10 -z-10 lg:z-auto  opacity-10 lg:opacity-100 absolute lg:static">
+    <BlockCodeImg/>
+  </div>
+  <!-- Imagen mia -->
+  <!-- <div
     class="lg:inline-block
      justify-center items-start
     top-32 pr-52 hover:scale-105 transition duration-500 lg:w-[700px] z-10"
-  >
-    <!-- <img
-          id="img-user"
-          class="w-[210px] h-[200px] rounded-full animate-moveFromLeft"
-          src={data?.results[0].picture?.large}
-          alt={data?.results[0].name?.first || "Default User"}
-        /> -->
+  >    
     <img
       transition:name="img-user-ivan"
       transition:animate="fade"
       id="img-user"
-      class="animate-moveFromLeft object-cover rounded-full w-auto "
+      class="animate-moveFromLeft object-cover rounded-full w-auto"
       src="/src/assets/profile.png"
       alt="Tech"
     />
-  </div>
+  </div> -->
 
   <!-- </div> -->
   <!-- <div class="h-32">
@@ -134,7 +171,7 @@ const { defaultLanguage } = Astro.props;
   const $dialogcv = document.querySelector("#dialogcv");
   const $closecv = document.querySelector("#closecv");
 
-  $butoncv.addEventListener("click", () => {
+  $butoncv?.addEventListener("click", () => {
     $dialogcv.showModal();
   });
   $closecv.addEventListener("click", () => {

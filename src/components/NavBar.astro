@@ -1,12 +1,23 @@
 ---
 const logo = "/src/assets/logo1.png";
 
-const iconCoder = "<CODER/>";
+
+
+/* const iconCoder1 = `<div class="text-center"><span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">{</span><div class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl inline-block align-middle"><div class="block">òÓ</div><div class="block">‿</div></div><span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl"">}</span></div>`; */
+
+
+/* ٩(̾●̮̮̃̾•̃̾)۶ */
+/* {º‿◕}
+{º‿º} */
+/* (◕‿-) */
+/* 【ツ】 */
+/* ╭∩╮ (òÓ,) ╭∩╮ */
+/* ˁ(⦿ᴥ⦿)ˀ */
 
 import { dictionary } from "../data/dictionary";
 import { flags } from "../data/flags";
 import { iconsToggle } from "../data/iconsToggle";
-
+import {iconCoder} from "../data/iconCoder";
 const links = [
   { href: "/about", text: "about", transitionName: "labelAboutx" },
   { href: "#skills", text: "skills", transitionName: "labelSkills" },
@@ -31,10 +42,10 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
 > -->
 <nav
   id="navbar"
-  class=" lg:fixed lg:w-full lg:h-20 lg:z-50 lg:flex lg:flex-row lg:items-center lg:justify-between lg:transition-none
-         fixed top-0 left-0 w-0 h-screen z-40 transition-all duration-500 ease-in flex-col"
+  class="lg:fixed lg:w-full lg:h-20 lg:z-50 lg:flex lg:flex-row lg:items-center lg:justify-between lg:transition-none
+         fixed top-0 left-0 w-0 h-screen z-40 transition-all duration-500 ease-in flex-col border-b-2 dark:border-opacity-10 border-opacity-30 border-blue-400"
 >
-<!-- lg:bg-transparent lg:bg-[#2d2e32] lg:bg-opacity-50 lg:backdrop-blur-md -->
+  <!-- lg:bg-transparent lg:bg-[#2d2e32] lg:bg-opacity-50 lg:backdrop-blur-md -->
   <!-- Navbar Content -->
   <div
     id="menu-content"
@@ -44,7 +55,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
     <!-- sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 -->
     {/* Contenedor del logo */}
     <div
-      class=" flex flex-col space-y-5 items-end 
+      class="flex flex-col space-y-5 items-end
       lg:flex lg:flex-row lg:h-16 lg:items-center lg:justify-end lg:space-x-2"
     >
       <!-- <div
@@ -53,45 +64,44 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
       set:html= {pacman}   alt="Logo del negocio"
     ></div> -->
       <div
-        class="lg:text-3xl lg:outline-dashed lg:outline-1 lg:rounded-xl lg:py-1 lg:px-4 
-        flex  flex-row justify-between"
+        class="lg:text-sm lg:py-1 lg:px-4
+        flex flex-row justify-between"
+        set:html={iconCoder}
+      />
+      <!-- Navbar Button Close -->
+      <button
+        id="navbar-close"
+        class="lg:hidden bg-gray-800 bg-opacity-50 backdrop-blur-md p-2 rounded-md text-white w-fit right-0"
+        aria-label="Close Navbar"
       >
-        {iconCoder}
-        <!-- Navbar Button Close -->
-        <button
-          id="navbar-close"
-          class="lg:hidden bg-gray-800 bg-opacity-50 backdrop-blur-md p-2 rounded-md text-white w-fit right-0"
-          aria-label="Close Navbar"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-6 h-6"
+          aria-hidden="true"
+          role="img"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="w-6 h-6"
-            aria-hidden="true"
-            role="img"
-          >
-            <!-- Línea diagonal 1 -->
-            <line
-              x1="4"
-              y1="4"
-              x2="20"
-              y2="20"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"></line>
-            <!-- Línea diagonal 2 -->
-            <line
-              x1="4"
-              y1="20"
-              x2="20"
-              y2="4"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"></line>
-          </svg>
-        </button>
-      </div>
+          <!-- Línea diagonal 1 -->
+          <line
+            x1="4"
+            y1="4"
+            x2="20"
+            y2="20"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"></line>
+          <!-- Línea diagonal 2 -->
+          <line
+            x1="4"
+            y1="20"
+            x2="20"
+            y2="4"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"></line>
+        </svg>
+      </button>
       <ul class="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
         {
           links.map((link) => (
@@ -102,6 +112,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
               <a
                 class="lg:text-sm font-bold uppercase group-hover:scale-50 transition-all duration-200"
                 href={link.href}
+                transition:name={link.transitionName}
               >
                 {dictionary[defaultLanguage]?.[link.text]}
               </a>
@@ -116,13 +127,15 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
     </div>
 
     {/* Contenedor del switch de lenguaje y tema */}
-    <div class="flex flex-col items-end lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-
-      <div class="flex flex-col  lg:flex lg:flex-col lg:gap-1 lg:relative lg:right-0 before:content-[''] before:absolute before:-left-3 before:-top-2 before:bottom-0 before:h-auto before:border-l-[1px] before:border-[#38dbf8]">
+    <div
+      class="flex flex-col-reverse items-end lg:flex lg:flex-row lg:items-center lg:space-x-6"
+    >
+      <div
+        class="flex flex-row lg:flex lg:flex-col lg:gap-1 lg:relative lg:right-0 lg:before:content-[''] lg:before:absolute lg:before:-left-3 lg:before:-top-2 lg:before:bottom-0 lg:before:h-auto lg:before:border-l-[1px] lg:before:border-[#d8f838]"
+      >
         <button
           id="icon-switch-language"
-          class="hidden lg:peer lg:cursor-pointer lg:p-2 lg:w-12 lg:h-12 lg:flex lg:items-center lg:justify-center"
+          class="hidden peer lg:cursor-pointer lg:p-2 lg:w-12 lg:h-12 lg:flex lg:items-center lg:justify-center"
           aria-controls="language-menu"
           aria-expanded="false"
           aria-label="Cambiar idioma"
@@ -144,7 +157,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
 
         <div
           id="language-menu"
-          class="flex-col absolute mt-10 px-1 py-2 lg:hidden peer-focus-within:block lg:peer-focus-within:mr-40 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md"
+          class="flex-col lg:absolute mt-10 px-1 py-2 lg:hidden peer-focus-within:flex lg:peer-focus-within:mr-40 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md"
         >
           <a
             href="/en"
@@ -155,7 +168,13 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
               data-language="en"
               set:html={flags.en.icon}
             />
-            {(<span class="text-xs mt-2">{flags.en.name}</span>)}
+            {
+              (
+                <span class="text-xs mt-2 hidden lg:inline-block">
+                  {flags.en.name}
+                </span>
+              )
+            }
           </a>
           <a
             href="/es"
@@ -166,13 +185,17 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
               data-language="es"
               set:html={flags.es.icon}
             />
-            {(<span class="text-xs mt-2">{flags.es.name}</span>)}
+            {
+              (
+                <span class="text-xs mt-2 hidden lg:inline-block">
+                  {flags.es.name}
+                </span>
+              )
+            }
           </a>
         </div>
       </div>
-      <div
-        class="flex items-center relative "
-      >
+      <div class="flex items-center relative">
         <label
           for="toggleTheme"
           class="relative inline-flex items-center cursor-pointer"
@@ -188,9 +211,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
           >
           </div>
         </label>
-        <span class="ml-3 text-xs "
-          >{dictionary[defaultLanguage]?.theme}</span
-        >
+        <span class="ml-3 text-xs">{dictionary[defaultLanguage]?.theme}</span>
       </div>
     </div>
   </div>
@@ -198,7 +219,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
 
 <button
   id="navbar-toggle"
-  class="peer sm:block lg:hidden bg-gray-700 p-2 m-2 rounded-md text-white hover:bg-gray-600"
+  class="sm:block lg:hidden bg-gray-700 p-2 m-2 rounded-md text-white hover:bg-gray-600"
   aria-label="Toggle Navbar"
 >
   <svg
@@ -218,6 +239,15 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
   </svg>
 </button>
 
+<!-- <div class="text-center">
+  <span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">{</span>
+  <div class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl flex flex-col align-middle">
+      <div class="block">òÓ</div>
+      <div class="block">‿</div>
+  </div>
+  <span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">}</span>
+</div> -->
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.getElementById("navbar-toggle");
@@ -231,31 +261,28 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
       nav?.classList.toggle("flex", isHidden);
       nav?.classList.toggle("h-screen", isHidden);
       nav?.classList.toggle("w-60", isHidden); */
-      if(isHidden){
-        nav?.classList.remove("w-0")
+      if (isHidden) {
+        nav?.classList.remove("w-0");
         nav?.classList.add("w-60");
-      }
-      else{
+      } else {
         nav?.classList.remove("w-60");
-        nav?.classList.add("w-0")
-        
+        nav?.classList.add("w-0");
       }
 
       const isHidden2 = menuContent?.classList.contains("w-0");
-      
+
       /* menuContent?.classList.toggle("hidden", !isHidden2);
       menuContent?.classList.toggle("flex", isHidden2);
       menuContent?.classList.toggle("h-screen", isHidden2);
       menuContent?.classList.toggle("w-60", isHidden2); */
-      if(isHidden2){
-        menuContent?.classList.remove("w-0")
+      if (isHidden2) {
+        menuContent?.classList.remove("w-0");
         menuContent?.classList.add("w-60");
-        menuContent?.classList.toggle("p-2",isHidden2)
-        menuContent?.classList.toggle("p-4",isHidden2)
-      }
-      else{
+        menuContent?.classList.toggle("p-2", isHidden2);
+        menuContent?.classList.toggle("p-4", isHidden2);
+      } else {
         menuContent?.classList.remove("w-60");
-        menuContent?.classList.add("w-0")
+        menuContent?.classList.add("w-0");
       }
     });
   });

@@ -39,7 +39,7 @@ export const skills = {
     {
       name: "React",
       icon: "",
-      rating: 75,
+      rating: 90,
       color: "#33DBFF",
     },
     {
@@ -101,7 +101,7 @@ export const skills = {
       es: "Atención al detalle",
       en: "Attention to detail",
       icon: "",
-      rating: 90,
+      rating: 100,
       color: "#955251",
     },
     {

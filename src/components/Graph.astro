@@ -1,0 +1,103 @@
+---
+
+---
+
+<h1 class="text-2xl font-semibold mb-6">Gráfico de Habilidades Técnicas</h1>
+
+<svg id="grafico" width="800" height="1000">
+  <!-- Aquí se dibujarán los gráficos -->
+</svg>
+
+<script>
+  import { skills } from "../data/skills";
+  const tech = skills.technical;
+
+  const svg = document.getElementById("grafico") as SVGAElement;
+  // Generar rectángulos dinámicamente
+  tech.forEach((item, index) => {
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("x", (50 * index + 10).toString()); // Posición X
+    rect.setAttribute("y", (50).toString()); // Posición Y
+    rect.setAttribute("width", "40"); // Ancho basado en el rating
+    rect.setAttribute("height", item.rating.toString()); // Altura del rectángulo
+     // Color de relleno
+   
+    /* rect.setAttribute('style', 'fill: lightblue; stroke: black; transition: fill 0.3s;');  // Borde del rectángulo
+    rect.addEventListener('mouseover', () => rect.setAttribute('style', 'fill: blue; stroke: black; transition: fill 0.3s;'));
+    rect.addEventListener('mouseout', () => rect.setAttribute('style', 'fill: lightblue; stroke: black; transition: fill 0.3s;')); */
+    rect.classList.add(
+      "rounded-3xl",
+      "dark:fill-yellow-600/80",
+      "fill-[lightblue]",
+      "transition-all",
+      "duration-300",
+      "hover:fill-blue-700"
+    );
+
+    // Añadir el rectángulo al SVG
+    svg.appendChild(rect);
+
+    // Añadir texto sobre el rectángulo
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("x", (50 * index + 10).toString());
+    text.setAttribute("y", (50).toString()); 
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("fill", "black");
+    text.setAttribute("transform", "rotate(45)");
+    text.textContent = `${item.name} (${item.rating}%)`;
+
+    // Añadir el texto al SVG
+    svg.appendChild(text);
+  });
+  /* // Crear un círculo
+  const circle = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "circle"
+  );
+  circle.setAttribute("cx", "150");
+  circle.setAttribute("cy", "150");
+  circle.setAttribute("r", "50");
+  circle.setAttribute("stroke", "black");
+  circle.setAttribute("stroke-width", "2");
+  circle.setAttribute("fill", "lightblue");
+  svg.appendChild(circle);
+
+  // Crear una línea
+  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line.setAttribute("x1", "50");
+  line.setAttribute("y1", "200");
+  line.setAttribute("x2", "450");
+  line.setAttribute("y2", "200");
+  line.setAttribute("stroke", "red");
+  line.setAttribute("stroke-width", "2");
+  svg.appendChild(line);
+
+   let x = 0;
+
+function animate() {
+  circle.setAttribute('cx', `${x}`);
+  x += 2;
+  if (x > 500) x = 0;
+  requestAnimationFrame(animate); // Vuelve a llamar a la función para animar
+}
+
+animate();  */
+
+  // Crear un rectángulo
+
+  /* const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  rect.setAttribute("x", "250");
+  rect.setAttribute("y", "50");
+  rect.setAttribute("width", "100");
+  rect.setAttribute("height", "40");
+  rect.setAttribute("fill", "lightblue");
+  svg.appendChild(rect);
+
+  const rect1 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  rect1.setAttribute("x", "250");
+  rect1.setAttribute("y", "100");
+  rect1.setAttribute("width", "85");
+  rect1.setAttribute("height", "40");
+  rect1.setAttribute("fill", "lightblue");
+  svg.appendChild(rect1); */
+</script>

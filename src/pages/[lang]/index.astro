@@ -5,12 +5,14 @@ import Layout from "../../layouts/Layout.astro";
 import Technology from "../../components/Technology.astro";
 
 
+
 import Footer from "../../components/Footer.astro";
 import SectionTech from "../../components/SectionTech.astro";
 import NavBar from "../../components/NavBar.astro";
 import { dictionary } from "../../data/dictionary";
 import Wave from "../../components/Wave.astro";
 import Skills from "../../components/Skills.astro";
+import Graph from "../../components/Graph.astro";
 
 export async function getStaticPaths() {
   return [
@@ -27,6 +29,13 @@ export async function getStaticPaths() {
 
 const { language } = Astro.props;
 
+
+/* ESCALA DE COLORES DESDE EL MAS OSCURO HASTA ELMAS clearTimeout
+#101828
+#1e2939
+#334155
+#262f3d (footer)
+*/
 
 /* const defaultLang = language; */
 /* let language = defaultLang;
@@ -46,9 +55,9 @@ if (typeof document !== 'undefined') {
 
   <!-- <div class=""><Sidebar defaultLanguage={language} /></div> -->
 
-  <div class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#2d2e32] min-h-screen">
+  <div class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen">
     <main class="pl-10 pr-10">
-      <Technology />
+      <Technology defaultLanguage={language} />
       
       <div class="flex items-center justify-center">
         <Skills defaultLanguage={language} />
@@ -64,6 +73,7 @@ if (typeof document !== 'undefined') {
       <div id="contact">
         <label >Contact</label>
       </div>
+      <Graph/>
     </main>
     <Footer defaultLanguage={language} />
   </div>
