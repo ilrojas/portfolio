@@ -56,7 +56,12 @@ const {defaultLanguage} = Astro.props
       </a>
     </ul>
   </div>
-  <div class="text-white text-xs mb-3" set:html={iconCoder} ></div>
+  <!-- <div class="text-white text-xs mb-3" set:html={iconCoder} ></div> -->
+  <img
+  class="relative inline-block h-12 w-12 rounded-lg object-cover object-center"
+  alt="Image placeholder"
+  src="src/assets/profile.jpg"
+/>
   <h6 class="text-xs text-white" >{dictionary[defaultLanguage]?.created} <span class="font-bold" >@Iván Rodríguez Rojas 2025 </span></h6>
   
 </div>

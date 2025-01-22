@@ -26,7 +26,7 @@ export default {
         jost: ["Jost", "sans-serif"],
         rubik:["Rubik Vinyl", "serif"],
         inter: ["Inter", "serif"],
-        interTight: ["Inter Tight", "serif"]
+        interTight: ["Inter Tight", "serif"],
       },
       transitionDelay: {
         1000: "1000ms",
@@ -37,6 +37,14 @@ export default {
         customBackground: "url('/src/assets/radiant-gradient-bg.svg')",
       },
       keyframes: {
+        fadeIn:{
+          from:{
+            opacity:"0",
+          },
+          to:{
+            opacity:"1"
+          },
+        },
         moveDown: {
           from: {
             transform: "translate3d(0, -15%, 0)",
@@ -120,6 +128,7 @@ export default {
         moveFromRight: "moveFromRight 1s ease-in-out",
         moveFromLeft: "moveFromLeft 1s ease-in-out",
         technologyIcons: "technologyIcons 5s linear infinite",
+        fadeIn: "fadeIn .9s ease-in-out"
       },
     },
     plugins: [],

@@ -47,16 +47,14 @@ if (typeof document !== 'undefined') {
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Ivan Rodriguez Rojas FrontEnd Developer">
- <NavBar defaultLanguage={language} />
+<Layout title="Ivan Rodriguez Rojas FrontEnd Developer" defaultLanguage={language} >
+ <!-- <NavBar defaultLanguage={language} />
   <SectionTech defaultLanguage={language} />
-  <!-- <Wave /> -->
+  
   <span class="hidden" id="lang" data-lang={language}></span>
 
-  <!-- <div class=""><Sidebar defaultLanguage={language} /></div> -->
-
   <div class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen">
-    <main class="pl-10 pr-10">
+    <main class="pl-10 pr-10"> -->
       <Technology defaultLanguage={language} />
       
       <div class="flex items-center justify-center">
@@ -74,7 +72,7 @@ if (typeof document !== 'undefined') {
         <label >Contact</label>
       </div>
       <Graph/>
-    </main>
+    <!-- </main>
     <Footer defaultLanguage={language} />
-  </div>
+  </div> -->
 </Layout>

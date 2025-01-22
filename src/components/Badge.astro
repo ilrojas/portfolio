@@ -1,8 +1,15 @@
 ---
-const { badgeText, badgeIcon = null } = Astro.props
+const { badgeText, badgeIcon = null, badgeColor, animate=false } = Astro.props;
 ---
-<span
-        class="text-xs flex flex-row rounded-full dark:bg-blue-300/10 bg-blue-400 px-2 py-1 text-white dark:text-blue-400 mr-5 animate-moveDown transition-all duration-300"
-        set:html={badgeText+badgeIcon}
-        >
-</span>
+
+<div class="inline-flex w-auto h-6 relative align-middle justify-center">
+  <span
+    class=`text-xs flex flex-row rounded-full dark:bg-${badgeColor}/10 bg-${badgeColor} px-2 py-1 text-white dark:text-${badgeColor} mr-5 animate-moveDown transition-all duration-300`
+    set:html={badgeText + badgeIcon}
+  >
+    
+  </span>
+  {animate && (<span
+        class=`animate-ping absolute h-6 w-2/3 border-2 rounded-full border-${badgeColor} opacity-20`
+      ></span>)}
+</div>

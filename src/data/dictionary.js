@@ -1,10 +1,12 @@
 export const dictionary = {
     en: {
+        myName : "Iván Leandro Rodríguez Rojas",
+        myLocation : "Montevideo, URUGUAY",
         welcome: "Welcome to my portfolio",
         about: "About Me",
         projects: "Projects",
         skills: "Skills",
-        contact: "Contact",
+        home: "Home",
         experience: "Experience",
         education: "Education",
         readcv:"Read Now CV",
@@ -22,12 +24,14 @@ export const dictionary = {
         // Add more key-value pairs as needed
     },
     es: {
+        myName : "Iván Leandro Rodríguez Rojas",
+        myLocation : "Montevideo, URUGUAY",
         welcome: "Bienvenido a mi portafolio",
         home: "Inicio",
         about: "Sobre mí",
         projects: "Proyectos",
         skills: "Habilidades",
-        contact: "Contacto",
+        home: "Inicio",
         experience: "Experiencia",
         education: "Educación",
         readcv: "Leer Ahora CV",

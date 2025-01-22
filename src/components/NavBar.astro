@@ -18,8 +18,11 @@ import { dictionary } from "../data/dictionary";
 import { flags } from "../data/flags";
 import { iconsToggle } from "../data/iconsToggle";
 import {iconCoder} from "../data/iconCoder";
-const links = [
-  { href: "/about", text: "about", transitionName: "labelAboutx" },
+const { defaultLanguage } = Astro.props;
+
+const links = [  
+{ href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" },
+  { href: `/${[defaultLanguage]}/about`, text: "about", transitionName: "labelAboutx" },
   { href: "#skills", text: "skills", transitionName: "labelSkills" },
   { href: "#projects", text: "projects", transitionName: "labelProjects" },
   {
@@ -28,10 +31,9 @@ const links = [
     transitionName: "labelExperience",
   },
   { href: "#education", text: "education", transitionName: "labelEducation" },
-  { href: "/es", text: "contact", transitionName: "inicioJPX" },
 ];
 
-const { defaultLanguage } = Astro.props;
+
 ---
 
 <!-- clases para quedede fijo en la parte superior con bordes redondeados
@@ -211,7 +213,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
           >
           </div>
         </label>
-        <span class="ml-3 text-xs">{dictionary[defaultLanguage]?.theme}</span>
+        <span class="ml-3 text-xs">{/* dictionary[defaultLanguage]?.theme */}</span>
       </div>
     </div>
   </div>
