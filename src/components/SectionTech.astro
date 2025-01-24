@@ -7,6 +7,7 @@ import BlockCodeImg from "./BlockCodeImg.astro";
 
 const { data } = await getUser(); */
 import { dictionary } from "../data/dictionary";
+import LevelStars from "./LevelStars.astro";
 const { defaultLanguage } = Astro.props;
 ---
 
@@ -62,9 +63,9 @@ const { defaultLanguage } = Astro.props;
         <span class="text-cyan-900 dark:text-cyan-300 font-light">&rbrace;</span
         ></label
       >
-  
+      <LevelStars/>
       <p
-        class="pt-4 w-fit flex-wrap animate-moveFromLeft text-pretty lg:text-xl md:text-lg"
+        class="pt-4 w-fit flex-wrap animate-moveFromLeft text-pretty lg:text-lg md:text-lg text-gray-400"
       >
         {dictionary[defaultLanguage]?.description}
       </p>
@@ -118,4 +119,7 @@ const { defaultLanguage } = Astro.props;
   $closecv.addEventListener("click", () => {
     $dialogcv?.close();
   });
+
+
+  
 </script>

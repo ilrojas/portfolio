@@ -1,5 +1,6 @@
 export const dictionary = {
     en: {
+        home: "Home",
         myName : "Iván Leandro Rodríguez Rojas",
         myLocation : "Montevideo, URUGUAY",
         welcome: "Welcome to my portfolio",
@@ -24,6 +25,7 @@ export const dictionary = {
         // Add more key-value pairs as needed
     },
     es: {
+        home: "Inicio",
         myName : "Iván Leandro Rodríguez Rojas",
         myLocation : "Montevideo, URUGUAY",
         welcome: "Bienvenido a mi portafolio",

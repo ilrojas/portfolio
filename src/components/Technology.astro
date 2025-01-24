@@ -4,9 +4,9 @@ import { icons } from "../data/icons";
 
 const {defaultLanguage}= Astro.props
 ---
-<div class="grid grid-cols-1 items-center justify-center text-white bg-[#334155] mt-6 lg:mt-0 px-4 py-2 rounded-lg  space-y-10">
-  <section class="uppercase font-interTight text-lg  lg:text-4xl text-center w-2/3 lg:w-2/4 mx-auto tracking-normal ">
-    <h1>{dictionary[defaultLanguage]?.sloganTech}</h1>
+<div class="grid grid-cols-1 items-center justify-center text-white bg-gray-900 mt-6 lg:mt-0 px-4 py-2 rounded-lg  space-y-10">
+  <section class="uppercase font-interTight text-sm  lg:text-3xl text-center w-2/3 lg:w-2/4 mx-auto tracking-normal ">
+    <h3>{dictionary[defaultLanguage]?.sloganTech}</h3>
   </section>
   <div
   id="skills"
@@ -45,12 +45,12 @@ const {defaultLanguage}= Astro.props
           })
         }
       </div>
-      <div class="flex items-center justify-center text-sm">
+      <div class="flex items-center justify-center text-sm group">
         <a
         href="#"
         target="_blank"
         rel="noopener noreferrer"
-        class="group hover:text-white hover:bg-[#1e2939] hover:scale-125 group-hover:text-white  inline-flex transition-scale duration-300 mb-5 border rounded-md space-x-1 border-dashed py-1 pr-3 px-3"
+        class=" hover:text-white hover:bg-[#1e2939] hover:scale-125 hover:border-solid  inline-flex transition-scale duration-300 mb-5 border rounded-md space-x-1 border-dashed py-1 pr-3 px-3"
         ><svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 496 512"
