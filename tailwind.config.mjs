@@ -97,7 +97,7 @@ export default {
         },
         moveFromRight: {
           from: {
-            transform: "translateX(100%)",
+            transform: "translateX(10%)",
             opacity: "0",
           },
           to: {
@@ -107,13 +107,22 @@ export default {
         },
         moveFromLeft: {
           from: {
-            transform: "translateX(-100%)",
+            transform: "translateX(-10%)",
             opacity: "0",
           },
           to: {
             transform: "translateX(0)",
             opacity: "1",
           },
+        },
+        translateDiagonal:{
+          from:{
+            
+            transform:" translate(0, 0) scale(0)"
+          },
+          to:{
+            transform:" translate(10%, -10%) scale(1.5)"
+          }
         },
       },
       fontSize: {
@@ -128,7 +137,8 @@ export default {
         moveFromRight: "moveFromRight 1s ease-in-out",
         moveFromLeft: "moveFromLeft 1s ease-in-out",
         technologyIcons: "technologyIcons 5s linear infinite",
-        fadeIn: "fadeIn .9s ease-in-out"
+        fadeIn: "fadeIn .9s ease-in-out",
+        translateDiagonal: "translateDiagonal 1s linear ease-in-out",
       },
     },
     plugins: [],

@@ -3,14 +3,13 @@ import { ClientRouter } from "astro:transitions";
 import Sidebar from "../components/Sidebar.astro";
 import Welcome from "../components/Welcome.astro";
 import Technology from "../components/Technology.astro";
-
+import { iconCoder } from "../data/iconCoder";
 import Footer from "../components/Footer.astro";
 import SectionTech from "../components/SectionTech.astro";
 import NavBar from "../components/NavBar.astro";
 import { dictionary } from "../data/dictionary";
 import Badge from "../components/Badge.astro";
 import { effect } from "astro:schema";
-
 
 /* import { onBeforeRender } from 'astro';
 
@@ -38,8 +37,8 @@ const url = new URL(Astro.request.url); // Obtener la URL desde la solicitud.
 const path = url.pathname;
 
 const separatedPath = path
-  .split('/')
-  .filter(el => el !== '') // Eliminar elementos vacíos
+  .split("/")
+  .filter((el) => el !== "") // Eliminar elementos vacíos
   .reduce((acc, el) => {
     acc[el] = dictionary[defaultLanguage][el] || el; // Agregar traducción o valor original
     return acc;
@@ -81,7 +80,7 @@ const separatedPath = path
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    
+
     <title>{title}</title>
 
     <ClientRouter />
@@ -96,9 +95,65 @@ const separatedPath = path
       <slot />
     </div> -->
     <div class="bg-white dark:bg-[#101828]">
-      <NavBar defaultLanguage={defaultLanguage} />
-      <SectionTech defaultLanguage={defaultLanguage} />
-      <!-- <Wave /> -->
+      <div
+        class="h-[120px] lg:h-[175px] z-[1] items-start flex flex-col columns-2 space-x-20 pt-6 lg:pt-10 lg:flex-row md:flex-col md:items-center w-full relative lg:static"
+      >
+        <div
+          class="flex justify-center items-center gap-3 pl-20 lg:pl-24 h-fit-content"
+        >
+          <div
+            class="lg:text-sm lg:py-1 lg:px-4
+                  flex flex-row justify-between"
+            set:html={iconCoder}
+          />
+          <div class="">
+            <h1
+              class="text-2xl lg:text-4xl uppercase font-extrabold text-balance"
+              transition:name="labelAboutx"
+            >
+              {title}
+            </h1>
+          </div>
+        </div>
+        <div
+          class="right-8 h-[80%] lg:mt-10 -z-10 lg:z-auto opacity-5 lg:opacity-100 absolute lg:static"
+        >
+          dd
+        </div>
+      </div>
+      <div>
+        <section class="grid-cols-12 gap-4 pr-10 pt-3 pb-2 grid">
+          <div class="col-span-1"></div>
+          <div class="col-span-11">
+            <div class="flex align-middle justify-start">
+              {
+                Object.entries(separatedPath).map(
+                  ([key, value], index, array) => {
+                    const href = `/${array
+                      .slice(0, index + 1)
+                      .map(([k]) => k)
+                      .join("/")}`;
+                    return (
+                      <a
+                        href={href}
+                        key={key}
+                        class={`flex text-xs ${index == array.length - 1 ? "font-bold" : "font-thin"}`}
+                      >
+                        {value === "es" || value === "en"
+                          ? dictionary[value].home
+                          : value}
+                        {index < array.length - 1 && (
+                          <span class="mx-2">{`/`}</span>
+                        )}
+                      </a>
+                    );
+                  }
+                )
+              }
+            </div>
+          </div>
+        </section>
+      </div>
       <span class="hidden" id="lang" data-lang={defaultLanguage}></span>
 
       <!-- <div class=""><Sidebar defaultLanguage={language} /></div> -->
@@ -106,32 +161,7 @@ const separatedPath = path
       <div
         class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
       >
-        <main class="px-4">
-          <!-- <section class="grid-cols-12 gap-4 pr-10 pt-3 pb-5 lg:pb-5 hidden md:grid lg:grid">
-            <div class="col-span-2"></div>
-            <div class="col-span-10 bg-gray-700/30 w-full rounded-xl py-1 pl-4">
-              <div class="flex align-middle justify-start">
-                
-                {Object.entries(separatedPath).map(([key, value], index, array) => {
-                const href = `/${array.slice(0, index + 1).map(([k]) => k).join('/')}`;
-                return (
-                  <a href={href} key={key} class={`flex text-xs ${(index == array.length - 1 ? 'font-bold' : 'font-thin')}`}>
-                  {/* <Badge
-                    badgeText={(value === 'es' || value === 'en') ? 'Home' : value}
-                    badgeIcon=""
-                    badgeColor={index == array.length - 1?`gray-700`:`transparent`}
-                  /> */}
-                  {(value === 'es' || value === 'en') ? dictionary[value].home : value}
-                  {index < array.length - 1 && <span class="mx-2">{`/`}</span>}
-                  </a>
-                );
-                })}
-            
-              </div>
-            </div>
-            
-          </section> -->
-          <div class="pb-4 lg:pb-4"></div>
+        <main class="px-10">
           <slot />
         </main>
         <Footer defaultLanguage={defaultLanguage} />
@@ -158,10 +188,6 @@ const separatedPath = path
       dialog.showModal();
     }
   }); */
-  
-  
-
-  
 
   /* peer-hover:block focus-within:block */
 </script>

@@ -21,7 +21,7 @@ import {iconCoder} from "../data/iconCoder";
 const { defaultLanguage } = Astro.props;
 
 const links = [  
-{ href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" },
+/* { href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" }, */
   { href: `/${[defaultLanguage]}/about`, text: "about", transitionName: "labelAboutx" },
   { href: "#skills", text: "skills", transitionName: "labelSkills" },
   { href: "#projects", text: "projects", transitionName: "labelProjects" },
@@ -213,7 +213,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
           >
           </div>
         </label>
-        <span class="ml-3 text-xs">{/* dictionary[defaultLanguage]?.theme */}</span>
+        <span class="ml-3 text-xs">{dictionary[defaultLanguage]?.theme}</span>
       </div>
     </div>
   </div>
@@ -250,7 +250,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
   <span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">}</span>
 </div> -->
 
-<script>
+<script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.getElementById("navbar-toggle");
     const navbarClose = document.getElementById("navbar-close");
@@ -287,5 +287,27 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
         menuContent?.classList.add("w-0");
       }
     });
+
+    
   });
+
+
+  /*############# PARA EL SWITCHER DE LENGUAJES #############*/
+const toggleMenu = (e) => {
+    const iconSwitch = document.querySelector("#icon-switch-language");
+    const menu = document.querySelector("#language-menu");
+
+    // ASEGÚRATE DE QUE ESTÁS MANEJANDO EL EVENTO PARA EL ELEMENTO CORRECTO
+    if (iconSwitch?.contains(e.target)) {
+      menu?.classList.toggle("lg:hidden");
+    } // Si se hace click fuera del menú o del botón, ocultar el menú
+    else if (!menu?.contains(e.target)) {
+      menu?.classList.add("lg:hidden");
+    }
+  };
+  
+  document.addEventListener("click", toggleMenu);
+  /*############# PARA EL SWITCHER DE LENGUAJES #############*/
+
+  
 </script>

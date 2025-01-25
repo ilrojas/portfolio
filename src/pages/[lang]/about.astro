@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import LayoutPage from "../../layouts/LayoutPage.astro";
 import { dictionary } from "../../data/dictionary";
 import LevelStars from "../../components/LevelStars.astro";
 
@@ -21,11 +21,11 @@ export async function getStaticPaths() {
 const { language } = Astro.props;
 ---
 
-<Layout title="About me" defaultLanguage={language}>
+<LayoutPage title={dictionary[language].about} defaultLanguage={language}>
   <!-- component -->
 
   <div class="flex flex-col items-center justify-center min-h-screen">
-    <h1 transition:name="labelAboutx">{dictionary[language].about}</h1>
+    
     <!-- dark theme -->
     <div class="container m-4">
       <div class="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
@@ -38,6 +38,7 @@ const { language } = Astro.props;
               <!-- DIV imagen perfil -->
               <div class="relative h-32 w-32 sm:mb-0 mb-3">
                 <img
+                  transition:name="profileImg"
                   src="/src/assets/profile.jpg"
                   alt="aji"
                   class="w-32 h-32 object-cover rounded-2xl"
@@ -106,8 +107,8 @@ const { language } = Astro.props;
                 </div>
                 <!-- DIV datos de contacto -->
 
-                <div class="flex items-center justify-between sm:mt-2 pt-10">
-                  <div class="flex items-center">
+                <div class="grid grid-cols-2 pt-5">
+                  <div class="col-span-2 lg:col-span-1">
                     <div class="flex flex-col">
                       <div
                         class="w-full flex-none text-lg text-gray-200 font-bold leading-none"
@@ -133,13 +134,13 @@ const { language } = Astro.props;
                           target="_blank"
                         >
                           +598 91276549<span class="text-xs"
-                            >Chat conmigo en WhatsApp</span
+                            >Chatea conmigo en WhatsApp</span
                           >
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div class="flex items-center">
+                  <div class="col-span-2 lg:col-span-1">
                     <div class="flex flex-col">
                       <div
                         class="w-full flex-none text-lg text-gray-200 font-bold leading-none"
@@ -160,11 +161,11 @@ const { language } = Astro.props;
                           ></span
                         ><span class="mr-3 border-r border-gray-600 max-h-0"
                         ></span><a
-                          class="flex flex-col hover:scale-110 transition duration-300"
+                          class="flex flex-col group"
                           href="mailto:ivan88rodriguezrojas@gmail.com?subject=Consulta&body=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios."
                           target="_blank"
                         >
-                          ivan88rodriguezrojas@gmail.com<span class="text-xs"
+                        <span class="group-hover:-translate-x-1/4 group-hover:opacity-0 transition duration-200">ivan88rodriguezrojas@gmail.com</span><span class="text-xs group-hover:animate-translateDiagonal "
                             >Envíame un correo ahora</span
                           >
                         </a>
@@ -716,4 +717,4 @@ const { language } = Astro.props;
       </div>
     </div>
   </div>
-</Layout>
+</LayoutPage>

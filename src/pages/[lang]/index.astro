@@ -1,11 +1,8 @@
 ---
-
 import Welcome from "../../components/Welcome.astro";
 import Layout from "../../layouts/Layout.astro";
 import Technology from "../../components/Technology.astro";
-
-
-
+import { iconsToggle } from "../../data/iconsToggle";
 
 import Skills from "../../components/Skills.astro";
 import Graph from "../../components/Graph.astro";
@@ -25,7 +22,6 @@ export async function getStaticPaths() {
 
 const { language } = Astro.props;
 
-
 /* ESCALA DE COLORES DESDE EL MAS OSCURO HASTA ELMAS clearTimeout
 #101828
 #1e2939
@@ -43,36 +39,54 @@ if (typeof document !== 'undefined') {
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Ivan Rodriguez Rojas FrontEnd Developer" defaultLanguage={language} >
-   <div class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen">
+<Layout
+  title="Ivan Rodriguez Rojas FrontEnd Developer"
+  defaultLanguage={language}
+>
+  <div
+    class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
+  >
     <main class="px-10">
       <Technology defaultLanguage={language} />
-      
+
       <div class="flex items-center justify-center">
-      <Skills defaultLanguage={language} />
+        <Skills defaultLanguage={language} />
       </div>
       <Welcome />
       <div id="about">
-      <label >About whats</label>
+        <label>About whats</label>
       </div>
       <div id="contact">
-      <label >Contact</label>
+        <label>Contact</label>
       </div>
-      <Graph/>
+      <Graph />
     </main>
   </div>
 </Layout>
 
-<!-- <script is:inline>
- 
-const updateBreadcrumb = () => {
-  const breadcrumb = document.getElementById("breadcrumb");
-  if (breadcrumb) {
-    breadcrumb.innerHTML = window.location.pathname;
-  }
-};
+<script is:inline>
+  /*############# PARA EL SWITCHER DE TEMA #############*/
 
-window.addEventListener("popstate", updateBreadcrumb);
-window.addEventListener("languagechange", updateBreadcrumb);
-updateBreadcrumb();
-</script> -->
+  import { iconsToggle } from "../data/iconsToggle";
+
+  const checkbox = document.getElementById("toggleTheme");
+  const icon = document.getElementById("iconToggle");
+  const doc = document.documentElement;
+
+  if (checkbox instanceof HTMLInputElement) {
+    checkbox.addEventListener("change", () => {
+      if (typeof iconsToggle === "undefined") {
+        console.error("La variable iconsToggle no está definida.");
+        return;
+      }
+      if (icon) {
+        icon.innerHTML = checkbox.checked ? iconsToggle.sun : iconsToggle.moon;
+      }
+
+      doc.classList.toggle("dark", !checkbox.checked);
+    });
+  } else {
+    console.error("El elemento con id 'toggleTheme' no es un input válido.");
+  }
+  /*############# PARA EL SWITCHER DE TEMA #############*/
+</script>
