@@ -34,16 +34,7 @@ export async function get({ params }) {
 
 const { title, defaultLanguage } = Astro.props;
 
-const url = new URL(Astro.request.url); // Obtener la URL desde la solicitud.
-const path = url.pathname;
 
-const separatedPath = path
-  .split('/')
-  .filter(el => el !== '') // Eliminar elementos vacíos
-  .reduce((acc, el) => {
-    acc[el] = dictionary[defaultLanguage][el] || el; // Agregar traducción o valor original
-    return acc;
-  }, {});
 ---
 
 <!doctype html>
@@ -86,15 +77,9 @@ const separatedPath = path
 
     <ClientRouter />
   </head>
-  <!-- bg-customBackground bg-repeat bg-cover -->
   <body
     class="h-full grid grid-cols-1 text-black/70 dark:text-white bg-white font-inter box-content"
   >
-    <!-- <div
-      class="bg-gradient-to-tl from-[#26195c] via-[#284b92] to-[#26195c] dark:hidden"
-    >
-      <slot />
-    </div> -->
     <div class="bg-white dark:bg-[#101828]">
       <NavBar defaultLanguage={defaultLanguage} />
       <SectionTech defaultLanguage={defaultLanguage} />
@@ -107,30 +92,7 @@ const separatedPath = path
         class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
       >
         <main class="px-4">
-          <!-- <section class="grid-cols-12 gap-4 pr-10 pt-3 pb-5 lg:pb-5 hidden md:grid lg:grid">
-            <div class="col-span-2"></div>
-            <div class="col-span-10 bg-gray-700/30 w-full rounded-xl py-1 pl-4">
-              <div class="flex align-middle justify-start">
-                
-                {Object.entries(separatedPath).map(([key, value], index, array) => {
-                const href = `/${array.slice(0, index + 1).map(([k]) => k).join('/')}`;
-                return (
-                  <a href={href} key={key} class={`flex text-xs ${(index == array.length - 1 ? 'font-bold' : 'font-thin')}`}>
-                  {/* <Badge
-                    badgeText={(value === 'es' || value === 'en') ? 'Home' : value}
-                    badgeIcon=""
-                    badgeColor={index == array.length - 1?`gray-700`:`transparent`}
-                  /> */}
-                  {(value === 'es' || value === 'en') ? dictionary[value].home : value}
-                  {index < array.length - 1 && <span class="mx-2">{`/`}</span>}
-                  </a>
-                );
-                })}
-            
-              </div>
-            </div>
-            
-          </section> -->
+          
           <div class="pb-4 lg:pb-4"></div>
           <slot />
         </main>
@@ -150,18 +112,37 @@ const separatedPath = path
   }
 </style>
 <script is:inline>
-  /* Para el modal del CV */
-  /* const dialog = document.getElementById("cvdialog");
-  const butoncv = document.getElementById("butoncv");
-  butoncv?.addEventListener("click", (e) => {
-    if (e.target === dialog) {
-      dialog.showModal();
+  /*############# PARA EL SWITCHER DE TEMA #############*/
+  const iconsToggle = {
+    moon: `<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#66757f"/><g fill="#5b6876"><circle cx="10.5" cy="8.5" r="3.5"/><circle cx="20" cy="16" r="3"/><circle cx="21.5" cy="27.5" r="3.5"/><circle cx="21" cy="6" r="2"/><circle cx="3" cy="18" r="1"/><circle cx="30" cy="9" r="1"/><circle cx="15" cy="31" r="1"/><circle cx="32" cy="19" r="2"/><circle cx="10" cy="23" r="2"/></g></svg>`,
+    sun: `<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 512 512"><path fill="#ffc639" d="m260.622 42.537l58.117-39.696c3.641-2.487 8.643-1.147 10.552 2.828l30.483 63.437a7.2 7.2 0 0 0 7.035 4.062l70.179-5.32c4.397-.333 8.058 3.328 7.725 7.725l-5.32 70.179a7.2 7.2 0 0 0 4.062 7.035l63.437 30.483c3.975 1.91 5.315 6.911 2.828 10.552l-39.696 58.117a7.2 7.2 0 0 0 0 8.123l39.696 58.117c2.487 3.641 1.147 8.643-2.828 10.552l-63.437 30.483a7.2 7.2 0 0 0-4.062 7.035l5.32 70.179c.333 4.397-3.328 8.058-7.725 7.725l-70.179-5.32a7.2 7.2 0 0 0-7.035 4.062l-30.483 63.437c-1.91 3.975-6.911 5.315-10.552 2.828l-58.117-39.696a7.2 7.2 0 0 0-8.123 0l-58.117 39.696c-3.641 2.487-8.643 1.147-10.552-2.828l-30.483-63.437a7.2 7.2 0 0 0-7.035-4.062l-70.179 5.32c-4.397.333-8.058-3.328-7.725-7.725l5.32-70.179a7.2 7.2 0 0 0-4.062-7.035L6.228 328.731c-3.975-1.91-5.315-6.911-2.828-10.552l39.696-58.117a7.2 7.2 0 0 0 0-8.123L3.401 193.821c-2.487-3.641-1.147-8.643 2.828-10.552l63.437-30.483a7.2 7.2 0 0 0 4.062-7.035l-5.32-70.179c-.333-4.397 3.328-8.058 7.725-7.725l70.179 5.32a7.2 7.2 0 0 0 7.035-4.062L183.83 5.668c1.91-3.975 6.911-5.315 10.552-2.828l58.117 39.696a7.2 7.2 0 0 0 8.123.001"/><circle cx="256.56" cy="256" r="194.415" fill="#ffe564"/></svg>`,
+  };
+
+  const checkbox = document.getElementById("toggleTheme");
+  const icon = document.getElementById("iconToggle");
+  const doc = document.documentElement;
+  if (checkbox && icon) {
+    icon.innerHTML = iconsToggle.moon;
+
+    if (checkbox instanceof HTMLInputElement) {
+      checkbox.addEventListener("change", () => {
+        if (typeof iconsToggle === "undefined") {
+          console.error("La variable iconsToggle no está definida.");
+          return;
+        }
+        if (icon) {
+          icon.innerHTML = checkbox.checked
+            ? iconsToggle.sun
+            : iconsToggle.moon;
+        }
+
+        doc.classList.toggle("dark", !checkbox.checked);
+      });
+    } else {
+      console.error("El elemento con id 'toggleTheme' no es un input válido.");
     }
-  }); */
-  
-  
+  }
 
+  /*############# PARA EL SWITCHER DE TEMA #############*/
   
-
-  /* peer-hover:block focus-within:block */
 </script>

@@ -2,25 +2,24 @@
 import Welcome from "../../components/Welcome.astro";
 import Layout from "../../layouts/Layout.astro";
 import Technology from "../../components/Technology.astro";
-import { iconsToggle } from "../../data/iconsToggle";
 
 import Skills from "../../components/Skills.astro";
-import Graph from "../../components/Graph.astro";
 
-export async function getStaticPaths() {
+export async function getStaticPaths() {  
   return [
     {
       params: { lang: "es" },
       props: { language: "es" },
     },
-    {
+     {
       params: { lang: "en" },
       props: { language: "en" },
-    },
+    }, 
   ];
 }
 
 const { language } = Astro.props;
+
 
 /* ESCALA DE COLORES DESDE EL MAS OSCURO HASTA ELMAS clearTimeout
 #101828
@@ -29,12 +28,7 @@ const { language } = Astro.props;
 #262f3d (footer)
 */
 
-/* const defaultLang = language; */
-/* let language = defaultLang;
-if (typeof document !== 'undefined') {
-  language = document.cookie.replace(/(?:(?:^|.*;\s*)language\s*\=\s*([^;]*).*$)|^.*$/, "$1") || defaultLang;
-} 
- */
+
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -46,47 +40,47 @@ if (typeof document !== 'undefined') {
   <div
     class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
   >
-    <main class="px-10">
-      <Technology defaultLanguage={language} />
+    <Technology defaultLanguage={language} />
 
-      <div class="flex items-center justify-center">
-        <Skills defaultLanguage={language} />
-      </div>
-      <Welcome />
-      <div id="about">
-        <label>About whats</label>
-      </div>
-      <div id="contact">
-        <label>Contact</label>
-      </div>
-      <Graph />
-    </main>
+    <div class="flex items-center justify-center">
+      <Skills defaultLanguage={language} />
+    </div>
+    <Welcome />
+    <div id="about">
+      <label>About whats</label>
+    </div>
+    <div id="contact">
+      <label>Contact</label>
+    </div>
+    
   </div>
 </Layout>
 
 <script is:inline>
-  /*############# PARA EL SWITCHER DE TEMA #############*/
 
-  import { iconsToggle } from "../data/iconsToggle";
-
-  const checkbox = document.getElementById("toggleTheme");
-  const icon = document.getElementById("iconToggle");
-  const doc = document.documentElement;
-
-  if (checkbox instanceof HTMLInputElement) {
-    checkbox.addEventListener("change", () => {
-      if (typeof iconsToggle === "undefined") {
-        console.error("La variable iconsToggle no está definida.");
-        return;
-      }
-      if (icon) {
-        icon.innerHTML = checkbox.checked ? iconsToggle.sun : iconsToggle.moon;
-      }
-
-      doc.classList.toggle("dark", !checkbox.checked);
-    });
-  } else {
-    console.error("El elemento con id 'toggleTheme' no es un input válido.");
+document.addEventListener("DOMContentLoaded", function () {
+  const defLang = localStorage.getItem("language") || "es";
+  
+  // Si ya estamos en la URL correcta, no redirigir
+  if (!window.location.pathname.startsWith(`/${defLang}`)) {
+    window.location.href = `/${defLang}`;
   }
-  /*############# PARA EL SWITCHER DE TEMA #############*/
+});
+
+const changeLanguage = (lang) => {
+   localStorage.setItem("language", lang);
+  window.location.href = `/${lang}`;  
+   /* console.log(`el lenguaje seleccionado es ${lang}`)  */
+};
+ document
+      .getElementById("language-icon-es")
+      .addEventListener("click", (e) => {
+        changeLanguage( e.currentTarget.getAttribute("data-language"));
+      
+      });
+    document
+      .getElementById("language-icon-en")
+      .addEventListener("click", (e) => {
+        changeLanguage( e.currentTarget.getAttribute("data-language"));
+      });
 </script>

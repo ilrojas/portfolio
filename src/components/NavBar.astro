@@ -1,10 +1,7 @@
 ---
 const logo = "/src/assets/logo1.png";
 
-
-
 /* const iconCoder1 = `<div class="text-center"><span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">{</span><div class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl inline-block align-middle"><div class="block">òÓ</div><div class="block">‿</div></div><span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl"">}</span></div>`; */
-
 
 /* ٩(̾●̮̮̃̾•̃̾)۶ */
 /* {º‿◕}
@@ -17,12 +14,16 @@ const logo = "/src/assets/logo1.png";
 import { dictionary } from "../data/dictionary";
 import { flags } from "../data/flags";
 import { iconsToggle } from "../data/iconsToggle";
-import {iconCoder} from "../data/iconCoder";
+import { iconCoder } from "../data/iconCoder";
 const { defaultLanguage } = Astro.props;
 
-const links = [  
-/* { href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" }, */
-  { href: `/${[defaultLanguage]}/about`, text: "about", transitionName: "labelAboutx" },
+const links = [
+  /* { href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" }, */
+  {
+    href: `/${[defaultLanguage]}/about`,
+    text: "about",
+    transitionName: "labelAboutx",
+  },
   { href: "#skills", text: "skills", transitionName: "labelSkills" },
   { href: "#projects", text: "projects", transitionName: "labelProjects" },
   {
@@ -32,8 +33,6 @@ const links = [
   },
   { href: "#education", text: "education", transitionName: "labelEducation" },
 ];
-
-
 ---
 
 <!-- clases para quedede fijo en la parte superior con bordes redondeados
@@ -162,35 +161,36 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
           class="flex-col lg:absolute mt-10 px-1 py-2 lg:hidden peer-focus-within:flex lg:peer-focus-within:mr-40 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md"
         >
           <a
-            href="/en"
+            id="language-icon-en"
             class="inline-flex items-center gap-1 lg:hover:scale-110"
+            data-language="en"
           >
             <button
               class="icon language-icon"
-              data-language="en"
               set:html={flags.en.icon}
             />
             {
               (
                 <span class="text-xs mt-2 hidden lg:inline-block">
-                  {flags.en.name}
+                  {flags.en.name[defaultLanguage]}
                 </span>
               )
             }
           </a>
           <a
-            href="/es"
+            id="language-icon-es"
             class="inline-flex items-center gap-1 lg:hover:scale-110"
+            data-language="es"
           >
             <button
               class="icon language-icon"
-              data-language="es"
+              
               set:html={flags.es.icon}
             />
             {
               (
                 <span class="text-xs mt-2 hidden lg:inline-block">
-                  {flags.es.name}
+                  {flags.es.name[defaultLanguage]}
                 </span>
               )
             }
@@ -291,9 +291,11 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
     
   });
 
+  
+
 
   /*############# PARA EL SWITCHER DE LENGUAJES #############*/
-const toggleMenu = (e) => {
+  const toggleMenu = (e) => {
     const iconSwitch = document.querySelector("#icon-switch-language");
     const menu = document.querySelector("#language-menu");
 
@@ -305,9 +307,29 @@ const toggleMenu = (e) => {
       menu?.classList.add("lg:hidden");
     }
   };
-  
+
   document.addEventListener("click", toggleMenu);
   /*############# PARA EL SWITCHER DE LENGUAJES #############*/
 
-  
+  /* let userLanguage = defaultLanguage;
+  // Function to change the language and store it in localStorage
+  function changeLanguage(newLanguage) {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("language", newLanguage);
+      userLanguage = newLanguage; // Update the language in the component
+      console.log(
+        `El nuevo lenguaje almacenado en LocalStorage es: ${userLanguage}`
+      );
+    }
+  }
+
+  // Función para obtener el idioma del localStorage
+  function getLanguageFromLocalStorage() {
+    let language = localStorage.getItem("language");
+    if (language == null) {
+      localStorage.setItem("language", "es");
+    }
+    console.log(`Lenguaje: ${localStorage.getItem("language")}`);
+  }
+  getLanguageFromLocalStorage(); */
 </script>

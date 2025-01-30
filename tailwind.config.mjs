@@ -124,6 +124,14 @@ export default {
             transform:" translate(10%, -10%) scale(1.5)"
           }
         },
+        scrollHorizontal: {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform: "translateX(-100%)",
+          },
+        }
       },
       fontSize: {
         responsive: "clamp(0.75rem, 2.5vw, 2.75rem)",
@@ -139,6 +147,7 @@ export default {
         technologyIcons: "technologyIcons 5s linear infinite",
         fadeIn: "fadeIn .9s ease-in-out",
         translateDiagonal: "translateDiagonal 1s linear ease-in-out",
+        scrollHorizontal:  "scrollHorizontal 10s linear infinite",
       },
     },
     plugins: [],

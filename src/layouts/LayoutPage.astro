@@ -8,6 +8,7 @@ import Footer from "../components/Footer.astro";
 import SectionTech from "../components/SectionTech.astro";
 import NavBar from "../components/NavBar.astro";
 import { dictionary } from "../data/dictionary";
+import { flags } from "../data/flags";
 import Badge from "../components/Badge.astro";
 import { effect } from "astro:schema";
 
@@ -96,12 +97,13 @@ const separatedPath = path
     </div> -->
     <div class="bg-white dark:bg-[#101828]">
       <div
-        class="h-[120px] lg:h-[175px] z-[1] items-start flex flex-col columns-2 space-x-20 pt-6 lg:pt-10 lg:flex-row md:flex-col md:items-center w-full relative lg:static"
+        class="h-[120px] lg:h-[135px] z-[1] flex flex-row justify-between lg:py-2 lg:px-4 columns-2 space-x-20 lg:flex-row md:flex-col md:items-center w-full"
       >
         <div
           class="flex justify-center items-center gap-3 pl-20 lg:pl-24 h-fit-content"
         >
-          <div
+          <a
+            href="/"
             class="lg:text-sm lg:py-1 lg:px-4
                   flex flex-row justify-between"
             set:html={iconCoder}
@@ -115,57 +117,143 @@ const separatedPath = path
             </h1>
           </div>
         </div>
-        <div
-          class="right-8 h-[80%] lg:mt-10 -z-10 lg:z-auto opacity-5 lg:opacity-100 absolute lg:static"
-        >
-          dd
+        <div class="right-8 h-[80%] lg:mt-10 lg:z-auto absolute lg:static">
+          <!-- {/* Contenedor del switch de lenguaje y tema */}
+          <div
+            class="flex flex-col items-end justify-between space-y-2 lg:flex lg:flex-row lg:items-center lg:space-x-6"
+          >
+            <div
+              class="flex flex-col lg:flex lg:flex-col lg:gap-1 lg:relative lg:right-0 lg:before:content-[''] lg:before:absolute lg:before:-left-3 lg:before:-top-2 lg:before:bottom-0 lg:before:h-auto lg:before:border-l-[1px] lg:before:border-[#d8f838]"
+            >
+              <button
+                id="icon-switch-language"
+                class="hidden peer lg:cursor-pointer lg:p-2 lg:w-12 lg:h-12 lg:flex lg:items-center lg:justify-center"
+                aria-controls="language-menu"
+                aria-expanded="false"
+                aria-label="Cambiar idioma"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28px"
+                  height="28px"
+                  viewBox="0 0 16 16"
+                  ><g fill="currentColor"
+                    ><path
+                      d="M4.545 6.714L4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"
+                    ></path><path
+                      d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292c.178.217.451.635.555.867c1.125-.359 2.08-.844 2.886-1.494c.777.665 1.739 1.165 2.93 1.472c.133-.254.414-.673.629-.89c-1.125-.253-2.057-.694-2.82-1.284c.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492a2 2 0 0 1-.94.31"
+                    ></path></g
+                  ></svg
+                >
+              </button>
+
+              <div
+                id="language-menu"
+                class="flex-col lg:absolute mt-10 px-1 py-2 lg:hidden peer-focus-within:flex lg:peer-focus-within:mr-40 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-md"
+              >
+                <a
+                  href="/en"
+                  class="inline-flex items-center gap-1 lg:hover:scale-110"
+                >
+                  <button
+                    class="icon language-icon"
+                    data-language="en"
+                    set:html={flags.en.icon}
+                  />
+                  {
+                    (
+                      <span class="text-xs mt-2 hidden lg:inline-block">
+                        {flags.en.name}
+                      </span>
+                    )
+                  }
+                </a>
+                <a
+                  href="/es"
+                  class="inline-flex items-center gap-1 lg:hover:scale-110"
+                >
+                  <button
+                    class="icon language-icon"
+                    data-language="es"
+                    set:html={flags.es.icon}
+                  />
+                  {
+                    (
+                      <span class="text-xs mt-2 hidden lg:inline-block">
+                        {flags.es.name}
+                      </span>
+                    )
+                  }
+                </a>
+              </div>
+            </div>
+            <div class="flex items-center relative">
+              <label
+                for="toggleTheme"
+                class="relative inline-flex items-center cursor-pointer"
+              >
+                <input id="toggleTheme" type="checkbox" class="sr-only peer" />
+                <div
+                  class="w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2 peer-focus:ring-cyan-100 transition-colors"
+                >
+                </div>
+                <div
+                  class="absolute left-1 top-[3px] w-3 h-3 rounded-full transition-transform peer-checked:translate-x-3"
+                  id="iconToggle"
+                >
+                </div>
+              </label>
+              <span class="ml-3 text-xs hidden lg:inline-block"
+                >{dictionary[defaultLanguage]?.theme}</span
+              >
+            </div>
+          </div> -->
         </div>
       </div>
-      <div>
-        <section class="grid-cols-12 gap-4 pr-10 pt-3 pb-2 grid">
-          <div class="col-span-1"></div>
-          <div class="col-span-11">
-            <div class="flex align-middle justify-start">
-              {
-                Object.entries(separatedPath).map(
-                  ([key, value], index, array) => {
-                    const href = `/${array
-                      .slice(0, index + 1)
-                      .map(([k]) => k)
-                      .join("/")}`;
-                    return (
-                      <a
-                        href={href}
-                        key={key}
-                        class={`flex text-xs ${index == array.length - 1 ? "font-bold" : "font-thin"}`}
-                      >
-                        {value === "es" || value === "en"
-                          ? dictionary[value].home
-                          : value}
-                        {index < array.length - 1 && (
-                          <span class="mx-2">{`/`}</span>
-                        )}
-                      </a>
-                    );
-                  }
-                )
-              }
-            </div>
-          </div>
-        </section>
-      </div>
+
       <span class="hidden" id="lang" data-lang={defaultLanguage}></span>
 
       <!-- <div class=""><Sidebar defaultLanguage={language} /></div> -->
+    </div>
 
-      <div
-        class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
-      >
-        <main class="px-10">
-          <slot />
-        </main>
-        <Footer defaultLanguage={defaultLanguage} />
-      </div>
+    <div
+      class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
+    >
+      <section class="grid-cols-12 gap-4 pr-10 pt-3 pb-2 grid">
+        <div class="col-span-1"></div>
+        <div class="col-span-11">
+          <div class="flex align-middle justify-start">
+            {
+              Object.entries(separatedPath).map(
+                ([key, value], index, array) => {
+                  const href = `/${array
+                    .slice(0, index + 1)
+                    .map(([k]) => k)
+                    .join("/")}`;
+                  return (
+                    <a
+                      href={href}
+                      key={key}
+                      class={`flex text-xs ${index == array.length - 1 ? "font-bold" : "font-thin"}`}
+                    >
+                      {value === "es" || value === "en"
+                        ? dictionary[value].home
+                        : value}
+                      {index < array.length - 1 && (
+                        <span class="mx-2">{`/`}</span>
+                      )}
+                    </a>
+                  );
+                }
+              )
+            }
+          </div>
+        </div>
+      </section>
+      <main class="px-10">
+        <slot />
+      </main>
+      <Footer defaultLanguage={defaultLanguage} />
     </div>
   </body>
 </html>
@@ -180,14 +268,44 @@ const separatedPath = path
   }
 </style>
 <script is:inline>
-  /* Para el modal del CV */
-  /* const dialog = document.getElementById("cvdialog");
-  const butoncv = document.getElementById("butoncv");
-  butoncv?.addEventListener("click", (e) => {
-    if (e.target === dialog) {
-      dialog.showModal();
-    }
-  }); */
+  /*############# PARA EL SWITCHER DE TEMA #############*/
+  const iconsToggle = {
+    moon: `<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#66757f"/><g fill="#5b6876"><circle cx="10.5" cy="8.5" r="3.5"/><circle cx="20" cy="16" r="3"/><circle cx="21.5" cy="27.5" r="3.5"/><circle cx="21" cy="6" r="2"/><circle cx="3" cy="18" r="1"/><circle cx="30" cy="9" r="1"/><circle cx="15" cy="31" r="1"/><circle cx="32" cy="19" r="2"/><circle cx="10" cy="23" r="2"/></g></svg>`,
+    sun: `<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 512 512"><path fill="#ffc639" d="m260.622 42.537l58.117-39.696c3.641-2.487 8.643-1.147 10.552 2.828l30.483 63.437a7.2 7.2 0 0 0 7.035 4.062l70.179-5.32c4.397-.333 8.058 3.328 7.725 7.725l-5.32 70.179a7.2 7.2 0 0 0 4.062 7.035l63.437 30.483c3.975 1.91 5.315 6.911 2.828 10.552l-39.696 58.117a7.2 7.2 0 0 0 0 8.123l39.696 58.117c2.487 3.641 1.147 8.643-2.828 10.552l-63.437 30.483a7.2 7.2 0 0 0-4.062 7.035l5.32 70.179c.333 4.397-3.328 8.058-7.725 7.725l-70.179-5.32a7.2 7.2 0 0 0-7.035 4.062l-30.483 63.437c-1.91 3.975-6.911 5.315-10.552 2.828l-58.117-39.696a7.2 7.2 0 0 0-8.123 0l-58.117 39.696c-3.641 2.487-8.643 1.147-10.552-2.828l-30.483-63.437a7.2 7.2 0 0 0-7.035-4.062l-70.179 5.32c-4.397.333-8.058-3.328-7.725-7.725l5.32-70.179a7.2 7.2 0 0 0-4.062-7.035L6.228 328.731c-3.975-1.91-5.315-6.911-2.828-10.552l39.696-58.117a7.2 7.2 0 0 0 0-8.123L3.401 193.821c-2.487-3.641-1.147-8.643 2.828-10.552l63.437-30.483a7.2 7.2 0 0 0 4.062-7.035l-5.32-70.179c-.333-4.397 3.328-8.058 7.725-7.725l70.179 5.32a7.2 7.2 0 0 0 7.035-4.062L183.83 5.668c1.91-3.975 6.911-5.315 10.552-2.828l58.117 39.696a7.2 7.2 0 0 0 8.123.001"/><circle cx="256.56" cy="256" r="194.415" fill="#ffe564"/></svg>`,
+  };
 
-  /* peer-hover:block focus-within:block */
+  const checkbox = document.getElementById("toggleTheme");
+  const icon = document.getElementById("iconToggle");
+  const doc = document.documentElement;
+  if (checkbox && icon) {
+    icon.innerHTML = iconsToggle.moon;
+
+    if (checkbox instanceof HTMLInputElement) {
+      checkbox.addEventListener("change", () => {
+        if (typeof iconsToggle === "undefined") {
+          console.error("La variable iconsToggle no está definida.");
+          return;
+        }
+        if (icon) {
+          icon.innerHTML = checkbox.checked
+            ? iconsToggle.sun
+            : iconsToggle.moon;
+        }
+
+        doc.classList.toggle("dark", !checkbox.checked);
+      });
+    } else {
+      console.error("El elemento con id 'toggleTheme' no es un input válido.");
+    }
+  }
+
+  /*############# PARA EL SWITCHER DE TEMA #############*/
+  function getLanguageFromLocalStorage() {
+    let language = localStorage.getItem("language");
+    if (language == null) {
+      localStorage.setItem("language", "es");
+    }
+    console.log(localStorage.getItem("language"));
+  }
+  getLanguageFromLocalStorage();
 </script>

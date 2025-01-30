@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     tailwind()
   ],
-  redirects: 
-    { '/': '/es' }
+   redirects: 
+    { '/': 'es' }
   
 });
