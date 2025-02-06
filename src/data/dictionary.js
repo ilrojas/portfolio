@@ -22,6 +22,7 @@ export const dictionary = {
         rhetoric: "Shall we do something big?",
         sloganTech: "From the essential to the advanced, here is what drives my projects.",
         buttonGitTech: "Explore my work on GitHub",
+        education: "Academic Education",
         // Add more key-value pairs as needed
     },
     es: {
@@ -47,7 +48,8 @@ export const dictionary = {
         soft: "Otras",
         rhetoric: "¿Hacemos algo grande?",
         sloganTech: "De lo esencial a lo avanzado, he aquí lo que impulsa mis proyectos.",
-        buttonGitTech: " Explora mi trabajo en GitHub"
+        buttonGitTech: " Explora mi trabajo en GitHub",
+        education: "Formación Académica",
         // Add more key-value pairs as needed
     }
 };

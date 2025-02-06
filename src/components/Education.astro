@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from "astro:content";
+import { dictionary } from "../data/dictionary";
+
+const education = await getCollection("education");
+
+const { Content } = await render(education);
+
+/* export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "es" },
+      props: { language: "Español" },
+    },
+    {
+      params: { lang: "en" },
+      props: { language: "English" },
+    },
+  ];
+} */
+
+const { defaultLanguage } = Astro.props;
+---
+
+<div class="animatedScroll grid grid-cols-1 h-full w-full ">
+    <section class="uppercase font-interTight text-sm  lg:text-2xl  mx-auto tracking-normal ">
+        <h3>{dictionary[defaultLanguage]?.education}</h3>
+      </section>
+  {
+    education.map((item) => {
+      const { id, slug, data } = item;
+      const { school, title, location, period } = data;
+      return (
+        <div class="relative ">
+          <span class="before:-left-1.5 before:top-1/4 before:absolute before:content-[''] before:h-4 before:w-4 before:bg-blue-500  before:ring-2 before:ring-blue-300 before:rounded-full" />
+          <div class=" justify-center align-middle border-l-2 before:content-[''] before:bg-gray-400 before:absolute before:left-0 pl-2  ">
+            <div id={id} class="flex flex-row space-x-4 h-10 pl-6">
+              <h2>{school}</h2>
+              <p>{title}</p>
+              <p>{id}</p>
+              <p>{slug}</p>
+              <p>{location}</p>
+              <p>{period}</p>
+              <Content />
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>

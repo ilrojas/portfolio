@@ -2,24 +2,23 @@
 import Welcome from "../../components/Welcome.astro";
 import Layout from "../../layouts/Layout.astro";
 import Technology from "../../components/Technology.astro";
-
+import Education from "../../components/Education.astro";
 import Skills from "../../components/Skills.astro";
 
-export async function getStaticPaths() {  
+export async function getStaticPaths() {
   return [
     {
       params: { lang: "es" },
       props: { language: "es" },
     },
-     {
+    {
       params: { lang: "en" },
       props: { language: "en" },
-    }, 
+    },
   ];
 }
 
 const { language } = Astro.props;
-
 
 /* ESCALA DE COLORES DESDE EL MAS OSCURO HASTA ELMAS clearTimeout
 #101828
@@ -27,7 +26,6 @@ const { language } = Astro.props;
 #334155
 #262f3d (footer)
 */
-
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -37,50 +35,42 @@ const { language } = Astro.props;
   title="Ivan Rodriguez Rojas FrontEnd Developer"
   defaultLanguage={language}
 >
-  <div
-    class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
-  >
-    <Technology defaultLanguage={language} />
+  <!-- bg-gray-200 dark:bg-[#1e2939] -->
+  <div class="grid grid-cols-1 left-0 w-full min-h-screen">
+    <div class="flex items-center justify-center">
+      <Technology defaultLanguage={language} />
+    </div>
 
     <div class="flex items-center justify-center">
       <Skills defaultLanguage={language} />
     </div>
-    <Welcome />
-    <div id="about">
-      <label>About whats</label>
-    </div>
-    <div id="contact">
-      <label>Contact</label>
+    <div class="flex items-center justify-center">
+      
+    <Education defaultLanguage={language} />
     </div>
     
   </div>
 </Layout>
 
 <script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const defLang = localStorage.getItem("language") || "es";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const defLang = localStorage.getItem("language") || "es";
-  
-  // Si ya estamos en la URL correcta, no redirigir
-  if (!window.location.pathname.startsWith(`/${defLang}`)) {
-    window.location.href = `/${defLang}`;
-  }
-});
+    // Si ya estamos en la URL correcta, no redirigir
+    if (!window.location.pathname.startsWith(`/${defLang}`)) {
+      window.location.href = `/${defLang}`;
+    }
+  });
 
-const changeLanguage = (lang) => {
-   localStorage.setItem("language", lang);
-  window.location.href = `/${lang}`;  
-   /* console.log(`el lenguaje seleccionado es ${lang}`)  */
-};
- document
-      .getElementById("language-icon-es")
-      .addEventListener("click", (e) => {
-        changeLanguage( e.currentTarget.getAttribute("data-language"));
-      
-      });
-    document
-      .getElementById("language-icon-en")
-      .addEventListener("click", (e) => {
-        changeLanguage( e.currentTarget.getAttribute("data-language"));
-      });
+  const changeLanguage = (lang) => {
+    localStorage.setItem("language", lang);
+    window.location.href = `/${lang}`;
+    /* console.log(`el lenguaje seleccionado es ${lang}`)  */
+  };
+  document.getElementById("language-icon-es").addEventListener("click", (e) => {
+    changeLanguage(e.currentTarget.getAttribute("data-language"));
+  });
+  document.getElementById("language-icon-en").addEventListener("click", (e) => {
+    changeLanguage(e.currentTarget.getAttribute("data-language"));
+  });
 </script>

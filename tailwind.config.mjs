@@ -129,7 +129,7 @@ export default {
             transform: "translateX(0)",
           },
           "100%": {
-            transform: "translateX(-100%)",
+            transform: "translateX(-50%)",
           },
         }
       },
@@ -149,6 +149,9 @@ export default {
         translateDiagonal: "translateDiagonal 1s linear ease-in-out",
         scrollHorizontal:  "scrollHorizontal 10s linear infinite",
       },
+      dropShadow: {
+        'top': '0 75px 35px rgba(0, 0, 0, 0.25)',
+      }
     },
     plugins: [],
   },

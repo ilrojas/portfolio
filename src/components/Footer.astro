@@ -6,9 +6,9 @@ const { defaultLanguage } = Astro.props;
 ---
 
 <div
-  class="grid grid-cols-6 justify-center items-center bottom-0 align-bottom w-full py-3 px-6 pb-1 bg-[#262f3d]"
+  class="grid grid-cols-1 lg:grid-cols-6 justify-center items-center bottom-0 align-bottom w-full py-3 mt-7 px-6 pb-1 bg-[#101828]"
 >
-  <div class="col-span-1">
+  <div class="lg:col-span-1">
     <div class="col-span-12 sm:col-span-4">
       <div
         class="p-4 relative bg-gray-900 border border-gray-900 shadow-lg rounded-2xl"
@@ -31,7 +31,7 @@ const { defaultLanguage } = Astro.props;
       </div>
     </div>
   </div>
-  <div class="col-span-4 flex flex-col justify-center items-center">
+  <div class="lg:col-span-4 flex flex-col justify-center items-center">
     <ul class="flex flex-row justify-center gap-8">
       <a
         href="#"
@@ -81,6 +81,6 @@ const { defaultLanguage } = Astro.props;
       <span class="font-bold">@Iván Rodríguez Rojas 2025 </span>
     </h6>
   </div>
-  <div class="col-span-1">a</div>
+  <div class="lg:col-span-1">a</div>
   <!-- <div class="text-white text-xs mb-3" set:html={iconCoder} ></div> -->
 </div>
