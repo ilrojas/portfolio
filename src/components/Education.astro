@@ -4,7 +4,9 @@ import { dictionary } from "../data/dictionary";
 
 const education = await getCollection("education");
 
-const { Content } = await render(education);
+const renderedEducation = await Promise.all(
+  education.map((item) => render(item))
+);
 
 /* export async function getStaticPaths() {
   return [
@@ -22,30 +24,61 @@ const { Content } = await render(education);
 const { defaultLanguage } = Astro.props;
 ---
 
-<div class="animatedScroll grid grid-cols-1 h-full w-full ">
-    <section class="uppercase font-interTight text-sm  lg:text-2xl  mx-auto tracking-normal ">
-        <h3>{dictionary[defaultLanguage]?.education}</h3>
-      </section>
-  {
-    education.map((item) => {
-      const { id, slug, data } = item;
-      const { school, title, location, period } = data;
-      return (
-        <div class="relative ">
-          <span class="before:-left-1.5 before:top-1/4 before:absolute before:content-[''] before:h-4 before:w-4 before:bg-blue-500  before:ring-2 before:ring-blue-300 before:rounded-full" />
-          <div class=" justify-center align-middle border-l-2 before:content-[''] before:bg-gray-400 before:absolute before:left-0 pl-2  ">
-            <div id={id} class="flex flex-row space-x-4 h-10 pl-6">
-              <h2>{school}</h2>
-              <p>{title}</p>
-              <p>{id}</p>
-              <p>{slug}</p>
-              <p>{location}</p>
-              <p>{period}</p>
-              <Content />
-            </div>
-          </div>
+<div class="grid grid-cols-1 items-center justify-center lg:w-3/4">
+  <div class="flex flex-col">
+    <div
+      class="lg:w-4/5 p-4 bg-[#bdcde7] dark:bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl"
+    >
+      <div class="flex-none lg:flex">
+        <div class="flex-auto lg:ml-3 justify-evenly py-2">
+          <h3>{dictionary[defaultLanguage]?.education}</h3>
+          {
+            education.map((item) => {
+              const { id, data, body } = item;
+              const { school, title, location, period } = data;
+              return (
+                <div class="relative animatedScroll">
+                  <span class="before:-left-1.5 before:top-1/4 before:absolute before:content-[''] before:h-4 before:w-4 before:bg-blue-500  before:ring-2 before:ring-blue-300 before:rounded-full" />
+                  <div class=" justify-center align-middle border-l-2 before:content-[''] before:bg-gray-400 before:absolute before:left-0 pl-2  pt-12">
+                    <div id={id} class="flex flex-row space-x-4 h-5 pl-3">
+                      <span class="text-xs">{period}</span>
+                    </div>
+                    <section class="pl-9">
+                      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between min-w-0">
+                        <h2 class="mr-auto text-base text-gray-900 dark:text-gray-100 font-medium ">
+                          {school}
+                        </h2>
+                        <div class="flex lg:items-center text-gray-800 dark:text-gray-500 font-normal">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            class="size-6"
+                          >
+                            <path d="M11.7 2.805a.75.75 0 0 1 .6 0A60.65 60.65 0 0 1 22.83 8.72a.75.75 0 0 1-.231 1.337 49.948 49.948 0 0 0-9.902 3.912l-.003.002c-.114.06-.227.119-.34.18a.75.75 0 0 1-.707 0A50.88 50.88 0 0 0 7.5 12.173v-.224c0-.131.067-.248.172-.311a54.615 54.615 0 0 1 4.653-2.52.75.75 0 0 0-.65-1.352 56.123 56.123 0 0 0-4.78 2.589 1.858 1.858 0 0 0-.859 1.228 49.803 49.803 0 0 0-4.634-1.527.75.75 0 0 1-.231-1.337A60.653 60.653 0 0 1 11.7 2.805Z" />
+                            <path d="M13.06 15.473a48.45 48.45 0 0 1 7.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 0 1-.46.711 47.87 47.87 0 0 0-8.105 4.342.75.75 0 0 1-.832 0 47.87 47.87 0 0 0-8.104-4.342.75.75 0 0 1-.461-.71c.035-1.442.121-2.87.255-4.286.921.304 1.83.634 2.726.99v1.27a1.5 1.5 0 0 0-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.66a6.727 6.727 0 0 0 .551-1.607 1.5 1.5 0 0 0 .14-2.67v-.645a48.549 48.549 0 0 1 3.44 1.667 2.25 2.25 0 0 0 2.12 0Z" />
+                            <path d="M4.462 19.462c.42-.419.753-.89 1-1.395.453.214.902.435 1.347.662a6.742 6.742 0 0 1-1.286 1.794.75.75 0 0 1-1.06-1.06Z" />
+                          </svg>
+                          Titulo
+                          <span class="font-medium text-gray-900 dark:text-gray-300">
+                            : {title}
+                          </span>
+                        </div>
+                      </div>
+                      <p class="flex items-center text-sm text-gray-700 dark:text-gray-400">
+                        {location}
+                      </p>
+
+                      {body}
+                    </section>
+                  </div>
+                </div>
+              );
+            })
+          }
         </div>
-      );
-    })
-  }
+      </div>
+    </div>
+    <div class="lg:w-2/5 ..."></div>
+  </div>
 </div>

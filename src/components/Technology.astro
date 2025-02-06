@@ -4,13 +4,13 @@ import { icons } from "../data/icons";
 
 const {defaultLanguage}= Astro.props
 ---
-<div class="animatedScroll grid grid-cols-1 items-center justify-center lg:w-3/4 text-white bg-gray-900 mt-6 lg:mt-0 py-2 rounded-lg  space-y-10 animate-moveUp">
+<div class="dark:text-white text-gray-700 animatedScroll grid grid-cols-1 items-center justify-center lg:w-3/4 bg-[#bdcde7] dark:bg-gray-900 mt-6 lg:mt-0 py-2 rounded-lg  space-y-10 animate-moveUp">
   <section class="uppercase font-interTight text-sm  lg:text-2xl text-center w-2/3 lg:w-2/4 mx-auto tracking-normal ">
     <h3>{dictionary[defaultLanguage]?.sloganTech}</h3>
   </section>
   <div
   id="skills"
-        class="flex lg:flex lg:flex-row gap-1 ease-in duration-200 pt-2 justify-center items-center -space-x-1 text-gray-400 opacity-75 overflow-hidden animate-scrollHorizontal lg:animate-none"
+        class="flex lg:flex lg:flex-row gap-1 ease-in duration-200 pt-2 justify-center items-center -space-x-1 text-gray-700 dark:text-gray-400 opacity-75 overflow-hidden animate-scrollHorizontal lg:animate-none"
       >
       <div class="w-fit flex flex-nowrap justify-center items-center gap-2 overflow-hidden">
         {
