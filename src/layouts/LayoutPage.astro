@@ -95,9 +95,9 @@ const separatedPath = path
     >
       <slot />
     </div> -->
-    <div class="bg-white dark:bg-[#101828]">
+    <div class=" bg-white dark:bg-[#101828] border-b-[1px] dark:border-opacity-10 border-opacity-30 border-blue-400">
       <div
-        class="h-[120px] lg:h-[135px] z-[1] flex flex-row justify-between lg:py-2 lg:px-4 columns-2 space-x-20 lg:flex-row md:flex-col md:items-center w-full"
+        class="h-[70px] lg:h-[85px] z-[1] flex flex-row justify-between lg:py-2 lg:px-4 columns-2 space-x-20 lg:flex-row md:flex-col md:items-center w-full"
       >
         <div
           class="flex justify-center items-center gap-3 pl-20 lg:pl-24 h-fit-content"
@@ -105,7 +105,7 @@ const separatedPath = path
           <a
             href="/"
             class="lg:text-sm lg:py-1 lg:px-4
-                  flex flex-row justify-between"
+                  flex flex-row justify-between text-[#3888f8] dark:text-[#38d5f8]"
             set:html={iconCoder}
           />
           <div class="">
@@ -217,7 +217,7 @@ const separatedPath = path
     </div>
 
     <div
-      class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-[#1e2939] min-h-screen"
+      class="grid grid-cols-1 left-0 w-full bg-gray-200 dark:bg-gradient-to-b dark:from-[#101828] dark:via-[#1e2939] dark:to-[#2c3849] min-h-screen"
     >
       <section class="grid-cols-12 gap-4 pr-10 pt-3 pb-2 grid">
         <div class="col-span-1"></div>
