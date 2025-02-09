@@ -4,18 +4,19 @@ import { dictionary } from "../data/dictionary";
 const technical = skills.technical;
 const soft = skills.soft;
 
-const { defaultLanguage } = Astro.props;
+const { defaultLanguage }: { defaultLanguage: 'es' | 'en' } = Astro.props;
 ---
 
 <div class="animatedScroll grid grid-cols-1 lg:grid-cols-2 space-x-0 my-5">
   <div
+    
     class="container grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-3xl bg-white/90 dark:text-black/80 shadow-xl shadow-gray-600"
   >
     <section
       id="tech-skills"
       class="rounded-3xl bg-cyan-900 dark:bg-slate-400 p-3 text-white/70 dark:text-black/80"
     >
-      <h2 class="font-extrabold">{dictionary[defaultLanguage]?.technical}</h2>
+      <h2 id="skills" class="font-extrabold">{dictionary[defaultLanguage]?.technical}</h2>
       <div class="skills flex flex-col gap-2">
         {
           technical.map((skill, index) => {
@@ -30,15 +31,15 @@ const { defaultLanguage } = Astro.props;
                     {skill.name}
                   </h3>
                   <span class="inline-flex font-bold group-hover:scale-125 transition duration-200">
-                    {skill.rating/10} /10
-                  </span>
+                    <span class="levelSkill" data-level={`${skill.rating/10}`}></span> /10 </span>
                 </div>
                 <div class=" flex flex-1 items-end gap-2 ">
                   
                   <div class="overflow-hidden bg-blue-50 h-1.5 rounded-full w-2/3">
                     <span
-                      class="h-full bg-blue-500 w-full block rounded-full"
-                      style={`width: ${skill.rating}%`}
+                      class="barLevelSkill h-full bg-blue-500 w-full block rounded-full"
+                      
+                      data-bar={`${skill.rating}`}
                     />
                   </div>
                 </div>
@@ -64,15 +65,15 @@ const { defaultLanguage } = Astro.props;
                     {skill[defaultLanguage]}
                   </h3>
                   <span class="inline-flex font-bold group-hover:scale-125 transition duration-200">
-                    {skill.rating/10} /10
-                  </span>
+                  <span class="levelSkill" data-level={`${skill.rating/10}`}></span> /10 </span>
                 </div>
                 <div class=" flex flex-1 items-end gap-2">
                   
                   <div class="overflow-hidden bg-blue-50 h-1.5 rounded-full w-2/3">
                     <span
-                      class="h-full bg-orange-800 w-full block rounded-full"
+                      class="barLevelSkill h-full bg-orange-800 w-full block rounded-full"
                       style={`width: ${skill.rating}%`}
+                      data-bar={`${skill.rating}`}
                     />
                   </div>
                 </div>
