@@ -32,7 +32,7 @@ const { language } = Astro.props;
         <!-- profile card -->
         <div class="flex flex-col">
           <div
-            class="bg-gray-900 border border-gray-900 shadow-lg rounded-2xl p-4"
+            class="bg-[#bdcde7] dark:bg-gray-900 border border-[#91b6f2] dark:border-gray-900 shadow-lg rounded-2xl p-4 text-gray-900 "
           >
             <div class="flex-none sm:flex">
               <!-- DIV imagen perfil -->
@@ -51,11 +51,11 @@ const { language } = Astro.props;
                   <div class="flex items-center">
                     <div class="flex flex-col">
                       <div
-                        class="w-full flex-none text-lg text-gray-200 font-bold leading-none"
+                        class="w-full flex-none text-lg  dark:text-gray-200 font-bold leading-none"
                       >
                         {dictionary[language].myName}
                       </div>
-                      <div class="flex-auto text-gray-400 my-1">
+                      <div class="flex-auto  dark:text-gray-400 my-1">
                         <span class="mr-3">{dictionary[language].slogan}</span
                         ><span class="mr-3 border-r border-gray-600 max-h-0"
                         ></span><span>{dictionary[language].myLocation}</span>
@@ -69,8 +69,8 @@ const { language } = Astro.props;
                   <LevelStars />
                 </div>
                 <!-- DIV Followers -->
-                <div class="flex pt-2 text-sm text-gray-400">
-                  <div class="flex-1 inline-flex items-center">
+                <div class="flex pt-2 text-sm  dark:text-gray-400">
+                  <div class="flex-1 inline-flex i tems-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-5 w-5 mr-2"
@@ -111,11 +111,11 @@ const { language } = Astro.props;
                   <div class="col-span-2 lg:col-span-1">
                     <div class="flex flex-col">
                       <div
-                        class="w-full flex-none text-lg text-gray-200 font-bold leading-none"
+                        class="w-full flex-none text-lg  dark:text-gray-200 font-bold leading-none"
                       >
                         Contacto de WhatsApp
                       </div>
-                      <div class="flex flex-row text-gray-400 my-1">
+                      <div class="flex flex-row  dark:text-gray-400 my-1">
                         <span class="mr-3"
                           ><svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -129,11 +129,11 @@ const { language } = Astro.props;
                           ></span
                         ><span class="mr-3 border-r border-gray-600 max-h-0"
                         ></span><a
-                          class="flex flex-col hover:scale-110 transition duration-300"
+                          class="flex flex-col group"
                           href="https://wa.me/59891276549?text=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios"
                           target="_blank"
                         >
-                          +598 91276549<span class="text-xs"
+                        <span class="group-hover:-translate-x-1/4 group-hover:opacity-0 transition duration-200">+598 91276549</span><span class="text-xs group-hover:-translate-y-4 group-hover:scale-110 duration-500"
                             >Chatea conmigo en WhatsApp</span
                           >
                         </a>
@@ -143,11 +143,11 @@ const { language } = Astro.props;
                   <div class="col-span-2 lg:col-span-1">
                     <div class="flex flex-col">
                       <div
-                        class="w-full flex-none text-lg text-gray-200 font-bold leading-none"
+                        class="w-full flex-none text-lg  dark:text-gray-200 font-bold leading-none"
                       >
                         Email
                       </div>
-                      <div class="flex flex-row text-gray-400 my-1">
+                      <div class="flex flex-row  dark:text-gray-400 my-1">
                         <span class="mr-3"
                           ><svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -165,9 +165,8 @@ const { language } = Astro.props;
                           href="mailto:ivan88rodriguezrojas@gmail.com?subject=Consulta&body=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios."
                           target="_blank"
                         >
-                        <span class="group-hover:-translate-x-1/4 group-hover:opacity-0 transition duration-200">ivan88rodriguezrojas@gmail.com</span><span class="text-xs group-hover:animate-translateDiagonal "
-                            >Envíame un correo ahora</span
-                          >
+                        <span class="group-hover:-translate-x-1/4 group-hover:opacity-0 transition duration-200">ivan88rodriguezrojas@gmail.com</span>
+                        <span class="text-xs group-hover:-translate-y-4 group-hover:scale-110 duration-500">Envíame un correo ahora</span>
                         </a>
                       </div>
                     </div>

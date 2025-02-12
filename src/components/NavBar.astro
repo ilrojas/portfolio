@@ -132,9 +132,8 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
       >
         {
           links.map((link) => (
-            <li class=" relative group text-responsive flex gap-1 justify-end  hover:scale-105 hover:text-cyan-500 hover:drop-shadow-xl transition-all duration-100">
-              {/* <span class="text-yellow-200 text-sm font-bold  group-hover:opacity-100">
-              &lt;
+            <li class="linkItem relative group text-responsive flex gap-1 justify-end hover:scale-105 hover:text-cyan-500 hover:drop-shadow-xl transition-all duration-100" onClick={() => setActiveLink(link.href)}>
+              {/* <span class="text-yellow-200 text-sm font-bold group-hover:opacity-100">
             </span> */}
               <span set:html={link.icon} class="items-center" />
               <a
@@ -221,11 +220,11 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
         >
           <input id="toggleTheme" type="checkbox" class="sr-only peer" />
           <div
-            class="w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2 peer-focus:ring-cyan-100 transition-colors"
+            class=`w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2 peer-focus:ring-cyan-100 transition-colors custom-shadow-light`
           >
           </div>
           <div
-            class="absolute left-1 top-[3px] w-3 h-3 rounded-full transition-transform peer-checked:translate-x-3"
+            class="absolute left-1 top-[1px]  w-3 h-3 rounded-full transition-transform peer-checked:translate-x-3"
             id="iconToggle"
           >
           </div>
@@ -268,6 +267,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
 </div> -->
 
 <script is:inline>
+
   document.addEventListener("DOMContentLoaded", () => {
 
     

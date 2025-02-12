@@ -27,6 +27,7 @@ export default {
         rubik:["Rubik Vinyl", "serif"],
         inter: ["Inter", "serif"],
         interTight: ["Inter Tight", "serif"],
+        caveat: ["Caveat", "serif"],
       },
       transitionDelay: {
         1000: "1000ms",

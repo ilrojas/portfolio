@@ -17,25 +17,90 @@ const { defaultLanguage } = Astro.props;
   <div
     class="flex flex-col columns-1 justify-center items-start px-4 lg:px-8 h-fit-content mt-10"
   >
-    <div class="grid grid-cols-1 items-center">
-      <div class="grid grid-cols-4 text-xs font-medium mb-4">
-        <div class="col-span-3 lg:col-span-2 ">
+    <div class="grid grid-cols-1 items-center relative">
+      <span class="absolute -top-8 left-24 -rotate-45">
+        <svg
+          version="1.0"
+          xmlns="http://www.w3.org/2000/svg"
+          width="118px"
+          height="37px"
+          viewBox="0 0 318.000000 237.000000"
+          preserveAspectRatio="xMidYMid meet"
+          class="fill-current text-[#000000] dark:text-slate-50"
+        >
+          <g
+            transform="translate(0.000000,237.000000) scale(0.100000,-0.100000)"
+            fill="currentColor" 
+            stroke="none"
+          >
+            <path
+              d="M504 1665 c-68 -116 -101 -286 -83 -427 20 -163 81 -290 186 -388 86
+              -81 157 -113 253 -114 66 -1 84 3 143 32 l67 33 68 -15 c108 -24 216 -29 382
+              -17 169 12 208 18 600 85 146 24 285 46 310 48 l45 3 3 -78 c4 -119 10 -118
+              272 36 88 52 126 79 128 94 9 59 -220 163 -360 163 l-48 0 0 -68 0 -69 -97
+              -12 c-54 -7 -228 -35 -388 -61 -159 -27 -343 -54 -409 -61 -116 -11 -368 -8
+              -413 6 -22 7 -21 9 23 66 91 119 152 296 140 405 -17 146 -78 214 -193 214
+              -136 0 -252 -128 -283 -311 -22 -129 18 -268 100 -347 l43 -41 -29 -12 c-16
+              -7 -59 -14 -96 -17 -56 -3 -75 0 -122 21 -69 32 -131 94 -184 183 -59 100 -83
+              181 -89 299 -6 112 14 219 62 322 29 64 30 73 10 73 -8 0 -26 -20 -41 -45z
+              m685 -209 c35 -19 52 -56 58 -132 7 -83 -12 -186 -49 -260 -28 -58 -120 -174
+              -137 -174 -5 0 -28 18 -53 40 -64 56 -91 123 -91 225 0 136 62 253 158 296 49
+              22 77 24 114 5z"
+            ></path>
+          </g>
+        </svg>
+      </span>
+      <span class="absolute top-4 md:top-0 lg:top-0 left-32 md:left-40 lg:left-40 -scale-x-100 md:scale-x-100 lg:scale-x-100 -rotate-45 md:rotate-0 lg:rotate-0">
+        <svg
+          version="1.0"
+          xmlns="http://www.w3.org/2000/svg"
+          width="118px"
+          height="37px"
+          viewBox="0 0 318.000000 237.000000"
+          preserveAspectRatio="xMidYMid meet"
+          class="fill-current text-[#000000] dark:text-slate-50"
+        >
+          <g
+            transform="translate(0.000000,237.000000) scale(0.100000,-0.100000)"
+            fill="currentColor" 
+            stroke="none"
+          >
+            <path
+              d="M504 1665 c-68 -116 -101 -286 -83 -427 20 -163 81 -290 186 -388 86
+              -81 157 -113 253 -114 66 -1 84 3 143 32 l67 33 68 -15 c108 -24 216 -29 382
+              -17 169 12 208 18 600 85 146 24 285 46 310 48 l45 3 3 -78 c4 -119 10 -118
+              272 36 88 52 126 79 128 94 9 59 -220 163 -360 163 l-48 0 0 -68 0 -69 -97
+              -12 c-54 -7 -228 -35 -388 -61 -159 -27 -343 -54 -409 -61 -116 -11 -368 -8
+              -413 6 -22 7 -21 9 23 66 91 119 152 296 140 405 -17 146 -78 214 -193 214
+              -136 0 -252 -128 -283 -311 -22 -129 18 -268 100 -347 l43 -41 -29 -12 c-16
+              -7 -59 -14 -96 -17 -56 -3 -75 0 -122 21 -69 32 -131 94 -184 183 -59 100 -83
+              181 -89 299 -6 112 14 219 62 322 29 64 30 73 10 73 -8 0 -26 -20 -41 -45z
+              m685 -209 c35 -19 52 -56 58 -132 7 -83 -12 -186 -49 -260 -28 -58 -120 -174
+              -137 -174 -5 0 -28 18 -53 40 -64 56 -91 123 -91 225 0 136 62 253 158 296 49
+              22 77 24 114 5z"
+            ></path>
+          </g>
+        </svg>
+      </span>
+      <div class="grid grid-cols-4 text-lg font-medium mb-4">
+        <div class="col-span-3 lg:col-span-2">
           <Badge
-          badgeText={dictionary[defaultLanguage]?.rhetoric}
-          badgeIcon=`<svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse" width="12" height="12" viewBox="0 0 12 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.684 3.603c.521-.659.03-1.603-.836-1.603h-6.716a1.06 1.06 0 0 0-.909.502l-5.082 8.456c-.401.666.103 1.497.908 1.497h3.429l-3.23 8.065c-.467 1.02.795 1.953 1.643 1.215L20 9.331h-6.849z"/></svg>`
-          badgeColor=`blue-400`
-          animate="true"
-        />
+            badgeText={dictionary[defaultLanguage]?.rhetoric}
+            badgeIcon=`<svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse" width="12" height="12" viewBox="0 0 12 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.684 3.603c.521-.659.03-1.603-.836-1.603h-6.716a1.06 1.06 0 0 0-.909.502l-5.082 8.456c-.401.666.103 1.497.908 1.497h3.429l-3.23 8.065c-.467 1.02.795 1.953 1.643 1.215L20 9.331h-6.849z"/></svg>`
+            badgeColor=`blue-400`
+            animate="true"
+          />
         </div>
-
+        
         <button
           id="butoncv"
-          class="col-span-3 lg:col-span-1 capitalize animate-moveDown hover:scale-105 hover:cursor-pointer transition-all duration-300"
+          class="absolute -top-12 left-36 font-caveat col-span-3 lg:col-span-1 capitalize animate-moveDown hover:font-extrabold hover:shadow-black dark:hover:shadow-white hover:scale-105 hover:cursor-pointer transition-all duration-300"
         >
           {dictionary[defaultLanguage]?.readcv}
         </button>
+        
         <button
-          class="col-span-3 lg:col-span-1 hover:scale-105 hover:cursor-pointer transition-all duration-300 animate-moveDown overflow-hidden"
+            class="rotate-12 -translate-x-11 font-caveat col-span-3 lg:col-span-1 hover:font-extrabold hover:shadow-black dark:hover:shadow-white hover:scale-105 hover:cursor-pointer transition-all duration-300 animate-moveDown overflow-hidden"
           ><a
             href={defaultLanguage === "es"
               ? "/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf"
@@ -49,7 +114,12 @@ const { defaultLanguage } = Astro.props;
           >
             {dictionary[defaultLanguage]?.download}
           </a>
+          
+            
+          
         </button>
+        
+        
       </div>
 
       <div class="animate-moveFromLeft ease-in">

@@ -69,6 +69,8 @@ const { title, defaultLanguage } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Inter Caveat -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 
     <title>{title}</title>
 
@@ -126,6 +128,14 @@ const { title, defaultLanguage } = Astro.props;
   .menuLink:hover > :not(:hover) {
     filter: blur(1px);
     opacity: 0.5;
+    
+  }
+
+  .custom-shadow-light {
+    box-shadow: inset 4px 2px 3px rgba(0, 0, 0, 0.3); /* Cambia el color de la sombra */
+  }
+  .custom-shadow-dark {
+    box-shadow: inset -3px 1px 3px rgba(135, 134, 134, 0.3); /* Cambia el color de la sombra */
   }
 </style>
 <script is:inline>

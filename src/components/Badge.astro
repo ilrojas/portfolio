@@ -4,7 +4,7 @@ const { badgeText, badgeIcon = null, badgeColor, animate=false } = Astro.props;
 
 <div class="inline-flex   relative align-middle justify-center">
   <span
-    class=`text-xs flex w-auto h-6 flex-row rounded-full dark:bg-${badgeColor}/10 bg-${badgeColor} px-2 py-1 text-white dark:text-${badgeColor} mr-5 animate-moveDown transition-all duration-300`
+    class=`shadow-lg shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(255,255,255,0.2)] text-xs flex w-auto h-6 flex-row rounded-full dark:bg-${badgeColor}/10 bg-${badgeColor} px-2 py-1 text-white dark:text-${badgeColor} mr-5 animate-moveDown transition-all duration-300`
     set:html={badgeText + badgeIcon}
   >
     
