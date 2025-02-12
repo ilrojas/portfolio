@@ -15,9 +15,16 @@ import { dictionary } from "../data/dictionary";
 import { flags } from "../data/flags";
 import { iconsToggle } from "../data/iconsToggle";
 import { iconCoder } from "../data/iconCoder";
-const { defaultLanguage } = Astro.props;
+const { defaultLanguage } = Astro.props as { defaultLanguage: string };
 
-const links = [
+type Link = {
+  href: string;
+  text: string;
+  transitionName: string;
+  icon: string;
+};
+
+const links: Link[] = [
   /* { href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" }, */
   {
     href: `/${[defaultLanguage]}/about`,
@@ -179,7 +186,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
         >
           <a
             id="language-icon-en"
-            class="inline-flex items-center gap-1 lg:hover:scale-110"
+            class="inline-flex items-center gap-1 lg:hover:scale-110 lg:hover:cursor-pointer"
             data-language="en"
           >
             <button class="icon language-icon" set:html={flags.en.icon} />
@@ -193,7 +200,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
           </a>
           <a
             id="language-icon-es"
-            class="inline-flex items-center gap-1 lg:hover:scale-110"
+            class="inline-flex items-center gap-1 lg:hover:scale-110 lg:hover:cursor-pointer"
             data-language="es"
           >
             <button class="icon language-icon" set:html={flags.es.icon} />
@@ -262,100 +269,12 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    const toggleButton = document.getElementById("navbar-toggle");
-    const navbarClose = document.getElementById("navbar-close");
-    const nav = document.getElementById("navbar");
-    const menuContent = document.getElementById("menu-content");
-    const menuContentHeader = document.getElementById("menu-content-header");
-    toggleButton?.addEventListener("click", () => {
-      const isHidden = nav?.classList.contains("w-0");
-      /* nav?.classList.toggle("hidden", !isHidden);
-      nav?.classList.toggle("flex", isHidden);
-      nav?.classList.toggle("h-screen", isHidden);
-      nav?.classList.toggle("w-60", isHidden); */
-      if (isHidden) {
-        nav?.classList.remove("w-0");
-        nav?.classList.add("w-60");
-      } else {
-        nav?.classList.remove("w-60");
-        nav?.classList.add("w-0");
-      }
 
-      const isHidden2 = menuContent?.classList.contains("w-0");
-
-      /* menuContent?.classList.toggle("hidden", !isHidden2);
-      menuContent?.classList.toggle("flex", isHidden2);
-      menuContent?.classList.toggle("h-screen", isHidden2);
-      menuContent?.classList.toggle("w-60", isHidden2); */
-      if (isHidden2) {
-        menuContent?.classList.remove("w-0");
-        menuContent?.classList.add("w-60");
-        menuContent?.classList.toggle("p-2", isHidden2);
-        menuContent?.classList.toggle("p-4", isHidden2);
-
-        menuContentHeader?.classList.remove("w-0");
-        menuContentHeader?.classList.add("w-full");
-      } else {
-        menuContent?.classList.remove("w-60");
-        menuContent?.classList.add("w-0");
-
-        menuContentHeader?.classList.remove("w-full");
-        menuContentHeader?.classList.add("w-0");
-      }
-    });
-
-    navbarClose.addEventListener("click", () => {
-      const isHidden2 = menuContent?.classList.contains("w-0");
-      menuContent?.classList.toggle("p-2", isHidden2);
-      menuContent?.classList.toggle("p-4", isHidden2);
-
-      nav?.classList.remove("w-60");
-      nav?.classList.add("w-0");
-
-      menuContent?.classList.remove("w-60");
-      menuContent?.classList.add("w-0");
-
-      menuContentHeader?.classList.remove("w-full");
-      /* menuContentHeader?.classList.add("w-0"); */
-    });
+    
   });
 
-  /*############# PARA EL SWITCHER DE LENGUAJES #############*/
-  const toggleMenu = (e) => {
-    const iconSwitch = document.querySelector("#icon-switch-language");
-    const menu = document.querySelector("#language-menu");
 
-    // ASEGÚRATE DE QUE ESTÁS MANEJANDO EL EVENTO PARA EL ELEMENTO CORRECTO
-    if (iconSwitch?.contains(e.target)) {
-      menu?.classList.toggle("lg:hidden");
-    } // Si se hace click fuera del menú o del botón, ocultar el menú
-    else if (!menu?.contains(e.target)) {
-      menu?.classList.add("lg:hidden");
-    }
-  };
 
-  document.addEventListener("click", toggleMenu);
-  /*############# PARA EL SWITCHER DE LENGUAJES #############*/
+  
 
-  /* let userLanguage = defaultLanguage;
-  // Function to change the language and store it in localStorage
-  function changeLanguage(newLanguage) {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("language", newLanguage);
-      userLanguage = newLanguage; // Update the language in the component
-      console.log(
-        `El nuevo lenguaje almacenado en LocalStorage es: ${userLanguage}`
-      );
-    }
-  }
-
-  // Función para obtener el idioma del localStorage
-  function getLanguageFromLocalStorage() {
-    let language = localStorage.getItem("language");
-    if (language == null) {
-      localStorage.setItem("language", "es");
-    }
-    console.log(`Lenguaje: ${localStorage.getItem("language")}`);
-  }
-  getLanguageFromLocalStorage(); */
 </script>
