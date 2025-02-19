@@ -27,7 +27,7 @@ type Link = {
 const links: Link[] = [
   /* { href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" }, */
   {
-    href: `/${[defaultLanguage]}/about`,
+    href: `/about`,
     text: "about",
     transitionName: "labelAboutx",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4.616 21q-.691 0-1.153-.462T3 19.385V16h1v3.385q0 .23.192.423t.423.192H8v1zM3 8V4.616q0-.691.463-1.153T4.615 3H8v1H4.616q-.231 0-.424.192T4 4.615V8zm13 13v-1h3.385q.23 0 .423-.192t.192-.424V16h1v3.385q0 .69-.462 1.152T19.385 21zm4-13V4.616q0-.231-.192-.424T19.385 4H16V3h3.385q.69 0 1.152.463T21 4.615V8zm-8 3.885q-1.044 0-1.772-.728T9.5 9.385q0-1.02.728-1.76T12 6.885q1.02 0 1.76.74t.74 1.76q0 1.044-.74 1.772t-1.76.728m-5.5 5.23v-1.4q0-.41.205-.756q.204-.347.558-.565q1.074-.636 2.278-.958q1.205-.32 2.459-.32t2.459.32t2.278.958q.354.217.558.565q.205.347.205.757v1.4z"/></svg>`,
@@ -67,7 +67,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
 > -->
 <nav
   id="navbar"
-  class="lg:fixed lg:w-full lg:h-16 lg:z-50 lg:flex lg:flex-row lg:items-center lg:justify-between lg:transition-none
+  class="animate-moveDown lg:fixed lg:w-full lg:h-16 lg:z-50 lg:flex lg:flex-row lg:items-center lg:justify-between lg:transition-none
          fixed top-0 left-0 w-0 h-screen z-40 transition-all duration-500 ease-in flex-col border-b-2 dark:border-opacity-10 border-opacity-30 border-blue-400"
 >
   <!-- lg:bg-transparent lg:bg-[#2d2e32] lg:bg-opacity-50 lg:backdrop-blur-md -->
@@ -87,11 +87,12 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
         class="h-full flex items-center justify-between"
         id="menu-content-header"
       >
-        <div
-          class="lg:text-sm lg:py-1 lg:px-4
-        flex flex-row justify-between text-[#3888f8] dark:text-[#38d5f8] "
-          set:html={iconCoder}
-        />
+      <a
+      href="/"
+      class="lg:text-sm lg:py-1 lg:px-4
+            flex flex-row justify-between text-[#3888f8] dark:text-[#38d5f8]"
+      set:html={iconCoder}
+    />
         <!-- Navbar Button Close -->
         <button
           id="navbar-close"
@@ -132,13 +133,13 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
       >
         {
           links.map((link) => (
-            <li class="linkItem relative group text-responsive flex gap-1 justify-end hover:scale-105 hover:text-cyan-500 hover:drop-shadow-xl transition-all duration-100" onClick={() => setActiveLink(link.href)}>
+            <li class="linkItem relative group text-responsive flex gap-1 justify-end hover:scale-105 hover:text-sky-600 dark:hover:text-cyan-500 hover:drop-shadow-xl transition-all duration-100" onClick={() => setActiveLink(link.href)}>
               {/* <span class="text-yellow-200 text-sm font-bold group-hover:opacity-100">
             </span> */}
               <span set:html={link.icon} class="items-center" />
               <a
-                class="lg:text-lg font-jost"
-                href={link.href}
+                class="lg:text-lg font-interTight hover:font-bold"
+                href={`/${defaultLanguage}${link.href}`}
                 transition:name={link.transitionName}
               >
                 {dictionary[defaultLanguage]?.[link.text]}

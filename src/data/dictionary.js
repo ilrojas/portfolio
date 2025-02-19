@@ -1,6 +1,7 @@
 export const dictionary = {
     en: {
         home: "Home",
+        greeting: "Hello! I'm",
         myName : "Iván Leandro Rodríguez Rojas",
         myLocation : "Montevideo, URUGUAY",
         welcome: "Welcome to my portfolio",
@@ -14,9 +15,9 @@ export const dictionary = {
         download: "Download CV",
         change: "Change Language",
         theme: "Change Theme",
-        slogan: "I'm a Frontend Developer",
+        slogan: "Frontend Developer",
         created: "Created by",
-        description: "I am a front-end developer with experience in creating modern and functional interfaces using technologies like React, Tailwind CSS, and Astro. I am passionate about turning ideas into intuitive and visually appealing web experiences.",
+        description: "With experience in creating modern and functional interfaces using technologies like React, Tailwind CSS, and Astro. I am passionate about turning ideas into intuitive and visually appealing web experiences.",
         technical: "Technical Skills",
         soft: "Others",
         rhetoric: "Shall we do something big?",
@@ -27,6 +28,7 @@ export const dictionary = {
     },
     es: {
         home: "Inicio",
+        greeting: "¡Hola! Soy",
         myName : "Iván Leandro Rodríguez Rojas",
         myLocation : "Montevideo, URUGUAY",
         welcome: "Bienvenido a mi portafolio",
@@ -43,7 +45,7 @@ export const dictionary = {
         theme: "Cambiar Tema",
         slogan: "Desarrollador Frontend",
         created: "Creado por",
-        description: "Soy un desarrollador front-end con experiencia en la creación de interfaces modernas y funcionales utilizando tecnologías como React, Tailwind CSS y Astro. Me apasiona convertir ideas en experiencias web intuitivas y visualmente atractivas.",
+        description: "Con experiencia en la creación de interfaces modernas y funcionales utilizando tecnologías como React, Tailwind CSS y Astro. Me apasiona convertir ideas en experiencias web intuitivas y visualmente atractivas.",
         technical: "Habilidades Técnicas",
         soft: "Otras",
         rhetoric: "¿Hacemos algo grande?",

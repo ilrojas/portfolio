@@ -1,4 +1,3 @@
-import Technology from "./src/components/Technology.astro";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -138,7 +137,7 @@ export default {
         responsive: "clamp(0.75rem, 2.5vw, 2.75rem)",
       },
       animation: {
-        moveDown: "moveDown .9s ease-in-out",
+        moveDown: "moveDown .5s ease-in-out",
         moveUp: "moveUp .9s ease-in-out",
         spinSlow: "spinSlow 18s linear infinite",
         fly: "fly 2s linear infinite",
@@ -146,13 +145,16 @@ export default {
         moveFromRight: "moveFromRight 1s ease-in-out",
         moveFromLeft: "moveFromLeft 1s ease-in-out",
         technologyIcons: "technologyIcons 5s linear infinite",
-        fadeIn: "fadeIn .9s ease-in-out",
+        fadeIn: "fadeIn 2s ease-in-out ",
         translateDiagonal: "translateDiagonal 1s linear ease-in-out",
         scrollHorizontal:  "scrollHorizontal 10s linear infinite",
       },
       dropShadow: {
         'top': '0 75px 35px rgba(0, 0, 0, 0.25)',
-      }
+      },
+      boxShadow: {  
+        'custom': '5px 4px 6px 2px rgba(0, 0, 0, 0.8), -1.5px -2px 4px 2px rgba(255, 255, 255, 0.5)',  
+      }  
     },
     plugins: [],
   },

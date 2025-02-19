@@ -1,0 +1,15 @@
+---
+---
+<script>
+
+    const redirectToLang = () => {
+      if (typeof window !== "undefined") {
+        const lang = localStorage.getItem("lang") || "es"; // Idioma por defecto: "es"
+        
+          window.location.href = `/${lang}`;
+        
+      }
+    };
+    
+    redirectToLang();
+    </script>

@@ -24,10 +24,24 @@ const renderedEducation = await Promise.all(
 const { defaultLanguage } = Astro.props;
 ---
 
-<div class="animatedScroll grid grid-cols-1 items-center justify-center lg:w-3/4">
-  <div class="flex flex-col">
+<div class="animatedScroll flex flex-col md:flex-row lg:flex-row items-center justify-center gap-4 my-5">
+  <div
+    class="flex-1 relative flex flex-col font-interTight  dark:font-interTight  line-clamp-3 text-center mx-auto tracking-normal align-middle justify-center"
+  > 
+    <span
+      class=`text-responsive -rotate-12 opacity-10 font-extrabold text-8xl font-caveat text-black dark:text-cyan-300 absolute    items-center top-3`
+      >{dictionary[defaultLanguage]?.education}
+      
+    </span>
+    <p class="leading-relaxed py-8 px-4 text-lg lg:text-3xl">
+      ¿No es el aprendizaje un viaje constante en el mundo del desarrollo web?
+    </p>
+    <p class="text-lg font-extralight">Mis estudios en [tu formación] me proporcionaron una base sólida, pero lo que realmente ha impulsado mi crecimiento han sido los proyectos reales. Aplicar el conocimiento en soluciones concretas es lo que transforma la teoría en habilidades.</p>
+  </div>
+  
+  <div class="flex flex-1 flex-col">
     <div
-      class="lg:w-4/5 p-4 bg-[#bdcde7] dark:bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl"
+      class=" p-4 bg-[#bdcde7] dark:bg-gray-800 border-gray-800 shadow-md hover:shadow-lg rounded-2xl"
     >
       <div class="flex-none lg:flex">
         <div class="flex-auto lg:ml-3 justify-evenly py-2">
@@ -79,6 +93,9 @@ const { defaultLanguage } = Astro.props;
         </div>
       </div>
     </div>
-    <div class="lg:w-2/5 ..."></div>
+    <div class="lg:w-2/5 ...">
+
+    </div>
   </div>
+  
 </div>

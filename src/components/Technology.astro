@@ -4,15 +4,15 @@ import { icons } from "../data/icons";
 
 const {defaultLanguage}= Astro.props
 ---
-<div class="dark:text-white text-gray-700 animatedScroll grid grid-cols-1 items-center justify-center lg:w-3/4 bg-[#bdcde7] dark:bg-gray-900 mt-6 lg:mt-0 py-2 rounded-lg  space-y-10 animate-moveUp">
+<div class="dark:text-white text-gray-700 animatedScroll grid grid-cols-1 items-center justify-center lg:w-3/4 bg-[#bdcde7] dark:bg-gray-900 mt-6 lg:mt-0 py-2 rounded-lg  space-y-10">
   <section class="uppercase font-interTight text-sm  lg:text-2xl text-center w-2/3 lg:w-2/4 mx-auto tracking-normal ">
     <h3>{dictionary[defaultLanguage]?.sloganTech}</h3>
   </section>
   <div
   id="skills"
-        class="flex lg:flex lg:flex-row gap-1 ease-in duration-200 pt-2 justify-center items-center -space-x-1 text-gray-700 dark:text-gray-400 opacity-75 overflow-hidden animate-scrollHorizontal lg:animate-none"
+        class=" flex lg:flex lg:flex-row gap-1 pt-2 justify-center items-center -space-x-1 text-gray-700 dark:text-gray-400 opacity-75   overflow-hidden"
       >
-      <div class="w-fit flex flex-nowrap justify-center items-center gap-2 overflow-hidden">
+      <div class="marquee-content w-fit flex flex-nowrap justify-center items-center gap-2 animate-scrollHorizontal lg:animate-none overflow-hidden whitespace-nowrap">
         {
           icons.map((icon, index) => {
             const classBorder = index % 2 === 0 ? 'lg:border-b-2 ' : 'lg:border-t-2 ';
@@ -76,6 +76,20 @@ const {defaultLanguage}= Astro.props
 
 
     <script>
+      /* const marquee = document.querySelector(".marquee-content");
+        let speed = 2; // Velocidad de desplazamiento (ajusta según necesites)
+        let position = window.innerWidth; 
+
+        function moveMarquee() {
+            position -= speed;
+            if (position < -marquee.offsetWidth) {
+                position = window.innerWidth;
+            }
+            marquee.style.transform = `translateX(${position}px)`;
+            requestAnimationFrame(moveMarquee);
+        }
+
+        moveMarquee(); */
         
     </script>
       
