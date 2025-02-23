@@ -8,7 +8,7 @@ export const iconCoder = `<section class="cursor-pointer group text-center flex 
 </div>
 <span class="text-4xl sm:text-4xl md:text-3xl lg:text-4xl">}</span><sup class="-rotate-45">v</sup>
 <span class="relative  text-3xl   font-extrabold z-10">
-  <span class="text-[#A8FF78]">IR</span><span class="">Codify</span>
+  <span class="text-[#deae4f]">IR</span><span class="">Codify</span>
 </span>
 
 

@@ -24,6 +24,8 @@ export const dictionary = {
         sloganTech: "From the essential to the advanced, here is what drives my projects.",
         buttonGitTech: "Explore my work on GitHub",
         education: "Academic Education",
+        yearsCard: "Years of Experience",
+        languageCard: "Languajes and Frameworks"
         // Add more key-value pairs as needed
     },
     es: {
@@ -52,6 +54,8 @@ export const dictionary = {
         sloganTech: "De lo esencial a lo avanzado, he aquí lo que impulsa mis proyectos.",
         buttonGitTech: " Explora mi trabajo en GitHub",
         education: "Formación Académica",
+        yearsCard: "Años de Experiencia",
+        languageCard: "Lenguajes y Frameworks"
         // Add more key-value pairs as needed
     }
 };

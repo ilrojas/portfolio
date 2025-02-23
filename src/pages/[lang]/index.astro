@@ -5,6 +5,8 @@ import Technology from "../../components/Technology.astro";
 import Education from "../../components/Education.astro";
 import Skills from "../../components/Skills.astro";
 import SectionTech from "../../components/SectionTech.astro";
+import { projects } from "../../data/projects";
+import ProjectCard from "../../components/ProjectCard.astro";
 
 import { dictionary } from "../../data/dictionary";
 import Badge from "../../components/Badge.astro";
@@ -41,13 +43,30 @@ const { language } = Astro.props;
 >
   
   
-  <div class="grid grid-cols-1 left-0 w-full min-h-screen">
+  <div class="grid grid-cols-1 gap-3 left-0 w-full min-h-screen">
     <div class="flex items-center justify-center">
       <SectionTech defaultLanguage={language} />
     </div>
     
     <div class="flex items-center justify-center">
       <Technology defaultLanguage={language} />
+    </div>
+
+    <div class="flex flex-col items-center gap-2 animatedScroll justify-center">
+      <h2 class="text-2xl font-bold">Projects</h2>
+      <section class="section-projects grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 animatedScroll items-center gap-4 justify-center">
+        {projects.map((item) => (
+          <div class="flex-1 item-project">
+            <ProjectCard
+            project={item[language].project}
+            img={item.img}
+            description={item[language].description}
+            tech={item.tech}
+          />
+          </div>
+        ))}
+      </section>
+      
     </div>
     
     <div class="flex items-center justify-center">
