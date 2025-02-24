@@ -49,30 +49,26 @@ console.log("Server loaded");
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Font Jost -->
-    <link
+    
+     <link
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-    />
+    /> 
+    <link rel="stylesheet" href="/src/css/styles.css" />
 
-    <!-- Font Rubik -->
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap"
-      rel="stylesheet"
-    /> -->
 
-    <!-- Font Inter -->
-    <link
+    
+     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
-    />
-    <!-- Font Inter Tight -->
-    <link
+    /> 
+    
+     <link
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-    />
-    <!-- Font Inter Caveat -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    /> 
+    
+     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet"> 
 
     <title>{title}</title>
 
@@ -174,15 +170,52 @@ console.log("Server loaded");
   .section-projects > * {
     transition: all 0.3s ease; /* Aplica una transición suave a todas las propiedades */
   }
+  
+  /* .hidden-description {
+      
+        scale: 0;}
 
   .section-projects:hover > :hover {
     scale: 1.05;
     filter:contrast(1.2) saturate(1);
-  }
+    .hidden-description {
+      display: block;
+      scale: 1;
+      transition: scale 0.5s ease-in-out;
+      @starting-style{
+        scale: 0;
+      }
+    }
+    .visible-description{
+      display: none;
+    }
+  } */
+
+  .hidden-description {
+    max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in;
+}
+.visible-description{
+  transition: max-height 0.5s ease-in-out;
+    }
+
+.section-projects:hover > :hover {
+  scale: 1.05;
+    filter:contrast(1.2) saturate(1);
+    .hidden-description {
+      max-height: 370px;
+          
+    }
+    .visible-description{
+      max-height: 0;
+    }
+}
+
 
    .section-projects:hover > :not(:hover) {
-    filter: blur(0.5px);
-    opacity: 0.6;
+    filter: blur(0.1px);
+    opacity: 0.8;
   } 
 }
 
@@ -332,17 +365,16 @@ console.log("Server loaded");
 
       experience.forEach((el) => {
         let experienceValue = el.dataset.experience;
-        let text = el.dataset.text;
         let index = 0;
         let interval = null;
         interval = setInterval(() => {
           if (index >= experienceValue) {
             
-            let experienceText = document.querySelectorAll(".experience-text");
-            experienceText.forEach((el) => {
-              let text = el.dataset.text;
-              el.innerHTML = text;
-            });
+            
+            let nextElement = el.nextElementSibling;
+              let text = nextElement.dataset.text;
+              nextElement.innerHTML = text;
+              nextElement.classList.add("animate-moveFromRight");
             clearInterval(interval);
 
           } else {

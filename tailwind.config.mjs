@@ -23,9 +23,9 @@ export default {
     extend: {
       fontFamily: {
         jost: ["Jost", "sans-serif"],
-        rubik:["Rubik Vinyl", "serif"],
+        rubik:["Rubik", "serif"],
         inter: ["Inter", "serif"],
-        interTight: ["Inter Tight", "serif"],
+        interTight: ["InterTight", "serif"],
         caveat: ["Caveat", "serif"],
       },
       transitionDelay: {
@@ -44,6 +44,17 @@ export default {
           to:{
             opacity:"1"
           },
+        },
+        tilt:{
+          "0% , 50% , 100%":{
+            transform:"rotate(0deg)"
+          },
+          "25%":{
+            transform:"rotate(1deg)"
+          },
+          "75%":{
+            transform:"rotate(-1deg)"
+          }
         },
         moveDown: {
           from: {
@@ -148,6 +159,7 @@ export default {
         fadeIn: "fadeIn 2s ease-in-out ",
         translateDiagonal: "translateDiagonal 1s linear ease-in-out",
         scrollHorizontal:  "scrollHorizontal 10s linear infinite",
+        tilt: "tilt 7s linear infinite",
       },
       dropShadow: {
         'top': '0 75px 35px rgba(0, 0, 0, 0.25)',

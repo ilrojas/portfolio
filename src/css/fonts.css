@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'jost';
+    src: url('/src/assets/fonts/Jost.woff2') format('woff2'),
+         url('/src/assets/fonts/Jost.woff') format('woff'),
+         url('/src/assets/fonts/Jost.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'caveat';
+    src: url('/src/assets/fonts/Caveat.woff2') format('woff2'),
+         url('/src/assets/fonts/Caveat.woff') format('woff'),
+         url('/src/assets/fonts/Caveat.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'inter';
+    src: url('/src/assets/fonts/Inter.woff2') format('woff2'),
+         url('/src/assets/fonts/Inter.woff') format('woff'),
+         url('/src/assets/fonts/Inter.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'interTight';
+    src: url('/src/assets/fonts/InterTight.woff2') format('woff2'),
+         url('/src/assets/fonts/InterTight.woff') format('woff'),
+         url('/src/assets/fonts/InterTight.ttf') format('truetype');
+  }
+  

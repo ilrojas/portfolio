@@ -4,14 +4,12 @@ const { badgeText, badgeIcon = null, badgeColor, animate=false } = Astro.props;
 
 <div class="inline-flex   relative align-middle justify-center">
   <span
-    class=` shadow-custom dark:shadow-[#96eee718] text-xs flex w-auto h-6 flex-row rounded-full dark:bg-[#1c2945] bg-${badgeColor} px-2 py-1 text-white dark:text-${badgeColor} mr-5 animate-moveDown transition-all duration-300 `
+    class=` shadow-custom dark:shadow-[#96eee718]  flex w-auto h-6 flex-row rounded-full dark:bg-[#1c2945] bg-${badgeColor} px-2 py-1 text-white dark:text-${badgeColor} mr-5 animate-moveDown transition-all duration-300 `
     set:html={badgeText + (badgeIcon ||'')}
   >
     
   </span>
-  {animate && (<span
-        class=`animate-ping absolute h-6 w-2/3 border-2 rounded-full border-${badgeColor} opacity-20`
-      ></span>)}
+  {animate && (<span class={`animate-ping absolute h-6 w-2/3 border-2 rounded-full border-${badgeColor} opacity-20`} ></span>)}
       
       
       <!-- esto es para la animacion del pulse -->

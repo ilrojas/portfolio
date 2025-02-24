@@ -138,10 +138,14 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
             </span> */}
               <span set:html={link.icon} class="items-center" />
               <a
-                class="lg:text-lg font-interTight hover:font-bold"
+                class="lg:text-lg font-jost hover:font-bold"
                 href={`/${defaultLanguage}${link.href}`}
                 transition:name={link.transitionName}
+                aria-label={`Enlace a la seccion ${dictionary[defaultLanguage]?.[link.text]}`}
+                aria-describedby="link-description"
+                title={`${dictionary[defaultLanguage]?.[link.text]}`}
               >
+                <span class="sr-only" id="link-description">{`Ir a la seccion ${dictionary[defaultLanguage]?.[link.text]}`}</span>
                 {dictionary[defaultLanguage]?.[link.text]}
               </a>
               {/* <span class="absolute bottom-0 left-0 h-[1px] w-0 bg-cyan-500 transition-all duration-300 lg:group-hover:w-full lg:group-hover:left-0" /> */}
@@ -158,13 +162,16 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
       <div
         class="flex flex-row lg:flex lg:flex-col lg:gap-1 lg:relative lg:right-0 lg:before:content-[''] lg:before:absolute lg:before:-left-3 lg:before:align-middle lg:before:bottom-0 lg:before:h-3/4 lg:before:border-l-[1px] lg:before:opacity-45 lg:before:-translate-y-[20%] lg:before:border-[#d8f838]"
       >
-        <button
+        <a
           id="icon-switch-language"
           class="hidden peer lg:cursor-pointer lg:p-2 lg:w-12 lg:h-12 lg:flex lg:items-center lg:justify-center"
           aria-controls="language-menu"
           aria-expanded="false"
-          aria-label="Cambiar idioma"
+          aria-label={defaultLanguage== 'es'? 'Cambiar idioma': 'Change language'}
+          aria-describedby="language-description"
+          title={defaultLanguage== 'es'? 'Cambiar idioma': 'Change language'}
         >
+        <span class="sr-only" id="language-description">{defaultLanguage== 'es'? 'Cambiar idioma': 'Change language'}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28px"
@@ -178,7 +185,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
               ></path></g
             ></svg
           >
-        </button>
+        </a>
 
         <div
           id="language-menu"
@@ -218,7 +225,11 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
         <label
           for="toggleTheme"
           class="relative inline-flex items-center cursor-pointer"
+          aria-label={defaultLanguage== 'es'? 'Cambiar tema': 'Change theme'}
+          aria-describedby="theme-description"
+          title={defaultLanguage== 'es'? 'Cambiar tema': 'Change theme'}
         >
+        <span class="sr-only" id="theme-description">{defaultLanguage== 'es'? 'Cambiar tema': 'Change theme'}</span>
           <input id="toggleTheme" type="checkbox" class="sr-only peer" />
           <div
             class=`w-9 h-5 bg-cyan-950 rounded-full peer-checked:bg-cyan-500 ring-2 peer-focus:ring-cyan-100 transition-colors custom-shadow-light`

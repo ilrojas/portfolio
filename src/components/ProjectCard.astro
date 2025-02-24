@@ -1,24 +1,35 @@
 ---
 import Badge from "./Badge.astro"
-const {project,img, description,tech} = Astro.props
+import { icons } from "../data/icons"
+const {project,img, description,subtitle,tech} = Astro.props
 ---
 
-  <section class="project-card flex flex-col align-middle justify-center">
-    <div class="author px-8 py-1 flex items-center justify-start">
-        <img class="w-10 h-10 rounded-full" src="/src/assets/profile.jpg" alt="Autor" />
-        <span class="text-xs ml-2">Desarrollado por: <span class="font-bold">Ivan Rodriguez</span></span>
-    </div>
-    <div class=" flex project-card__image w-[55%] md:w-full lg:w-full h-36 px-3 py-1 justify-center align-middle">
-      <img class="object-cover w-full h-full rounded-lg" src={img} alt={project} />
-    </div>
-    <div class="project-card__content">
-      <h2 class="text-2xl">{project}</h2>
-      <p>{description}</p>
-      <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
-    </div>
-    <footer class="flex flex-wrap gap-1 justify-end align-middle text-xs">
-        {tech.map((item: string) => {
-             return  <Badge badgeText={item} badgeColor="blue-400" />
-        })}
-    </footer>
-  </section>
+<section class="group project-card flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 w-[260px] transition-all duration-300 px-1 py-4">
+  <div class="author flex items-center gap-2">
+    <!-- <img class="w-12 h-12 rounded-full object-cover" src="/src/assets/profile.webp" alt="Autor" loading="lazy"/> -->
+    <!--  <span class="text-xs text-gray-600 dark:text-gray-400">Desarrollado por: <span class="font-bold">Ivan Rodriguez</span></span> -->
+  </div>
+
+  <div class="project-card__image rounded-lg w-full h-[160px] flex justify-center items-center overflow-hidden transition-transform duration-300">
+    <img class="object-cover rounded-lg w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-125" src={img} alt={project} loading="lazy"/>
+  </div>
+
+  <div class="project-card__content">
+    <h2 class="text-[24px] font-semibold text-gray-800 dark:text-white">{project}</h2>
+    <h3 class="text-[16px] text-gray-600 dark:text-gray-400">{subtitle}</h3>    
+  </div>
+  <div>
+    <p class="visible-description text-[13px] text-gray-600 dark:text-gray-400 line-clamp-3 w-full">{description}</p>
+    <p class="hidden-description text-[13px] text-gray-600 dark:text-gray-300 transition-transform duration-300 rounded-lg w-full  shadow-md">
+      {description}
+    </p>
+  </div>
+
+  <footer class="flex flex-wrap gap-2 justify-start items-center text-xs mt-3">
+    {tech.map((item: string) => {
+      return <Badge badgeText={item} badgeColor="blue-400" />
+    })}
+  </footer>
+</section>
+
+

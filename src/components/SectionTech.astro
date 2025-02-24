@@ -101,16 +101,44 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
             <img
             class="relative z-10 h-60 w-60 rounded-full object-cover object-center ring-4 ring-[#12435f] dark:ring-4 dark:ring-[#deae4f]"
             alt="Ivan Profile"
-            src="/src/assets/profile.jpg"
+            src="/src/assets/profile.webp"
             width="128"
             height="128"
+            loading="lazy"
           />
           </div>
-          <Badge
+          <section class="text-xs"><Badge
                   badgeText={dictionary[defaultLanguage]?.rhetoric}
                   badgeIcon=`<svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse" width="12" height="12" viewBox="0 0 12 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.684 3.603c.521-.659.03-1.603-.836-1.603h-6.716a1.06 1.06 0 0 0-.909.502l-5.082 8.456c-.401.666.103 1.497.908 1.497h3.429l-3.23 8.065c-.467 1.02.795 1.953 1.643 1.215L20 9.331h-6.849z"/></svg>`
                   badgeColor=`blue-400`
-                />
+                /></section>
+                <a
+                id="buttoncv"
+                title={defaultLanguage === "es"
+                  ? "Leer CV de Iván Rodríguez Rojas"
+                  : "Read Iván's CV"}
+                class=" z-10 drop-shadow-xl dark:text-cyan-300 hover:text-black dark:hover:text-cyan-600
+          -top-16 left-28 font-caveat col-span-3 lg:col-span-1 capitalize
+          animate-moveDown hover:font-extrabold hover:scale-125 hover:cursor-pointer
+          transition-all duration-300 overflow-hidden px-4 py-2 flex items-center justify-center"
+              >
+                {dictionary[defaultLanguage].readcv}
+              </a>
+
+              <a
+                class="z-10 dark:text-cyan-300 hover:text-black dark:hover:text-cyan-600 left-0 -translate-x-10 lg:translate-x-8 -top-2 font-caveat col-span-1 hover:font-extrabold hover:scale-125 hover:cursor-pointer transition-all duration-300 animate-moveDown overflow-hidden px-4 py-2 flex items-center justify-center"
+                href={defaultLanguage === "es"
+                  ? "/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf"
+                  : "/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_English.pdf"}
+                download={defaultLanguage === "es"
+                  ? "CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf"
+                  : "CV_FrontEnd_Dev_IvanRodriguezRojas_English.pdf"}
+                title={defaultLanguage === "es"
+                  ? "Descargar CV de Iván Rodríguez Rojas"
+                  : "Download Iván Rodríguez Rojas CV"}
+              >
+                {dictionary[defaultLanguage]?.download}
+              </a>
                 <!-- Badge de loas opciones de curriculum -->
           <!-- <section class="relative flex justify-center align-middle">
             
@@ -223,24 +251,24 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
           <!-- Badge de loas opciones de curriculum -->
         </div>
       </div>
-      <div class="col-span-1 animate-moveFromRight">
+      <div class="col-span-1 animate-fadeIn">
         <section
           class="grid grid-cols-1 grid-rows-4 gap-7 justify-center items-center p-5 z-auto w-48"
         >
           <div
-            class="relative w-full rounded-xl rotate-3 animate-fadeIn flex  py-1 px-2 dark:text-white text-gray-800  bg-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8]"
+            class="relative w-full rounded-xl rotate-3  flex  py-1 px-2 dark:text-white text-gray-800  bg-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8]"
           >
           <div class="absolute -inset-0.5 dark:bg-[#12435f] bg-[#deae4f] rounded-xl blur"></div>
             <span
               class="relative z-10 experience text-6xl font-bold font-jost" 
-              data-experience="11"></span>
+              data-experience="12"></span>
 
             <span
               class="relative z-10 experience-text text-xs"
               data-text={dictionary[defaultLanguage].yearsCard}></span>
           </div>
           <div
-            class="relative w-full rounded-xl -rotate-3 animate-fadeIn flex  py-1 px-2 dark:text-white text-gray-800  bg-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8]"
+            class="relative w-full rounded-xl -rotate-3 flex  py-1 px-2 dark:text-white text-gray-800  bg-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8]"
           >
           <div class="absolute -inset-0.5 dark:bg-[#12435f] bg-[#deae4f] rounded-xl blur"></div>
             <span
@@ -248,7 +276,7 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
               data-experience="11"></span>
 
             <span
-              class="relative z-10 experience-text text-xs"
+              class="relative z-10  experience-text text-xs"
               data-text={dictionary[defaultLanguage].languageCard}></span>
           </div>
         </section>

@@ -48,25 +48,28 @@ const { language } = Astro.props;
       <SectionTech defaultLanguage={language} />
     </div>
     
-    <div class="flex items-center justify-center">
-      <Technology defaultLanguage={language} />
-    </div>
+    
 
     <div class="flex flex-col items-center gap-2 animatedScroll justify-center">
-      <h2 class="text-2xl font-bold">Projects</h2>
-      <section class="section-projects grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 animatedScroll items-center gap-4 justify-center">
+      <h2 class="text-2xl font-bold">{dictionary[language].projects}</h2>
+      <section class="section-projects grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 animatedScroll  gap-4 ">
         {projects.map((item) => (
           <div class="flex-1 item-project">
             <ProjectCard
             project={item[language].project}
             img={item.img}
             description={item[language].description}
+            subtitle={item[language].subtitle}
             tech={item.tech}
           />
           </div>
         ))}
       </section>
       
+    </div>
+
+    <div class="flex items-center justify-center">
+      <Technology defaultLanguage={language} />
     </div>
     
     <div class="flex items-center justify-center">
