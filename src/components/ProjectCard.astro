@@ -4,32 +4,39 @@ import { icons } from "../data/icons"
 const {project,img, description,subtitle,tech} = Astro.props
 ---
 
-<section class="group project-card flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 w-[260px] transition-all duration-300 px-1 py-4">
-  <div class="author flex items-center gap-2">
-    <!-- <img class="w-12 h-12 rounded-full object-cover" src="/src/assets/profile.webp" alt="Autor" loading="lazy"/> -->
-    <!--  <span class="text-xs text-gray-600 dark:text-gray-400">Desarrollado por: <span class="font-bold">Ivan Rodriguez</span></span> -->
+<section class="group project-card flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 w-[260px] transition-all duration-300 px-1 py-4 relative overflow-hidden">
+  <!-- Div del fondo animado, fuera del contenido -->
+  <div class="absolute z-0 h-[200%] w-[200%] left-[-50%] top-[-50%] bg-[conic-gradient(rgba(244,114,182,0.4)_0deg,rgba(192,132,252,0.4)_0deg,transparent_50deg)] animate-spinSlow">
   </div>
 
-  <div class="project-card__image rounded-lg w-full h-[160px] flex justify-center items-center overflow-hidden transition-transform duration-300">
-    <img class="object-cover rounded-lg w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-125" src={img} alt={project} loading="lazy"/>
-  </div>
+  <!-- Capa blanca que cubre el centro para que solo se vea el borde -->
+  <div class="absolute z-10 inset-0 m-[2px] bg-white dark:bg-gray-800 rounded-lg"></div>
 
-  <div class="project-card__content">
-    <h2 class="text-[24px] font-semibold text-gray-800 dark:text-white">{project}</h2>
-    <h3 class="text-[16px] text-gray-600 dark:text-gray-400">{subtitle}</h3>    
+  <!-- Contenido de la tarjeta -->
+  <div class="relative z-20 h-full w-full p-4">
+    <div class="project-card__image rounded-lg w-full h-[160px] flex justify-center items-center overflow-hidden transition-transform duration-300">
+      <img class="object-cover rounded-lg w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-125" src={img} alt={project} loading="lazy"/>
+    </div>
+  
+    <div class="project-card__content">
+      <h2 class="text-[24px] font-semibold text-gray-800 dark:text-white">{project}</h2>
+      <h3 class="text-[16px] text-gray-600 dark:text-gray-400">{subtitle}</h3>    
+    </div>
+    <div>
+      <p class="visible-description text-[13px] text-gray-600 dark:text-gray-400 lg:line-clamp-3 w-full">{description}</p>
+      <p class="hidden lg:block hidden-description text-[13px] text-gray-600 dark:text-gray-300 transition-transform duration-300 rounded-lg w-full shadow-md">
+        {description}
+      </p>
+    </div>
+  
+    <footer class="flex flex-wrap gap-2 justify-start items-center text-xs mt-3">
+      {tech.map((item: string) => {
+        return (<span class="rounded-xl dark:bg-gray-600 bg-transparent px-2 py-[3px] dark:border-0 border-2">{item}</span>)
+        /* return <Badge badgeText={item} badgeColor="blue-400" /> */
+      })}
+    </footer>
   </div>
-  <div>
-    <p class="visible-description text-[13px] text-gray-600 dark:text-gray-400 line-clamp-3 w-full">{description}</p>
-    <p class="hidden-description text-[13px] text-gray-600 dark:text-gray-300 transition-transform duration-300 rounded-lg w-full  shadow-md">
-      {description}
-    </p>
-  </div>
-
-  <footer class="flex flex-wrap gap-2 justify-start items-center text-xs mt-3">
-    {tech.map((item: string) => {
-      return <Badge badgeText={item} badgeColor="blue-400" />
-    })}
-  </footer>
 </section>
+
 
 

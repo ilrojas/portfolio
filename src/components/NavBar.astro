@@ -128,14 +128,13 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
           </svg>
         </button>
       </div>
-      <ul
+      <!-- <ul
         class="menuLink h-full flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6"
       >
         {
           links.map((link) => (
             <li class="linkItem relative group text-responsive flex gap-1 justify-end hover:scale-105 hover:text-sky-600 dark:hover:text-cyan-500 hover:drop-shadow-xl transition-all duration-100" onClick={() => setActiveLink(link.href)}>
-              {/* <span class="text-yellow-200 text-sm font-bold group-hover:opacity-100">
-            </span> */}
+              
               <span set:html={link.icon} class="items-center" />
               <a
                 class="lg:text-lg font-jost hover:font-bold"
@@ -148,11 +147,11 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
                 <span class="sr-only" id="link-description">{`Ir a la seccion ${dictionary[defaultLanguage]?.[link.text]}`}</span>
                 {dictionary[defaultLanguage]?.[link.text]}
               </a>
-              {/* <span class="absolute bottom-0 left-0 h-[1px] w-0 bg-cyan-500 transition-all duration-300 lg:group-hover:w-full lg:group-hover:left-0" /> */}
+              
             </li>
           ))
         }
-      </ul>
+      </ul> -->
     </div>
 
     {/* Contenedor del switch de lenguaje y tema */}

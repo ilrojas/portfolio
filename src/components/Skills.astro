@@ -2,14 +2,59 @@
 import { skills } from "../data/skills";
 import { dictionary } from "../data/dictionary";
 import Badge from "./Badge.astro";
+import BlockCodeImg from "./BlockCodeImg.astro";
 const technical = skills.technical;
 const soft = skills.soft;
 
 const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
 ---
 
-<div class="animatedScroll flex flex-col-reverse md:flex-row lg:flex-row items-center justify-center gap-4 my-5">
-  <div
+<div
+  class="animatedScroll grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 items-center justify-center gap-4 my-5 w-full"
+>
+  <section class="col-span-1 lg:col-span-2 pl-[10%]">
+    <BlockCodeImg />
+  </section>
+  <section
+    id="tech-skills"
+    class="col-span-1 md:col-span-1 lg:col-span-3 rounded-3xl bg-cyan-900 dark:bg-gray-900 p-3 text-white/70 font-jost"
+  >
+    <h2 id="skills" class="font-extrabold">
+      {dictionary[defaultLanguage]?.technical}
+    </h2>
+    <div class="skills flex flex-col gap-2">
+      {
+        technical.map((skill, index) => {
+          return (
+            <div class="row-skill group flex flex-col justify-between py-1 text-xs md:text-sm lg:text-lg font-medium ">
+              <div class="grid grid-cols-2 gap-2 relative w-auto justify-start">
+                <h3 class="flex group-hover:-translate-x-11 group-hover:scale-125 transition duration-300 justify-end align-middle">
+                  {skill.name}
+                </h3>
+                <div class="flex overflow-hidden bg-blue-50 rounded-md w-[80%]  h-5 justify-start align-middle ">
+                  <span
+                    class="barLevelSkill h-full bg-blue-500  block "
+                    data-bar={`${skill.rating}`}
+                  />                  
+                </div>
+                <div class="absolute right-0">
+                    <span class="z-0 relative text-sm group-hover:scale-125 opacity-0 group-hover:opacity-75 transition-opacity duration-200 ease-in justify-start align-middle   bg-slate-500 rounded-md w-fit p-1 before:content-[''] before:absolute before:h-3 before:w-3 before:bg-slate-500 before:rotate-45 before:-left-1 before:top-1/2 before:-translate-y-1/2">
+                      <span
+                        class="levelSkill z-50 relative"
+                        data-level={`${skill.rating / 10}`}
+                      />{" "}
+                      /10{" "}
+                    </span>
+                  </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- <div
     class="flex-1 container grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-3xl bg-white/90 dark:text-black/80 shadow-lg shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(255,255,255,0.2)]"
   >
     <section
@@ -24,15 +69,21 @@ const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
           technical.map((skill, index) => {
             return (
               <div
-                class={`group rounded-lg flex flex-col justify-between px-2 py-1 text-xs font-medium ring-1 ring-inset`}
+                class='group rounded-lg flex flex-col justify-between px-2 py-1 text-xs font-medium ring-1 ring-inset'
               >
-                <div class="flex flex-1 justify-between">
+                <div class="grid grid-cols-3 gap-2">
                   <h3
-                    class={`group-hover:translate-x-3.5 group-hover:scale-125 transition duration-300`}
+                    class='flex group-hover:-translate-x-8 group-hover:scale-125 transition duration-300 justify-end align-middle'
                   >
                     {skill.name}
                   </h3>
-                  <span class="inline-flex font-bold group-hover:scale-125 transition duration-200">
+                  <div class="flex overflow-hidden bg-blue-50 rounded-md w-2/3 h-5 justify-start align-middle">
+                    <span
+                      class="barLevelSkill h-full bg-blue-500 w-full block "
+                      data-bar={`${skill.rating}`}
+                    />
+                  </div>
+                  <span class="flex  font-bold group-hover:scale-125 transition duration-200 justify-start align-middle">
                     <span
                       class="levelSkill"
                       data-level={`${skill.rating / 10}`}
@@ -40,20 +91,21 @@ const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
                     /10{" "}
                   </span>
                 </div>
-                <div class=" flex flex-1 items-end gap-2 ">
-                  <div class="overflow-hidden bg-blue-50 h-1.5 rounded-full w-2/3">
+                {/* <div class=" flex flex-1 items-end gap-2 ">
+                  <div class="overflow-hidden bg-blue-50 rounded-full w-2/3 h-5">
                     <span
-                      class="barLevelSkill h-full bg-blue-500 w-full block rounded-full"
+                      class="barLevelSkill h-full bg-blue-500 w-full block "
                       data-bar={`${skill.rating}`}
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             );
           })
         }
       </div>
     </section>
+    
     <section class="p-3" id="soft-skills">
       <h2 class="font-extrabold">{dictionary[defaultLanguage]?.soft}</h2>
       <div class="skills flex flex-col gap-2">
@@ -92,8 +144,8 @@ const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
         }
       </div>
     </section>
-  </div>
-  <div
+  </div> -->
+  <!-- <div
     class="flex-1 relative flex flex-col font-interTight  dark:font-interTight  line-clamp-3 text-center mx-auto tracking-normal align-middle justify-center"
   >
   
@@ -108,5 +160,8 @@ const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
     <p class="text-lg font-extralight">Uniendo creatividad, rendimiento y una excelente experiencia de usuario.El éxito no es solo código, sino las personas y las ideas detrás de cada
       proyecto. Aquí muestro las habilidades que me ayudan a colaborar, innovar
       y superar desafíos cada día.</p>
-  </div>
+  </div> -->
+  <!-- <section class="flex-1 pl-[10%]">
+    <BlockCodeImg/>
+  </section> -->
 </div>

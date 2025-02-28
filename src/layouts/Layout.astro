@@ -153,15 +153,15 @@ console.log("Server loaded");
   @keyframes scroll {
     from {
       opacity: 0;
-      transform: scale(0.5);
+       transform: scale(0.7); 
     }
     to {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1); 
     }
   }
 
-  .menuLink:hover > :not(:hover) {
+  .menuLink:hover > :not(:hover), {
     filter: blur(1px);
     opacity: 0.5;    
   }
@@ -201,8 +201,7 @@ console.log("Server loaded");
     }
 
 .section-projects:hover > :hover {
-  scale: 1.05;
-    filter:contrast(1.2) saturate(1);
+  
     .hidden-description {
       max-height: 370px;
           
@@ -225,6 +224,8 @@ console.log("Server loaded");
   .custom-shadow-dark {
     box-shadow: inset -3px 1px 3px rgba(135, 134, 134, 0.3); /* Cambia el color de la sombra */
   }
+
+  
 </style>
 
 
@@ -405,16 +406,8 @@ console.log("Server loaded");
 
       levelSkill.forEach((el) => {
         let levelSkillValue = el.dataset.level;
-        let index = 0;
-        let interval = null;
-        interval = setInterval(() => {
-          if (index >= levelSkillValue) {
-            clearInterval(interval);
-          } else {
-            index++;
-            el.innerHTML = `${index}`;
-          }
-        }, 100);
+        
+            el.innerHTML = `${levelSkillValue}`;
       });
     }
     
