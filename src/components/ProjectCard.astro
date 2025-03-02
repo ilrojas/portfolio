@@ -4,7 +4,7 @@ import { icons } from "../data/icons"
 const {project,img, description,subtitle,tech} = Astro.props
 ---
 
-<section class="group project-card flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 w-[260px] transition-all duration-300 px-1 py-4 relative overflow-hidden">
+<section class="group project-card flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4  transition-all duration-300 px-1 py-4 relative overflow-hidden">
   <!-- Div del fondo animado, fuera del contenido -->
   <div class="absolute z-0 h-[200%] w-[200%] left-[-50%] top-[-50%] bg-[conic-gradient(rgba(244,114,182,0.4)_0deg,rgba(192,132,252,0.4)_0deg,transparent_50deg)] animate-spinSlow">
   </div>
@@ -13,28 +13,30 @@ const {project,img, description,subtitle,tech} = Astro.props
   <div class="absolute z-10 inset-0 m-[2px] bg-white dark:bg-gray-800 rounded-lg"></div>
 
   <!-- Contenido de la tarjeta -->
-  <div class="relative z-20 h-full w-full p-4">
-    <div class="project-card__image rounded-lg w-full h-[160px] flex justify-center items-center overflow-hidden transition-transform duration-300">
+  <div class="relative z-20 h-full w-full p-4 grid grid-cols-2">
+    <div class="project-card__image rounded-lg w-full h-[260px] flex justify-center items-center overflow-hidden transition-transform duration-300">
       <img class="object-cover rounded-lg w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-125" src={img} alt={project} loading="lazy"/>
     </div>
-  
-    <div class="project-card__content">
-      <h2 class="text-[24px] font-semibold text-gray-800 dark:text-white">{project}</h2>
-      <h3 class="text-[16px] text-gray-600 dark:text-gray-400">{subtitle}</h3>    
+    <div class="flex flex-col gap-3 align-middle items-end -translate-x-3">
+      <div class="project-card__content ">
+        <h2 class="text-[24px] font-semibold text-gray-800 dark:text-white flex justify-end">{project}</h2>
+        <h3 class="text-[16px] text-gray-600 dark:text-gray-400 flex justify-end">{subtitle}</h3>    
+      </div>
+      <div class="bg-gray-900 px-3 py-1 rounded-md">
+       <!--  <p class="visible-description text-[13px] text-gray-600 dark:text-gray-400 lg:line-clamp-3 w-full">{description}</p> -->
+        <p class=" lg:block hidden-description text-[13px] text-gray-600 dark:text-gray-300 transition-transform duration-300 rounded-lg w-full shadow-md">
+          {description}
+        </p>
+      </div>
+    
+      <footer class="flex flex-wrap gap-2 justify-start items-center text-xs mt-3">
+        {tech.map((item: string) => {
+          return (<span class="rounded-xl dark:bg-gray-600 bg-transparent px-2 py-[3px] dark:border-0 border-2">{item}</span>)
+          /* return <Badge badgeText={item} badgeColor="blue-400" /> */
+        })}
+      </footer>
     </div>
-    <div>
-      <p class="visible-description text-[13px] text-gray-600 dark:text-gray-400 lg:line-clamp-3 w-full">{description}</p>
-      <p class="hidden lg:block hidden-description text-[13px] text-gray-600 dark:text-gray-300 transition-transform duration-300 rounded-lg w-full shadow-md">
-        {description}
-      </p>
-    </div>
-  
-    <footer class="flex flex-wrap gap-2 justify-start items-center text-xs mt-3">
-      {tech.map((item: string) => {
-        return (<span class="rounded-xl dark:bg-gray-600 bg-transparent px-2 py-[3px] dark:border-0 border-2">{item}</span>)
-        /* return <Badge badgeText={item} badgeColor="blue-400" /> */
-      })}
-    </footer>
+    
   </div>
 </section>
 

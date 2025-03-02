@@ -1,7 +1,6 @@
 ---
 import Welcome from "../../components/Welcome.astro";
 import Layout from "../../layouts/Layout.astro";
-import Technology from "../../components/Technology.astro";
 import Education from "../../components/Education.astro";
 import Skills from "../../components/Skills.astro";
 import SectionTech from "../../components/SectionTech.astro";
@@ -50,11 +49,11 @@ const { language } = Astro.props;
     
     
 
-    <div class="flex flex-col items-center gap-2 animatedScroll justify-center">
+    <div class="flex flex-col items-center gap-2 animatedScroll justify-center w-full mx-auto px-5">
       <h2 class="text-2xl font-bold">{dictionary[language].projects}</h2>
-      <section class="section-projects  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 animatedScroll  gap-4 ">
+      <section class="section-projects  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 animatedScroll  gap-4 ">
         {projects.map((item) => (
-          <div class="flex-1 item-project">
+          <div class="flex-1 w-full item-project">
             <ProjectCard
             project={item[language].project}
             img={item.img}
@@ -68,14 +67,12 @@ const { language } = Astro.props;
       
     </div>
 
-    <div class="flex items-center justify-center">
-      <Technology defaultLanguage={language} />
-    </div>
     
-    <div class="flex items-center justify-center">
+    
+    <div class="flex flex-col items-center justify-center">
       <Skills defaultLanguage={language} />
     </div>
-    <div id="educationSection" class="flex items-center justify-center">
+    <div id="educationSection" class="flex items-center justify-center px-5">
       <Education defaultLanguage={language} />
     </div>
   </div>

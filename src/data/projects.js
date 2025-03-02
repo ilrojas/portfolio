@@ -37,6 +37,21 @@ export const projects = [
     },
     {
         es:{
+            project:"My Graphics Library",
+            subtitle:"Librería",
+            description: "My Graphics Library es una librería desarrollada con TypeScript, HTML y CSS, que permite generar gráficos mediante una serie de parámetros pasados en forma de objeto. La misma es algo sencilla pues la desarrollé con fines educativos. La mantendré en evolución para agregarle más funcionalidades.",
+        },
+        en:{
+            project:"My Graphics Library",
+            subtitle:"Library",
+            description: "My Graphics Library is a library developed with TypeScript, HTML and CSS, which allows to generate graphics by passing a series of parameters in the form of an object. It is somewhat simple because I developed it for educational purposes. I will keep it evolving to add more features.",
+        },
+        img:"/src/assets/my-graphics-library.webp",
+        
+        tech:["TypeScript","HTML","CSS"]
+    },
+    {
+        es:{
             project:"Excel Data Reader",
             subtitle:"Aplicación Web",
             description: "Excel Data Reader es una aplicación web desarrollada en Astro y TypeScript, que permite a los usuarios subir un archivo de Excel y visualizar su contenido en una tabla, además de poder descargar el archivo en formato JSON.",

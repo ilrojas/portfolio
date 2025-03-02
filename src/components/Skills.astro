@@ -3,41 +3,50 @@ import { skills } from "../data/skills";
 import { dictionary } from "../data/dictionary";
 import Badge from "./Badge.astro";
 import BlockCodeImg from "./BlockCodeImg.astro";
+
+import Technology from "./Technology.astro";
 const technical = skills.technical;
 const soft = skills.soft;
 
 const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
 ---
-
+<div class="flex items-center justify-center">
+  <Technology defaultLanguage={defaultLanguage} />
+</div>
 <div
   class="animatedScroll grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 items-center justify-center gap-4 my-5 w-full"
 >
   <section class="col-span-1 lg:col-span-2 pl-[10%]">
     <BlockCodeImg />
   </section>
-  <section
+  <ul
     id="tech-skills"
     class="col-span-1 md:col-span-1 lg:col-span-3 rounded-3xl bg-cyan-900 dark:bg-gray-900 p-3 text-white/70 font-jost"
   >
     <h2 id="skills" class="font-extrabold">
       {dictionary[defaultLanguage]?.technical}
     </h2>
+  <ul class="-rotate-90">
     <div class="skills flex flex-col gap-2">
       {
         technical.map((skill, index) => {
           return (
-            <div class="row-skill group flex flex-col justify-between py-1 text-xs md:text-sm lg:text-lg font-medium ">
-              <div class="grid grid-cols-2 gap-2 relative w-auto justify-start">
-                <h3 class="flex group-hover:-translate-x-11 group-hover:scale-125 transition duration-300 justify-end align-middle">
-                  {skill.name}
+            <li class="row-skill group flex flex-col justify-between py-1 text-xs md:text-sm lg:text-lg font-medium ">
+              <div class="grid grid-cols-3 gap-2  w-auto justify-end ">
+                
+                <h3 class="flex gap-3  justify-end align-middle">
+                 <span class="rotate-45 group-hover:-translate-x-4 group-hover:scale-125 transition duration-300">{skill.name}</span> <span class="icon flex h-5 w-5 p-0 top-0 size-8 rotate-90"  set:html={skill.icon}></span>
+                  
                 </h3>
-                <div class="flex overflow-hidden bg-blue-50 rounded-md w-[80%]  h-5 justify-start align-middle ">
+                <div class=" flex overflow-hidden bg-blue-50 rounded-md w-[80%]  h-5 justify-start align-middle ">
                   <span
-                    class="barLevelSkill h-full bg-blue-500  block "
+                    class="barLevelSkill h-full bg-blue-500  block group-hover:bg-cyan-300 transition-colors duration-500"
                     data-bar={`${skill.rating}`}
-                  />                  
+                  />   
+                                 
                 </div>
-                <div class="absolute right-0">
+                <div class="relative justify-start align-top">
+                  <div class="absolute left-0 -translate-x-full">
                     <span class="z-0 relative text-sm group-hover:scale-125 opacity-0 group-hover:opacity-75 transition-opacity duration-200 ease-in justify-start align-middle   bg-slate-500 rounded-md w-fit p-1 before:content-[''] before:absolute before:h-3 before:w-3 before:bg-slate-500 before:rotate-45 before:-left-1 before:top-1/2 before:-translate-y-1/2">
                       <span
                         class="levelSkill z-50 relative"
@@ -46,12 +55,14 @@ const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
                       /10{" "}
                     </span>
                   </div>
+                </div>
+                
               </div>
-            </div>
+            </li>
           );
         })
       }
-    </div>
+    </div></ul>
   </section>
 
   <!-- <div

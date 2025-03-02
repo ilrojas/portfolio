@@ -6,19 +6,10 @@ export default {
   theme: {
     screens: {
       'sm': '640px',
-      // => @media (min-width: 640px) { ... } este disp es un smartphone
-
       'md': '768px',
-      // => @media (min-width: 768px) { ... } este disp es una tablet
-
       'lg': '1024px',
-      // => @media (min-width: 1024px) { ... } este disp es una laptop
-
       'xl': '1280px',
-      // => @media (min-width: 1280px) { ... } este disp es una laptop grande
-
       '2xl': '1536px',
-      // => @media (min-width: 1536px) { ... } este dispositivo es una laptop muy grande
     },
     extend: {
       fontFamily: {
@@ -128,7 +119,6 @@ export default {
         },
         translateDiagonal:{
           from:{
-            
             transform:" translate(0, 0) scale(0)"
           },
           to:{
@@ -142,6 +132,25 @@ export default {
           "100%": {
             transform: "translateX(-50%)",
           },
+        },
+        borderImg:{
+          "0%, 100%":{
+            borderRadius:"31% 69% 70% 30% / 60% 49% 51% 40% ",
+          },
+          "25%":{
+            borderRadius:"60% 40% 70% 30% / 41% 55% 45% 59%  ",
+          },
+          "50%":{
+            borderRadius:"83% 17% 85% 15% / 16% 68% 32% 84% ",
+          },
+          "75%":{
+            borderRadius:"15% 85% 36% 64% / 26% 49% 51% 74%   ",
+          }
+        },
+        smoothAnimation: {
+          "0%": { opacity: "0", transform: "translateY(-10px)" },
+          "50%": { opacity: "0.5", transform: "translateY(0)" },
+          "100%": { opacity: "1", transform: "translateY(10px)" },
         }
       },
       fontSize: {
@@ -160,6 +169,8 @@ export default {
         translateDiagonal: "translateDiagonal 1s linear ease-in-out",
         scrollHorizontal:  "scrollHorizontal 10s linear infinite",
         tilt: "tilt 7s linear infinite",
+        borderImg: "borderImg 20s linear infinite",
+        smoothAnimation: "smoothAnimation 3s ease-in-out infinite",
       },
       dropShadow: {
         'top': '0 75px 35px rgba(0, 0, 0, 0.25)',
