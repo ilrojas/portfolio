@@ -26,7 +26,8 @@ export const dictionary = {
         buttonGitTech: "Explore my work on GitHub",
         education: "Academic Education",
         yearsCard: "Years of Experience",
-        languageCard: "Languajes and Frameworks"
+        languageCard: "Languajes and Frameworks",
+        servicesHeader: "If you haven't authenticated yet, do it now to access the services I offer.",
         // Add more key-value pairs as needed
     },
     es: {
@@ -57,7 +58,8 @@ export const dictionary = {
         buttonGitTech: " Explora mi trabajo en GitHub",
         education: "Formación Académica",
         yearsCard: "Años de Experiencia",
-        languageCard: "Lenguajes y Frameworks"
+        languageCard: "Lenguajes y Frameworks",
+        servicesHeader:"Si aún no te has autenticado, hazlo ya para que accedas a los servicios que te ofrezco.",
         // Add more key-value pairs as needed
     }
 };

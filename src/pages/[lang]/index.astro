@@ -22,6 +22,7 @@ type Project = {
 import ProjectCard from "../../components/ProjectCard.astro";
 import Technology from "../../components/Technology.astro";
 import { dictionary } from "../../data/dictionary";
+import Contact from "../../components/Contact.astro";
 
 export async function getStaticPaths() {
   return [
@@ -94,6 +95,9 @@ const language: "en" | "es" = (Astro.props?.language === "en" || Astro.props?.la
     </div>
     <div id="educationSection" class="flex items-center justify-center px-5">
       <Education defaultLanguage={language} />
+    </div>
+    <div class="flex flex-col items-center justify-center">
+      <Contact/>
     </div>
   </div>
 </Layout>

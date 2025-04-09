@@ -65,6 +65,11 @@ export default defineConfig({
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID || import.meta.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || import.meta.env.GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: {
+          prompt: "select_account"
+        }
+      }
     }),
     GitHub({
       clientId: process.env.GITHUB_CLIENT_ID || import.meta.env.GITHUB_CLIENT_ID,
