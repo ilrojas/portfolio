@@ -1,20 +1,15 @@
 ---
+
 const logo = "/src/assets/logo1.png";
 
-/* const iconCoder1 = `<div class="text-center"><span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl">{</span><div class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl inline-block align-middle"><div class="block">òÓ</div><div class="block">‿</div></div><span class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl"">}</span></div>`; */
 
-/* ٩(̾●̮̮̃̾•̃̾)۶ */
-/* {º‿◕}
-{º‿º} */
-/* (◕‿-) */
-/* 【ツ】 */
-/* ╭∩╮ (òÓ,) ╭∩╮ */
-/* ˁ(⦿ᴥ⦿)ˀ */
+
 
 import { dictionary } from "../data/dictionary";
 import { flags } from "../data/flags";
 import { iconsToggle } from "../data/iconsToggle";
 import { iconCoder } from "../data/iconCoder";
+import { fade } from "astro:transitions";
 const { defaultLanguage } = Astro.props as { defaultLanguage: string };
 
 type Link = {
@@ -27,6 +22,12 @@ type Link = {
 const links: Link[] = [
   /* { href: `/${[defaultLanguage]}`, text: "home", transitionName: "inicioJPX" }, */
   {
+    href: `/services`,
+    text: "services",
+    transitionName: "labelAboutx",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path fill="currentColor" d="m146.217 28.218l-100.07 42.86l106.296 248.194l41.188-17.64l-27.606-191.945l-1.28-8.909l78.567-11.3l-12.519-29.23c-16.682 3.773-28.871 3.449-47.402 21.062l-5.993 5.693l-6.181-5.484c-18.118-16.072-20.828-36.566-25-53.301m18.912.492c3.243 12.805 5.535 24.275 12.777 33.68c12.818-10.212 24.447-14.227 34.951-16.733c-14.485-7.674-29.652-12.217-47.728-16.947m127.746 71.826l-107.752 15.496l38.436 267.25l36.978-5.318l23.188-193.996l1.068-8.936l86.086 10.29l-4.598-31.96c-17.092-.671-28.78-4.14-51.24 8.076l-7.26 3.95l-4.552-6.899c-13.34-20.213-10.655-40.708-10.354-57.953m18.139 5.367c-.182 13.21-.937 24.883 3.625 35.842c15.025-6.547 27.298-7.415 38.093-7.117c-12.006-11.162-25.481-19.477-41.718-28.725m-10.485 89.139l-32.043 268.092l172.77 20.648l24.598-205.793c-16.337-5.073-26.73-11.452-51.586-5.465l-8.034 1.936l-2.61-7.84c-7.655-22.977.243-42.079 4.997-58.658zm124.225 22.799c-3.594 12.713-7.345 23.792-5.775 35.558c16.207-2.435 28.286-.097 38.636 2.985c-8.708-13.889-19.571-25.409-32.861-38.543"/></svg>`,
+  }
+  /* ,{
     href: `/about`,
     text: "about",
     transitionName: "labelAboutx",
@@ -55,7 +56,7 @@ const links: Link[] = [
     text: "education",
     transitionName: "labelEducation",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="currentColor" d="m249.88 92.47l-120-64a4 4 0 0 0-3.76 0l-120 64a4 4 0 0 0 0 7.06L36 115.47v50.82a11.92 11.92 0 0 0 3 8c12.65 14.09 41 37.73 89 37.73c21 0 38.2-4.52 52-10.79V240a4 4 0 0 0 8 0v-42.82a111.6 111.6 0 0 0 29-22.91a11.94 11.94 0 0 0 3-8v-50.8l29.88-15.94a4 4 0 0 0 0-7.06M128 204c-44.83 0-71.25-22-83-35.08a3.92 3.92 0 0 1-1-2.63v-46.56l82.12 43.8a4 4 0 0 0 3.76 0L180 136.8v55.53C166.58 199 149.39 204 128 204m84-37.71a4 4 0 0 1-1 2.64a103.3 103.3 0 0 1-23 19v-55.4l24-12.8Zm-24.59-42.51a4 4 0 0 0-1.53-1.44l-56-29.87a4 4 0 0 0-3.76 7.06L179.5 128L128 155.47L16.5 96L128 36.53L239.5 96Z"/></svg>`,
-  },
+  }, */
 ];
 ---
 
@@ -128,7 +129,7 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
           </svg>
         </button>
       </div>
-      <!-- <ul
+      <ul
         class="menuLink h-full flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6"
       >
         {
@@ -151,13 +152,14 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
             </li>
           ))
         }
-      </ul> -->
+      </ul>
     </div>
 
     {/* Contenedor del switch de lenguaje y tema */}
     <div
       class="flex h-full flex-col-reverse items-end lg:flex lg:flex-row lg:items-center lg:space-x-6 lg:mr-3"
     >
+    
       <div
         class="flex flex-row lg:flex lg:flex-col lg:gap-1 lg:relative lg:right-0 lg:before:content-[''] lg:before:absolute lg:before:-left-3 lg:before:align-middle lg:before:bottom-0 lg:before:h-3/4 lg:before:border-l-[1px] lg:before:opacity-45 lg:before:-translate-y-[20%] lg:before:border-[#d8f838]"
       >
@@ -279,11 +281,12 @@ sm:hover:h-screen sm:hover:w-60 sm:transition-all sm:ease-linear sm:duration-300
 
 <script is:inline>
 
-  document.addEventListener("DOMContentLoaded", () => {
-
+   document.addEventListener("DOMContentLoaded", async () => {
     
-  });
-
+    
+  }); 
+  
+    
 
 
   

@@ -3,9 +3,13 @@ import { dictionary } from "../data/dictionary";
 
 import { iconCoder } from "../data/iconCoder";
 const { defaultLanguage } = Astro.props;
+
+/*const api = await fetch("http://localhost:3000/")
+const {visitsCount} = await api.json()*/
 ---
 <!-- bg-[#101828] -->
 <section class="flex flex-col gap-5 justify-center items-center bottom-0 align-bottom w-auto py-3 mt-7 px-6 pb-1 bg-[#12435f] mx-4 my-6 rounded-xl">
+  
   <section class=" flex justify-between w-full">
     <h2 class="text-2xl flex-1 flex items-end align-bottom justify-center">¿Tienes algun proyecto en mente?</h2>
     <div class="flex-1">
@@ -97,6 +101,7 @@ const { defaultLanguage } = Astro.props;
       <span class="font-bold">@Iván Rodríguez Rojas 2025 </span>
     </h6>
     <div class="lg:col-span-1 text-[#38d5f8] scale-50 hover:scale-[0.6] transition duration-150" set:html={iconCoder} ></div>
+    <!--<div>{visitsCount}</div>-->
     
   </div>
 </div>

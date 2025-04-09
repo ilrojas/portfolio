@@ -3,16 +3,12 @@ import { skills } from "../data/skills";
 import { dictionary } from "../data/dictionary";
 import Badge from "./Badge.astro";
 import BlockCodeImg from "./BlockCodeImg.astro";
-
-import Technology from "./Technology.astro";
 const technical = skills.technical;
 const soft = skills.soft;
 
 const { defaultLanguage }: { defaultLanguage: "es" | "en" } = Astro.props;
 ---
-<div class="flex items-center justify-center">
-  <Technology defaultLanguage={defaultLanguage} />
-</div>
+
 <div
   class="animatedScroll grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 items-center justify-center gap-4 my-5 w-full"
 >

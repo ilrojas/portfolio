@@ -8,7 +8,7 @@ const { data } = await getUser(); */
 import Image from "astro/components/Image.astro";
 import { dictionary } from "../data/dictionary";
 import LevelStars from "./LevelStars.astro";
-const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
+const { defaultLanguage = "en" }: { defaultLanguage?: "en" | "es" } = Astro.props || {};
 ---
 
 
@@ -30,7 +30,7 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
             class="flex gap-2 justify-center items-center animate-moveFromLeft text-2xl lg:text-[35px] pb-2"
           >
             <span class=""
-              >{dictionary[defaultLanguage].greeting}
+              >{dictionary[defaultLanguage]?.greeting }
             </span>
             <span
               class="  font-bold "
@@ -43,25 +43,25 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
           > -->
           {defaultLanguage === 'en' ? (
             <span
-            class=" text-3xl lg:text-8xl uppercase font-extrabold text-balance animate-moveFromLeft text-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8] dark:bg-clip-text dark:text-transparent"
+            class=" text-3xl lg:text-8xl  uppercase font-extrabold text-balance animate-moveFromLeft text-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8] dark:bg-clip-text dark:text-transparent"
           >
             {dictionary[defaultLanguage]?.slogan.split(' ')[0]}
             
           </span>
           <span
-            class="text-3xl lg:text-[88px] uppercase font-extrabold text-balance animate-moveFromLeft pb-5"
+            class="text-3xl lg:text-[93px] uppercase font-extrabold text-balance animate-moveFromLeft pb-5"
           >
             {dictionary[defaultLanguage]?.slogan.split(' ')[1]}
           </span>
           ) : (
           <span
-            class="text-3xl lg:text-[58px] uppercase font-extrabold text-balance animate-moveFromLeft pt-2"
+            class="text-3xl lg:text-[63px] uppercase font-extrabold text-balance animate-moveFromLeft pt-2"
           >
             {dictionary[defaultLanguage]?.slogan.split(' ')[0]}
             
           </span>
           <span
-            class="text-3xl lg:text-8xl uppercase font-extrabold text-balance animate-moveFromLeft text-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8] dark:bg-clip-text dark:text-transparent"
+            class="text-3xl lg:text-8xl  uppercase font-extrabold text-balance animate-moveFromLeft text-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8] dark:bg-clip-text dark:text-transparent"
           >
             {dictionary[defaultLanguage]?.slogan.split(' ')[1]}
           </span>
@@ -149,7 +149,7 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
           class="grid grid-cols-1 grid-rows-4 gap-7 justify-center items-center p-5 z-auto w-48"
         >
           <div
-            class="relative w-full rounded-xl  rotate-3  flex  py-1 px-2 dark:text-white text-gray-800  bg-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8]"
+            class="relative w-full rounded-xl  rotate-3  flex  py-1 px-2 dark:text-white text-white  bg-[#eaaf37] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8]"
           >
           <div class="absolute -inset-0.5 dark:bg-[#12435f] bg-[#deae4f] rounded-xl blur"></div>
             <span
@@ -158,7 +158,17 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
 
             <span
               class="relative z-10 experience-text text-xs"
-              data-text={dictionary[defaultLanguage].yearsCard}></span>
+              data-text={dictionary[defaultLanguage]?.yearsCard || "Years not available"}></span>
+          </div>
+          <div
+            class="relative flex justify-center items-center  w-full rounded-xl  -rotate-3  flex  py-1 px-2 dark:text-white text-white  bg-[#125f495e] dark:bg-gradient-to-bl dark:from-[#3888f8] dark:via-[#38d5f8] dark:to-[#3888f8]"
+          >
+          <div class="absolute -inset-0.5 dark:bg-[#125f49] bg-[#125f49] rounded-xl blur"></div>
+            
+
+            <span
+              class="relative z-10 experience-text text-sm "
+              >Open to Work</span>
           </div>
           
         </section>
@@ -206,7 +216,7 @@ const { defaultLanguage }: { defaultLanguage: "en" | "es" } = Astro.props;
                 class="hero-link group space-x-1  dark:hover:bg-transparent text-gray-700 dark:text-gray-200 flex items-center justify-center dark:group-hover:text-white rounded-lg py-1 px-3"
               >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512" class="group-hover:rotate-12 group-hover:scale-110 transition-scale duration-300"><path fill="currentColor" d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm98.88 133.234c19.636 0 37.082 6.789 49.929 16.971c11.88 9.452 17.444 18.907 22.298 27.393l-33.923 16.949c-2.427-5.565-5.347-11.387-12.846-17.682c-8.248-6.552-16.478-8.484-23.524-8.484c-27.626 0-42.17 25.693-42.17 54.287c0 37.573 19.161 56.22 42.17 56.22c22.3 0 31.278-15.51 37.08-25.435L219.6 302.66c-6.315 9.926-12.374 19.635-25.95 29.069c-7.262 5.09-23.977 15.037-47.736 15.037C100.586 346.766 64 313.81 64 255.87c0-50.636 34.415-90.637 82.88-90.637m75.483 5.328h45.565L303.31 292.24l35.125-121.678H384l-59.379 171.112H281.01z"/></svg>
-              <label class="text-sm border-l-2 border-solid border-gray-600 pl-2  font-light group-hover:font-semibold transition-scale duration-300"> {dictionary[defaultLanguage].readcv}</label>
+              <label class="text-sm border-l-2 border-solid border-gray-600 pl-2  font-light group-hover:font-semibold transition-scale duration-300"> {dictionary[defaultLanguage]?.readcv || "CV not available"}</label>
                
               </a>
               <a
