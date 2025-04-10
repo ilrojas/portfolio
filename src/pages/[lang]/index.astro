@@ -64,24 +64,32 @@ const language: "en" | "es" = (Astro.props?.language === "en" || Astro.props?.la
     <div class="flex items-center justify-center">
       <Technology defaultLanguage={language}/>
     </div>
-    <div class="flex items-center justify-center">
-      <a href=`/${language}/services` class="btn btn-primary">
-        Services</a>
-    </div>
     
 
-    <div class="flex flex-col items-center gap-2 animatedScroll justify-center w-full mx-auto px-10">
+    <div class="flex flex-col items-center gap-2  justify-center w-full mx-auto px-10">
       <!-- <h2 class="text-2xl font-bold">{dictionary[language].projects}</h2> -->
-      <section class="section-projects  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 animatedScroll  gap-7 ">
+      <nav class="flex flex-col items-center space-x-5">
+        <h1
+          class="mb-4 mx-16 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+          
+        >
+        {dictionary[language].projects}
+        </h1>
+        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+          Flowbite helps you connect with friends, family and communities of people who share your interests.
+        </p>        
+      </nav>
+      <section class="section-projects  grid grid-cols-1 gap-7 ">
         {projects.map((item) => (
-          <div class="flex-1 w-full item-project">
-            <ProjectCard
-            project={item[language]?.project || "Title not available"}
-            img={item.img}
-            description={item[language]?.description || "Description not available"}
-            subtitle={item[language]?.subtitle || "Subtitle not available"} 
-            tech={item.tech}
-          />
+          
+            <div class="item-project sticky top-5 h-screen flex flex-col justify-center">
+              <ProjectCard
+              project={item[language]?.project || "Title not available"}
+              img={item.img}
+              description={item[language]?.description || "Description not available"}
+              subtitle={item[language]?.subtitle || "Subtitle not available"} 
+              tech={item.tech}
+            />
           </div>
         ))}
       </section>

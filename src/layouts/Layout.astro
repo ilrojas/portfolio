@@ -59,8 +59,10 @@ console.log("Server loaded");
       >
       
         <main class="px-4 ">
-          <div class="pb-4 lg:pb-4"></div>
-          <slot />
+          <div class="pb-4 lg:pb-4 flex flex-col gap-6 lg:gap-12 items-center justify-center w-full mx-auto px-10">
+            <slot />
+          </div>
+          
         </main>
         
         <Footer defaultLanguage={defaultLanguage} />
@@ -118,22 +120,7 @@ console.log("Server loaded");
     transition: all 0.3s ease; /* Aplica una transición suave a todas las propiedades */
   }
 
-.section-projects:hover > :hover {
-  
-    .hidden-description {
-      max-height: 370px;
-          
-    }
-    .visible-description{
-      max-height: 0;
-    }
-}
 
-
-   .section-projects:hover > :not(:hover) {
-    filter: blur(0.1px);
-    opacity: 0.8;
-  } 
 }
 
   .custom-shadow-light {

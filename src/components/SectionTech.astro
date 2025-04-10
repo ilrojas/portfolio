@@ -12,7 +12,7 @@ const { defaultLanguage = "en" }: { defaultLanguage?: "en" | "es" } = Astro.prop
 ---
 
 
-<section class="grid grid-cols-1 items-center justify-center gap-4 w-auto">
+<section class="grid grid-cols-1 items-center justify-center w-auto">
   <div
   class=" lg:h-[500px] z-[1] items-start flex flex-col columns-2 space-x-20 pt-6 lg:pt-10 lg:flex-row md:flex-col md:items-center w-full"
 >
@@ -81,25 +81,12 @@ const { defaultLanguage = "en" }: { defaultLanguage?: "en" | "es" } = Astro.prop
         
       </div>
 
-      <div
+      <!-- <div
         class="col-span-2  animate-fadeIn"
       >
         <div class=" flex flex-col  justify-center items-center gap-7">
-          <!-- <div
-            class="z-0 hidden lg:absolute h-36 w-14 bg-[#35716e] dark:bg-gray-900 lg:-translate-y-1/2 lg:top-1/2 lg:-left-14 lg:inline-block"
-          >
-          </div> -->
-          <!-- Imagen mia -->
-          <!-- <img
-            class="absolute z-10 left-1/2 -translate-x-1/2 lg:translate-x-0 -top-14 lg:-translate-y-1/2 lg:top-1/2 lg:-left-32 inline-block h-32 w-32 rounded-full object-cover object-center ring-8 ring-[#35716e] dark:ring-8 dark:ring-gray-900"
-            alt="Image placeholder"
-            src="/src/assets/profile.jpg"
-            width="128"
-            height="128"
-          /> -->
+          
           <div class="h-72 w-60 rounded-full animate-borderImg  overflow-hidden">
-            <!-- <div class="absolute -inset-0.5 bg-[#12435f] dark:bg-[#deae4f] rounded-md blur"></div> -->
-
             <img
             class="img-mia  h-[100%] w-[100%]  object-cover object-center "
             alt="Ivan Profile"
@@ -107,43 +94,10 @@ const { defaultLanguage = "en" }: { defaultLanguage?: "en" | "es" } = Astro.prop
             width="128"
             height="128"
             loading="lazy"
-          />
-          
-          </div>
-          <!-- <section class="text-xs"><Badge
-                  badgeText={dictionary[defaultLanguage]?.rhetoric}
-                  badgeIcon=`<svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse" width="12" height="12" viewBox="0 0 12 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.684 3.603c.521-.659.03-1.603-.836-1.603h-6.716a1.06 1.06 0 0 0-.909.502l-5.082 8.456c-.401.666.103 1.497.908 1.497h3.429l-3.23 8.065c-.467 1.02.795 1.953 1.643 1.215L20 9.331h-6.849z"/></svg>`
-                  badgeColor=`blue-400`
-                /></section>
-                <a
-                id="buttoncv"
-                title={defaultLanguage === "es"
-                  ? "Leer CV de Iván Rodríguez Rojas"
-                  : "Read Iván's CV"}
-                class=" z-10 drop-shadow-xl dark:text-cyan-300 hover:text-black dark:hover:text-cyan-600
-          -top-16 left-28 font-caveat col-span-3 lg:col-span-1 capitalize
-          animate-moveDown hover:font-extrabold hover:scale-125 hover:cursor-pointer
-          transition-all duration-300 overflow-hidden px-4 py-2 flex items-center justify-center"
-              >
-                {dictionary[defaultLanguage].readcv}
-              </a>
-
-              <a
-                class="z-10 dark:text-cyan-300 hover:text-black dark:hover:text-cyan-600 left-0 -translate-x-10 lg:translate-x-8 -top-2 font-caveat col-span-1 hover:font-extrabold hover:scale-125 hover:cursor-pointer transition-all duration-300 animate-moveDown overflow-hidden px-4 py-2 flex items-center justify-center"
-                href={defaultLanguage === "es"
-                  ? "/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf"
-                  : "/src/assets/documents/CV_FrontEnd_Dev_IvanRodriguezRojas_English.pdf"}
-                download={defaultLanguage === "es"
-                  ? "CV_FrontEnd_Dev_IvanRodriguezRojas_Espanol.pdf"
-                  : "CV_FrontEnd_Dev_IvanRodriguezRojas_English.pdf"}
-                title={defaultLanguage === "es"
-                  ? "Descargar CV de Iván Rodríguez Rojas"
-                  : "Download Iván Rodríguez Rojas CV"}
-              >
-                {dictionary[defaultLanguage]?.download}
-              </a> -->
+            />          
+          </div>          
         </div>
-      </div>
+      </div> -->
       <div class="col-span-1 animate-fadeIn">
         <section
           class="grid grid-cols-1 grid-rows-4 gap-7 justify-center items-center p-5 z-auto w-48"
@@ -200,15 +154,15 @@ const { defaultLanguage = "en" }: { defaultLanguage?: "en" | "es" } = Astro.prop
   </div> -->
   
 </div>
-<div class="animate-moveUp text-xs w-[100%] lg:w-[75%] lg:pb-5 grid grid-cols-1 md:flex justify-center align-middle md:gap-3">
+<div class="animate-moveUp text-xs w-[100%] lg:w-[95%] grid grid-cols-1 md:grid-cols-8 lg:grid-cols-8 justify-between items-end md:gap-3">
   
   <!-- <Badge
                   badgeText={dictionary[defaultLanguage]?.rhetoric}
                   badgeIcon=`<svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse" width="12" height="12" viewBox="0 0 12 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.684 3.603c.521-.659.03-1.603-.836-1.603h-6.716a1.06 1.06 0 0 0-.909.502l-5.082 8.456c-.401.666.103 1.497.908 1.497h3.429l-3.23 8.065c-.467 1.02.795 1.953 1.643 1.215L20 9.331h-6.849z"/></svg>`
                   badgeColor=`blue-400`
                 /> -->
-  
-                <a
+  <section class="grid grid-cols-1 md:flex md:flex-wrap lg:flex  justify-end md:gap-3 md:col-span-4 lg:col-span-4 md:pb-5 lg:pb-5">
+    <a
                 id="buttoncv"
                 title={defaultLanguage === "es"
                   ? "Leer CV de Iván Rodríguez Rojas"
@@ -271,17 +225,35 @@ const { defaultLanguage = "en" }: { defaultLanguage?: "en" | "es" } = Astro.prop
           ></path></svg
         ><label class="text-sm border-l-2 border-solid border-gray-600 pl-2  font-light group-hover:font-semibold transition-scale duration-300">Linkedin</label>
       </a>
+  </section>
+  <section class="hidden md:flex lg:flex justify-center md:gap-3 md:col-span-1 lg:col-span-1">
+    <img
+            class="img-mia rounded-full ring-4 ring-slate-400  h-32 w-32  object-cover object-center "
+            alt="Ivan Profile"
+            src="/src/assets/profile.webp"
+            
+            loading="lazy"
+          />
+  </section>
+  <section class="grid grid-cols-1 md:flex lg:flex md:gap-3 h-16 justify-start md:col-span-3 lg:col-span-3">
+    
+    <a href=`/${defaultLanguage}/services` class="flex justify-center items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" role="alert">
+      <span class="text- relative bg-cyan-600 rounded-full text-white px-4 py-1.5 mr-3 animate-pulse">Destacado</span> <span class="text-sm font-medium">¿Aún no conoces mis servicios?</span> 
+      <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+    </a>
+  </section>
+                
 </div>
 </section>
 <script>
   const $buttoncv = document.querySelector("#buttoncv");
-  const $dialogcv = document.querySelector("#dialogcv");
-  const $closecv = document.querySelector("#closecv");
+  const $dialogcv = document.querySelector("#dialogcv") as HTMLDialogElement;
+  const $closecv = document.querySelector("#closecv") as HTMLDialogElement;
 
   $buttoncv?.addEventListener("click", () => {
-    $dialogcv.showModal();
+    $dialogcv?.showModal();
   });
-  $closecv.addEventListener("click", () => {
+  $closecv?.addEventListener("click", () => {
     $dialogcv?.close();
   });
 </script>

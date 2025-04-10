@@ -10,8 +10,7 @@ const language = Astro.request.url.split('/')[3] || 'es'; // Obtener el idioma d
 console.log(language); // Aquí puedes usar el idioma obtenido de la URL
 
 
-/* const language = Astro.params.lang; */
-console.log(session?.user); // Aquí puedes usar la información del usuario autenticado
+
 const isLoggedIn = !!session;
 ---
 <Layout
@@ -19,17 +18,25 @@ const isLoggedIn = !!session;
   defaultLanguage={language}
 >
 
-<section class="grid grid-cols-1 items-center justify-center gap-4 w-auto pt-6 lg:pt-16">
+<section class="grid grid-cols-1 items-center justify-center w-full pt-6 md:pt-10 lg:pt-20">
 
   
 
   
     {
       isLoggedIn ?(
-      <nav class="flex flex-col lg:flex-row items-center space-x-5 justify-between">
+      <nav class="flex flex-col md:flex-row lg:flex-row items-center justify-between">
         <div class="flex space-x-3 items-center">
-          <img src={session.user?.image} alt={session.user?.name} class="w-8 h-8 rounded-full" />
-          <small ><span class="font-bold">Bienvenido: </span> {session.user?.email} </small>
+          <div>
+            <img src={session.user?.image} alt={session.user?.name} class="w-16 h-16 rounded-full" />
+          </div>
+          <div class="grid grid-cols-1">
+            <span class="font-bold">Bienvenido: </span>
+            <span class="text-2xl" > {session.user?.name} </span>
+            <small > {session.user?.email} </small>
+          </div>
+
+          
         
           
         </div>
@@ -41,7 +48,8 @@ const isLoggedIn = !!session;
       <h1 class="mb-4 mx-16 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white" transition:name="labelAboutx">{dictionary[language as keyof typeof dictionary]?.servicesHeader || "Default Header"}</h1>
       <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
       <a  class="inline-flex items-center justify-center gap-3 px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-        <SignIn provider={"google"}>Iniciar con Google </SignIn>
+        
+        <SignIn provider={"google"}>Iniciar con Google</SignIn>
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjYyIiB2aWV3Qm94PSIwIDAgMjU2IDI2MiI+PHBhdGggZmlsbD0iIzQyODVmNCIgZD0iTTI1NS44NzggMTMzLjQ1MWMwLTEwLjczNC0uODcxLTE4LjU2Ny0yLjc1Ni0yNi42OUgxMzAuNTV2NDguNDQ4aDcxLjk0N2MtMS40NSAxMi4wNC05LjI4MyAzMC4xNzItMjYuNjkgNDIuMzU2bC0uMjQ0IDEuNjIybDM4Ljc1NSAzMC4wMjNsMi42ODUuMjY4YzI0LjY1OS0yMi43NzQgMzguODc1LTU2LjI4MiAzOC44NzUtOTYuMDI3Ii8+PHBhdGggZmlsbD0iIzM0YTg1MyIgZD0iTTEzMC41NSAyNjEuMWMzNS4yNDggMCA2NC44MzktMTEuNjA1IDg2LjQ1My0zMS42MjJsLTQxLjE5Ni0zMS45MTNjLTExLjAyNCA3LjY4OC0yNS44MiAxMy4wNTUtNDUuMjU3IDEzLjA1NWMtMzQuNTIzIDAtNjMuODI0LTIyLjc3My03NC4yNjktNTQuMjVsLTEuNTMxLjEzbC00MC4yOTggMzEuMTg3bC0uNTI3IDEuNDY1QzM1LjM5MyAyMzEuNzk4IDc5LjQ5IDI2MS4xIDEzMC41NSAyNjEuMSIvPjxwYXRoIGZpbGw9IiNmYmJjMDUiIGQ9Ik01Ni4yODEgMTU2LjM3Yy0yLjc1Ni04LjEyMy00LjM1MS0xNi44MjctNC4zNTEtMjUuODJjMC04Ljk5NCAxLjU5NS0xNy42OTcgNC4yMDYtMjUuODJsLS4wNzMtMS43M0wxNS4yNiA3MS4zMTJsLTEuMzM1LjYzNUM1LjA3NyA4OS42NDQgMCAxMDkuNTE3IDAgMTMwLjU1czUuMDc3IDQwLjkwNSAxMy45MjUgNTguNjAyeiIvPjxwYXRoIGZpbGw9IiNlYjQzMzUiIGQ9Ik0xMzAuNTUgNTAuNDc5YzI0LjUxNCAwIDQxLjA1IDEwLjU4OSA1MC40NzkgMTkuNDM4bDM2Ljg0NC0zNS45NzRDMTk1LjI0NSAxMi45MSAxNjUuNzk4IDAgMTMwLjU1IDBDNzkuNDkgMCAzNS4zOTMgMjkuMzAxIDEzLjkyNSA3MS45NDdsNDIuMjExIDMyLjc4M2MxMC41OS0zMS40NzcgMzkuODkxLTU0LjI1MSA3NC40MTQtNTQuMjUxIi8+PC9zdmc+" alt="Iniciar con Google" class="w-6 h-6 rounded-full" />
         
       </a>
@@ -134,4 +142,5 @@ const isLoggedIn = !!session;
     null
     )
   }
+  
 </Layout>

@@ -4,7 +4,7 @@ import { icons } from "../data/icons";
 
 const {defaultLanguage}= Astro.props
 ---
-<div class="dark:text-white text-gray-700 animatedScroll grid grid-cols-1 items-center justify-center lg:w-fit bg-transparent dark:bg-transparent mt-6 lg:mt-0 py-2 rounded-lg  space-y-10">
+<div class="dark:text-white text-gray-700  grid grid-cols-1 items-center justify-center lg:w-fit bg-transparent dark:bg-transparent mt-6 lg:mt-0 py-2 rounded-lg  space-y-10">
   <!-- <section class="uppercase font-interTight text-sm  lg:text-2xl text-center w-2/3 lg:w-2/4 mx-auto tracking-normal ">
     <h3>{dictionary[defaultLanguage]?.sloganTech}</h3>
   </section> -->
@@ -12,7 +12,7 @@ const {defaultLanguage}= Astro.props
   id="skills"
         class="marquee-container flex lg:flex lg:flex-row gap-1 pt-2 justify-center items-center -space-x-1 text-gray-700 dark:text-gray-400 opacity-75   overflow-hidden"
       >
-      <div class="marquee-content w-fit flex flex-nowrap justify-center items-center gap-2 animate-scrollHorizontal lg:animate-none overflow-hidden whitespace-nowrap">
+      <div id="slider" class="marquee-content w-fit flex flex-nowrap justify-center items-center gap-2 animate-scrollHorizontal lg:animate-none overflow-hidden whitespace-nowrap">
         {
           icons.map((icon, index) => {
             const classBorder = index % 2 === 0 ? 'lg:border-b-2 ' : 'lg:border-t-2 ';
@@ -98,5 +98,21 @@ const {defaultLanguage}= Astro.props
       const marquee = document.querySelector(".marquee-content") as HTMLElement;
      marquee.innerHTML += marquee.innerHTML; 
     }); */
+    document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('#slider') as HTMLElement;
+    setTimeout(function moveSlide() {
+        const max = slider?.scrollWidth - slider?.clientWidth;
+        const left = slider?.clientWidth;
+
+        if (max === slider?.scrollLeft) {
+            slider?.scrollTo({left: 0, behavior: 'smooth'})
+        } else {
+            slider?.scrollBy({left, behavior: 'smooth'})
+        }
+
+        setTimeout(moveSlide, 2000)
+    }, 2000)
+
+})
     </script>
       

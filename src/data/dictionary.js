@@ -6,7 +6,7 @@ export const dictionary = {
         myLocation : "Montevideo, URUGUAY",
         welcome: "Welcome to my portfolio",
         about: "About Me",
-        projects: "Projects",
+        projects: "Our Projects",
         skills: "Skills",
         services:"Services",
         home: "Home",
@@ -38,7 +38,7 @@ export const dictionary = {
         welcome: "Bienvenido a mi portafolio",
         home: "Inicio",
         about: "Sobre mí",
-        projects: "Proyectos",
+        projects: "Nuestros Proyectos",
         skills: "Habilidades",
         services: "Servicios",
         home: "Inicio",
@@ -59,7 +59,7 @@ export const dictionary = {
         education: "Formación Académica",
         yearsCard: "Años de Experiencia",
         languageCard: "Lenguajes y Frameworks",
-        servicesHeader:"Si aún no te has autenticado, hazlo ya para que accedas a los servicios que te ofrezco.",
+        servicesHeader:"Si aún no te has autenticado, hazlo ya, para que accedas a los servicios que te ofrezco.",
         // Add more key-value pairs as needed
     }
 };
